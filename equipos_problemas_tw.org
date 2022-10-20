@@ -1,0 +1,25 @@
+#+title: Equipos con problemas en TeamViewer
+
+| NOMBRE             | MP      | Version TW | Version SO    |
+|--------------------+---------+------------+---------------|
+| Alicia Sepulveda   | MP00605 |            |               |
+| Angela Cordova     | MP00536 | V 15.29.4  | Kubuntu 20.04 |
+| David Rodriguez    | MP00778 |            |               |
+| Delia Nieves       | MP00607 |            |               |
+| Leslie Sagredo     | MP00851 |            |               |
+| Marjorie Jaña      | MP00935 |            |               |
+| Naudy Suarez       | MP00948 |            |               |
+| Leonardo Suazo     | MP01132 | V 15.29.4  | Kubuntu 20.04 |
+| Carin Olavarria    | MP00722 |            |               |
+| Rosa Cerda         | MP01130 |            |               |
+| Albeiro Gonzalez   | MP00691 |            |               |
+| Soledad Araneda    | MP00808 |            |               |
+| Yoely Vera         | MP00537 |            |               |
+| Paulina Avila      | MP00686 |            |               |
+| Magnovi Vasquez    | MP01049 |            |               |
+| Alejandra Ordenes  | MP01429 |            |               |
+| Gerardo Melo       | MP01724 |            |               |
+| Valentina Riquelme | MP01143 |            |               |
+| Yennifer Hoyer     | MP01431 |            |               |
+| Zaida Gonzalez     | MP01432 |            |               |
+| Keyla Laya         | MP01721 |            |               |

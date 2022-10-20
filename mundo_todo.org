@@ -1,0 +1,71 @@
+#+title: Ticket Todo
+
+* INPROGRESS Limitar tickets por IP
+Usar "$ip = $_SERVER['REMOTE_ADDR'];" para añadir la IP enviada a un archivo en el servidor, de esa manera en cada submit buscar en la lista si la IP ya está registrada para aceptar o no el submit.
+Ver la manera de eliminar el registro más antiguo en ese archivo cada X Minutos.
+La otra opción es buscar la IP que se repita X veces en la lista y esa bloquearla y realizar la limpieza del archivo de manera diaria. Así permitiendo X Submit por día.
+ver por DB para bloquear la IP o correo
+* DONE agregar Regex para correo
+regex : ^[a-z]+\.[a-z]+\.?[a-z]*?(@mundopacifico.cl|@mundotelecomunicaciones.cl)
+* DONE Add 16Mb max upload
+* NO Aceptar sólo formato Excel y Libre
+La recepción de archivos la tiene la ticketera, revisar ahí.
+* DONE Descargar formulario de VPN
+* DONE Feedback al crear ticket, indicar n° Ticket o enviar correo
+Con la ticketera enviar correo para seguimiento, en la pagina de "gracias por enviar su ticket" añadir una imagen de ejemplo con correo que llega.
+
+* DONE Descargar formulario para copiar y pegar o subir archivo con solicitud de cuentas
+
+* NO Agregar link de home page como variable de entorno docker
+Buscar como llamar variable entorno docker en javascript
+soporteti.mundopacifico.cl - 192.168.100.44
+Buscar Variable de entorno Docker en php:
+getenv_docker("URL_BASE","http://Localhost");
+Usar php dentro de html
+<?php CODIGO ?>
+Al final sirve poner "/" en el href de un hmtl ... XD
+* TODO VALIDAR RUT!!!
+googlealo
+* DONE sent cambiarlo a soporteti.mundopacifico.cl
+
+* DONE Acotaciones don Marcos para front end tickets [3/3]
+- [X] Para rrhh y soporte sistemas, que TI cree ticket para ellos y dar seguimiento al usuario
+  - [X] Vtiger Workflows para enviar correo a las areas RRHH Soposistemas segun corresponda la cat del
+  - [X] Crear cat ticket RRHH y soporsistemas
+- [X] Que sea front End centralizado para todas las areas
+- [X] Agregar opción Otros para requerimientos fuera de categoria
+* NO Flujo de creacion VPN con CiberSeguridad [2/2]
+- [X] Formulario web VPN dividir en individual / grupal (probablemente revisar que campos sean obligatorios)
+- [X] En ticketera hacer cuenta para CiberSeguridad con acceso sólo a tickets VPN
+
+* DONE Formateo MP01642 SOC [5/5]
+- [X] Respaldo todas cuentas
+- [X] Formateo
+- [X] Pasar Respaldo
+- [X] sudo carlos oviedo
+- [X] sudo Rodrigo Urrea
+
+* DONE Formulario VPN Ciber [2/2]
+- [X] linkear formulario Ciber al href de mi if en php https://forms.gle/ueEykQBTKWJGjnik7
+- [X] Enviar Correo a Ciber para indicar nuevo procedimiento adjuntando link de formulario para ellos crear ticket http://requerimientos-ti.mundopacifico.cl/formularios/solicitud_vpn/
+
+* NO Impresora Secre no Imprime PDF
+** NO Opciones [1/4] # Imprime PDF desde navegador, por ahora funcionando OK
+- [X] Conectar por USB y que el controlador se instale NO FUNCIONA
+- [ ] Reinstalar CUPS
+- [ ] Formatear
+
+* DONE Sh tzdata [0/1]
+- [-] crear sh con pasos que hizo arturo: [3/4]
+  - [X] cp santiago a santiago_fecha
+  - [X] wget tzdata Santiago
+  - [X] cp Santiago en tzdata (ver wsp arturo)
+
+* MP dramas tarjeta red
+MP01794
+
+* TODO MP cambio Hora contact [3/4]
+- [X] MP01224
+- [X] MP01924
+- [X] MP00607
+- [ ] MP01741

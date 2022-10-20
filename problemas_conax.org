@@ -1,0 +1,11 @@
+#+title: Equipos con problemas conax
+
+|    MP | Teamviewer    | Nombre     | Estado         |
+|-------+---------------+------------+----------------|
+| 01222 | 963 718 823   | Sergirelis | OK             |
+| 01098 | 1 595 456 963 | Mirtha     | Desconectado   |
+| 02108 | 220 332 680   | Jonaiker   | OK             |
+| 01110 | 1 806 355 895 | miguel     | Desconectado   |
+| 02146 | 510 597 732   | Lorena     | Desconectado   |
+| 00613 | 473 482 985   | Diana      | No responde TW |
+| 01114 | 759 990 864   | Enzo       | Desconectado   |

@@ -1,0 +1,21 @@
+#+title: Arcade Notes
+
+
+* Juego con habitaciones
+- [X] Abierta Izquierda --- x != 0
+- [X] Abrieta Derecha --- x == 0
+- [X] Abierta Arriba --- y == 0
+- [X] Abierta Abajo ---  y != 0
+- [X] Abierta Izquierda-Derecha --- (x != 0 and x == 0)
+- [X] Abierta Arriba-Abajo --- ( y != 0 and y == 0)
+- [X] Abierta Izquierda-Arriba --- x != 0 ... y == 0
+- [X] Abierta Izquierda-Abajo --- x != 0 ... y != 0
+- [X] Abierta Derecha-Arriba --- x == 0 ... y == 0
+- [X] Abierta Derecha-Abajo --- x == 0 ... y != 0
+- [X] Abierta todas direcciones --- (x != 0 and x == 0) ... ( y != 0 and y == 0)
+
+* Notas room template
+- room 0 = R-U
+- room 1 = L-U
+- room 2 = L-D
+- room 3 = R-D

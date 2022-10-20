@@ -1,0 +1,110 @@
+Descarga de info
+
+https://cc.mundopacifico.cl/vicidial/user_stats.php?DB=&pause_code_rpt=&park_rpt=&did_id=&did=&begin_date=2022-09-01&end_date=2022-09-27&user=19815030&submit=&search_archived_data=&NVAuser=&file_download=5
+
+
+begin_date = int 0
+end_date = int 0
+user = int 0
+
+indique fecha inicio: read_begin
+begin_date = read_begin
+
+indique fecha final: read_end
+end_date = read_end
+
+indique usuario: read_user
+user = read_user
+
+#+begin_src python3 :tangle ~/ViciScripts/reportes_vici.py
+#!/usr/bin/env python3
+import requests
+
+user_db = [19815030,
+16533976,
+26903120,
+26306542,
+143537803,
+175746145,
+17046020,
+16218215,
+17570340,
+13380228,
+16620688,
+9174182,
+16394416,
+17746192,
+12554196,
+26506291,
+558,
+122,
+19657194,
+26319502,
+26269789,
+12920515,
+14210090,
+26002817,
+26610158,
+13859021,
+268138463,
+17573018,
+16600953,
+27202248,
+123,
+13508697,
+20021999,
+116819945,
+17454307,
+19344852,
+18413950,
+15591802,
+719,
+16328012,
+25535678,
+19119883,
+20257776,
+26424482,
+18445111,
+10021898,
+13507401,
+14209064,
+17900167,
+192,
+14213603,
+27025382,
+26378038,
+12972577,
+17208249,
+26470109,
+172238068,
+151859070,
+25669526
+]
+
+begin_date: int = 0
+end_date: int = 0
+
+begin_date = input("Fecha de inicio(A-M-D): ")
+end_date = input("Fecha de término(A-M-D): ")
+
+user = user_db[0]
+url = f"https://cc.mundopacifico.cl/vicidial/user_stats.php?DB=&pause_code_rpt=&park_rpt=&did_id=&did=&begin_date={begin_date}&end_date={end_date}&user={user}&submit=&search_archived_data=&NVAuser=&file_download=5"
+
+session = requests.Session()
+page = session.get(url)
+open(f"user_stat_{user}.csv", "wb").write(page.content)
+
+# for user in user_db:
+    # user = user
+    # url = f"https://cc.mundopacifico.cl/vicidial/user_stats.php?DB=&pause_code_rpt=&park_rpt=&did_id=&did=&begin_date={begin_date}&end_date={end_date}&user={user}&submit=&search_archived_data=&NVAuser=&file_download=5"
+
+
+#+end_src
+
+-----------------
+
+Documento
+
+Descargar csv por cada usuario
+crear un csv con la info de un usuario por hoja
+borrar todos los csv de usuarios

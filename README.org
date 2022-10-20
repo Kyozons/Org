@@ -1,0 +1,3 @@
+#+title: Documentacion, Notas o Codigo
+
+Notas, documentacion, codigo o ideas

@@ -1,0 +1,417 @@
+#+title: Notas MP
+
++ [[Opciones para bloqueo USB:]]
+  + [[Eliminar usuario del grupo plugdev:]]
+  + [[Fake Install:]]
++ [[Chrome no guarda pass]]
++ [[Clave Wifi Diagonal][Clave Wifi Diagonal]]
++ [[Credenciales][Credenciales]]
+  + [[Clave SoporteTI Linux]]
+  + [[Clave Admin Windows]]
+  + [[Clave cuentas Soporte]]
+  + [[???]]
+  + [[Administrador del dominio]]
++ [[Cuenta AutoDesk]]
++ [[Instalar Asbru Ubuntu]]
++ [[Impresoras GODEX][Impresoras GODEX]]
+  + [[Links]]
++ [[Dar permisos sudo a usuario para carpeta o archivo especifico]]
+  + [[Archivo especifico]]
+  + [[Carpeta especifica de manera recursiva]]
++ [[Camionetas SoporteTI]]
+  + [[Patentes]]
++ [[Rootcheck]]
++ [[Habilitar WiFi AIO Linux]]
++ [[Obtener Serial Number Linux]]
++ [[Instalar Play On Linux]]
++ [[Permisos especiales Linux]]
+  + [[Permisos Cambiar Red]]
+  + [[Permisos SUDO]]
++ [[Cambiar nombre usuario y carpeta home ubuntu]]
++ [[Eliminar completamente usuario ubuntu]]
++ [[Revisar info de red a detalle linux]]
++ [[Instalar Remmina por PPA]]
++ [[DSS Admin]]
+  + [[Portal de admin web]]
++ [[Magnus en Linux]]
++ [[Impresoras Samsung]]
+  + [[Cuenta Admin]]
++ [[Cuentas SSH servers VPN]]
++ [[Obtener certificado VPN]]
+  + [[Conectar al Servidor]]
+  + [[Crear Certificado]]
++ [[Link Forticlient Windows]]
++ [[Asbru problema con SSH]]
++ [[Eliminar SSH host KEY]]
++ [[Equipos en negro, linea de consola initramfs]]
++ [[Ver licenia Windows en equipos Linux]]
++ [[Ver registro de tiempo de inicio de servicios linux]]
++ [[Utilidad para checkear discos Linux]]
+  + [[Smart Mon Tools]]
+    + [[Instalación]]
+    + [[Uso]]
++ [[Reiniciar Servicio Teamviewer]]
++ [[Limpiar cola impresión Linux por consola]]
++ [[WPS no reconoce Tilde]]
++ [[Usar más de una cuenta en el mismo equipo para GIT por ssh]]
++ [[Enviar archivo a cualquier equipo por SSH]]
++ [[Notas SQL]]
++ [[Revisar RAM Slot consola LINUX]]
+
+* Opciones para bloqueo USB:
+En el repositorio GIT hay un script para bloquear y desbloquear USB
+** Eliminar usuario del grupo plugdev:
+deluser USUARIO GRUPO (Esto elimina a la membersia, lo el usuario ni el grupo)
+** Fake Install:
+touch /etc/modprobe.d/block_usb.conf  (Crear archivo de config)
+echo "install usb-storage /bin/true" >> /etc/modprobe.d/block_usb.conf (bloquea instalación USB, requiere reinicio.)
+* Chrome no guarda pass
+1. Cerrar Chrome
+2. Linux: ir a $HOME/.config/google-chrome/Default y borrar carpetas Login Data y Login Data-journal
+2. Windows: Ir a %Perfil de Usuario%\AppData\Local\Google\Chrome\User Data y borrar carpetas Login y Login data-journal
+2. Mac: ir a  $HOME/Library/Application Support/Google/Chrome y borrar carpetas Login Data y Login Data-journal
+3. Abrir Chrome y verificar
+
+* Clave Wifi Diagonal
+#AP$Diagonal2827
+
+* Credenciales
+** Clave SoporteTI Linux
+    c0ntr0l$st1
+** Clave Admin Windows
+    rx1249t1$g
+** Clave cuentas Soporte
+    Rx1249t1$g.2020
+** ???
+Usuario: soporteti
+
+Pass: V90w-$FX#20.21R+
+** Administrador del dominio
+administrador
+c0ntr0l$rx1249t1$g
+** Usuario SQL en Vtiger
+user: pedrobustos
+pass: pbustos$2022
+
+* Cuenta AutoDesk
+mavis.reyes@mundopacifico.cl
+p4c1f1c0
+[[https://accounts.autodesk.com][Página de inicio de sesión]]
+* Instalar Asbru Ubuntu
+curl -1sLf 'https://dl.cloudsmith.io/public/asbru-cm/release/cfg/setup/bash.deb.sh' | sudo -E bash
+sudo apt install asbru-cm -y
+
+* Impresoras GODEX
+Ingresar por navegador (IP default 192.168.0.66)
+User: admin
+Pass: 1111
+*GODEX Bodega Coronel: 192.168.114.47
+** Links
+https://www.godexintl.com/product-list/Software?locale=es
+GOLabel: Programa para imprimir etiquetas
+GoUtility: Para encontrar imp en red y configuracion
+
+* Dar permisos sudo a usuario para carpeta o archivo especifico
+** Archivo espefico
+setfacl -m u:usuario:rwx archivo
+Ejemplo : setfacl -m u:pedro.bustos.l:rw script.sh
+** Carpeta especifica de manera recursiva
+setfacl -R u:usuario:rwx carpeta
+Ejemplo: setfacl -R u:pedro.bustos.l:wx /home/scripts
+
+* Camionetas SoporteTI
+** Patentes
+PTDF22
+PRLV70
+
+* Rootcheck
+chomd 751 /ruta con problemas (En  caso de ser muchos archivos se puede aplicar chmod -R a la carpeta contenedora)
+
+* Habilitar WiFi AIO Linux
+1. Gestor controladores en menú inicio
+2. Clicar palomita
+3. Aplicar
+
+* Obtener Serial Number Linux
+dmidecode -t system | grep Serial
+
+* Instalar Play On Linux
+sudo apt-get install xterm wine-stable -y
+sudo apt-get install playonlinux -y
+
+* Permisos especiales Linux
+** Permisos cambiar Red
+usermod -aG netdev usuario
+** Permisos SUDO
+usermod -aG sudo usuario
+
+* Cambiar nombre usuario y carpeta home ubuntu
+Sudo usermod -l 'nuevo nombre'  'antiguo nombre'
+Sudo usermod –d /home/'nueva home' -m 'nombre usuario'
+
+* Eliminar completamente usuario ubuntu
+sudo userdel -r 'usuario'
+sudo groupdel -remove-all-files 'usuario'
+
+* Revisar info de red a detalle linux
+nmcli dev show eth0 | grep IP4
+
+* Instalar Remmina por PPA
+sudo add-apt-repository ppa:remmina-ppa-team/remmina-next
+sudo apt install remmina -y
+
+* DSS Admin
+** Portal de admin web
+    192.168.100.96
+
+* Magnus en Linux
+Agregar al grupo TS_Magnus en AD
+instalar remmina
+conectar a 192.168.100.99
+Ingresar con cuenta dominio del usuario
+
+* Impresoras Samsung
+** Cuenta Admin
+admin
+sec00000
+
+* Cuentas SSH servers VPN
+Usuario: soporte
+Contraseña: #FX-S0p$1D.2021
+
+* Obtener certificado VPN
+** Conectar al Servidor
+ssh soporte@192.168.100.20 / 21
+
+cd /home/soporteti/certificados_openvpn = Carpeta contenedora VPN existente
+** Crear Certificado
+cd /home/soporteti/openvpn-install/
+
+./openvpn-install.sh
+
+SEGUIR INSTRUCCIONES
+ 
+* Link Forticlient Windows
+https://links.fortinet.com/forticlient/win/vpnagent
+
+* Asbru problema con SSH
+Crear archivo config en /etc/ssh/ssh_config.d/"archivo.conf"
+
+En el archivo agregar: KexAlgorithms "Algoritmos que estén dando error"
+
+EJ:
+
+vim /etc/ssh/ssh_config.d/mundo.conf
+
+KexAlgorithms diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
+
+* Eliminar SSH host KEY
+ssh-keygen -f "/root/.ssh/known_hosts" -R "mpxxxxx"
+
+* Equipos en negro, linea de consola initramfs
+al lado de la consola (initramfs) escribir "exit"
+buscar la linea donde diga la particion afectada, EJ: /dev/sda2
+fsck "particion afectada" -y
+
+* Ver Licencia Windows en equipos Linux
+El siguiente comando funciona para equipos que tienen linux los cuales anteriormente hayan tenido Windows instalado
+
+sudo cat /sys/firmware/acpi/tables/MSDM
+
+* Ver registro de tiempo de inicio de servicios linux
+systemd-analyze blame
+
+* Utilidad para checkear discos Linux
+** Smart Mon Tools
+*** Instalación
+sudo apt install -y smartmontools
+*** Uso
+**** Realizar Test
+smartctl -t short disco (/dev/sdaX , /dev/nvmeXXXX)
+**** Ver resultados test
+smartctl -l selftest disco (/dev/sdaX , /dev/nvmeXXXX)
+
+* Reiniciar Servicio Teamviewer
+sudo teamviewer daemon restart
+
+* Limpiar cola impresión Linux por consola
+lpstat -p -d listar > impresoras
+
+lpoptions -d MFP_M127fn > seleccionamos la impresora a ocupar.
+
+lpq > verificar si la impresora seteada en paso anterior esta preparada.
+
+lprm - enter > eliminar todos los archivos de cola de impresora
+
+* WPS no reconoce Tilde
+Este problema se debe al iBUS mal configurado o no instalado
+Para configurar el iBUS usar comando:
+im-config
+Seguir con la config hasta que nos permita elegir iBUS, aceptar y reiniciar el euqipo
+* Usar más de una cuenta en el mismo equipo para GIT por ssh
+https://gist.github.com/oanhnn/80a89405ab9023894df7
+
+* Enviar archivo a cualquier equipo por SSH
+enviarlo a /tmp con cualquier cuenta (se borra en reinicio)
+* Listar contenido de la carpeta actual mostrando su peso
+du -sh *
+du : Disk Usage
+-s : --sumarize ; muestra un resumen par cada fichero o directorio
+-h : --human-readable ; muestra la salida de manera legible.
+opcinal se puede usar "-c"
+-c : produce un total general del tamaño
+* Notas SQL
++ Crear Usuario:
+  CREATE USER 'nombre'@'%' IDENTIFIED BY 'contraseña';
+
++ Crear Database:
+  CREATE DATABASE 'nombre';
+
++ Mostrar Databases:
+  SHOW DATABASES;
+
+
++ Crear Tabla:
+  Simple:
+  CREATE TABLE nombre( columna1 datatype, columna2, datatype ... );
+
++ Con Primary y Foreign Key:
+  CREATE TABLE nombre(columna1 dataype, columna2, datatype, primary key(columna1), foreign key(columna2) references otraTabla(columnaOtraTabla));
+  EJ:
+  CREATE TABLE Calles(item_id int auto_increment, ciudad_id int, calle varchar(255), primary key(item_id), foreign key(ciudad_id) references Ciudades(item_id));
+
++ Insertar a Tabla:
+  INSERT INTO nombreTabla (columna1, columna2 ...) VALUES (valColumna1, valColumna2), (segundoValColumna1, segundoValColumna2)...;
+  EJ:
+  INSERT INTO Calles (ciudad_id, calle) VALUES (2, 'Concepcion'), (3, 'Algarrobo');
+
++ Modificar Valor en Tabla:
+  UPDATE nombreTabla set columna1 = 'NuevoValor' where condicion;
+  EJ:
+  UPDATE requerimientos set requerimiento = 'BeyondUP' where id_requerimiento = 1;
+
++ Renombrar Tabla
+  ALTER TABLE nombreTabla RENAME COLUMN nombreColumna TO nuevoNombre;
+  EJ:
+  ALTER TABLE provincias rename column provincia to nombre_provincia;
+
+* Notas PHP Laravel
+** Crear Proyecto Laravel
++ Requisitos
+  - PHP
+  - Laravel
+  - Composer
+
++ PHP Laravel
+
+  Crear Proyecto Laravel
+  #+begin_src bash
+composer create-proyect laravel/laravel nombreProyecto
+  #+end_src
+
+  Crear Controller Laravel -> Se encarga de enviar los comandos para traer infromacion de la DB
+  #+begin_src bash
+php artisan make:controller NombreControlador
+  #+end_src
+
+  Crear Model Laravel -> Se encarga de realizar la conexion a la DB
+  #+begin_src bash
+php artisan make:model NombreModelo
+  #+end_src
+
+  Lanzar App Laravel entorno Desarrollo
+  #+begin_src bash
+php artisan serve
+  #+end_src
+
+** Lo minimo para que una app laravel funcione
++ Configurar Controller
+
+  Configuracion Basica para obtener info de una DB
+  #+begin_src php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Calles;
+
+class CallesAraucoController extends Controller
+{
+
+        function get_calle(){
+        $data = Calles::select('item_id', 'name')->where('ciudad_id', [7])->get();
+        return $data;
+    }
+}
+  #+end_src
+
++ Configurar Ruta
+
+  Configuracion basica para generar una ruta API para utilizar data recogida por Controller
+  #+begin_src php
+use App\Http\Controllers\CallesAraucoController;
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'ciudades'
+], function ($router) {
+Route::get('Arauco', [CiudadesAraucoController::class, 'get_ciudad']);
+});
+
+  #+end_src
+
+* Notas App ReactJS
+** Crear Proyecto ReactJS
++ Requisitos
+  - nodejs
+  - npm
+  - npx
+
++ ReactJS
+
+  Crear proyecto ReactJS
+  #+begin_src bash
+npx create-react-app NombreApp
+  #+end_src
+
+  Lanzar App entorno desarrollo
+  #+begin_src bash
+npm start
+  #+end_src
+
+** Lo minimo para que una App ReactJS funcione
+
++ Conectar a una API
+  - Requisitos
+    a) Instalar Axios
+       #+begin_src bash
+npm install axios
+       #+end_src
+
+    b) Conectar a API con axios
+
+       Ejemplo de funcion simple para realizar una sola peticion get axios a la API
+       #+begin_src javascript
+import axios from 'axios';
+
+  const peticionGetAxios = async () => {
+    await axios.get("http://localhost:8000/api/calles/concepcion")
+         .then(response => {
+           setData(response.data);
+         })
+  }
+
+  useEffect(() => {
+    peticionGetAxios();
+  }, [])
+
+       #+end_src
+
+* Revisar RAM Slot consola LINUX
+
+- Ingresar el siguiente comando y buscar la línea "devices available"
+
+#+begin_src bash
+sudo dmidecode -t 16
+#+end_src
