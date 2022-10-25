@@ -1,0 +1,22 @@
+#+title: Appmuseo
+
+* Archivo Shopify
+- Fecha
+- ID -> Name
+- Subtotal -> subtotal
+- Neto -> subtotal - IVA
+- IVA -> Taxes
+- Costo Despacho -> saber ID para sacarlo de shipit
+- Cobro Despacho -> Shipping
+- Total - total
+- SKU - Lineitem sku
+- Cantidad - Lienitem Quantity
+- Detalle - Lineitem Name
+- Precio Producto Total - Mientras vacio
+- Precio producto unitario - Mientras vacio
+
+* Archivo Facturas (Shipit)
+- con ID de shopify buscar precio de envio
+
+* Archivo Informe de ventas
+-
