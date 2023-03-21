@@ -33,14 +33,15 @@ DEADLINE: <2023-03-20 lun> SCHEDULED: <2023-03-16 jue>
 - DB
   + HCU_LEY_URGENCIA C
   + spu_adm_registro_ley_urg C
-  + spu_adm_obtener_pac_ley_urg C
+  + spu_adm_obtener_pac_ley_urg C .
   + spu_adm_guardar_atencion M
   + spu_adm_obtener_atencion M
 
-** TODO requerimiento suspender indicación hospitalizado [0/5]
-- [ ] campo requiere kine debe ser required y tener opciones "si/no"
-- [ ] eliminar fecha hasta de vista/sp/tabla
-- [ ] al firmar debe verificar si campo kine true para agregar a lista kine
+** TODO requerimiento suspender indicación hospitalizado [3/5]
+DEADLINE: <2023-03-22 miÃ©> SCHEDULED: <2023-03-21 mar>
+- [X] campo requiere kine debe ser required y tener opciones "si/no"
+- [X] eliminar fecha hasta de vista/sp/tabla
+- [X] al firmar debe verificar si campo kine true para agregar a lista kine
 - [ ] editar tabla HCH_PROCEDIMIENTO_MEDICO [0/2]
   + [ ] HPM_ESTADO_PROCEDIMIENTO char 1 null (s = suspendido)
   + [ ] HPM_FEC_ESTADO datetime null
@@ -48,3 +49,12 @@ DEADLINE: <2023-03-20 lun> SCHEDULED: <2023-03-16 jue>
   + [ ] agregar marca en objeto/db/sp/api para identificar suspendido
   + [ ] si es suspendido debe mostrar alert 'Indicación suspendida el {fecha}'
   + [ ] si se suspende con kine = true eliminar de lista kine
+
+*** TODO requerimiento rehabilitacion [0/2]
+DEADLINE: <2023-03-23 jue> SCHEDULED: <2023-03-23 jue>
+- [ ] En vista kinesiologo, menu registro rehab [0/4]
+  + [ ] ocultar motivo de consulta
+  + [ ] agregar valor "otro" a escalas
+  + [ ] agregar campo invisible y opcional de texto libre "resultado escalas evaluadas"
+  + [ ] al marcar alugna escala debe aparecer campo "resultado escalas evaluadas"
+- [ ] Agregar campos en vue/sp/api/db para resultado escalas evaluadas
