@@ -1,3 +1,41 @@
-#+title: Documentacion, Notas o Codigo
+#+title: Test Readme
 
-Notas, documentacion, codigo o ideas
+* Resumen
+** Proyecto Hospitalizado
+Descripción del proyecto
+
+* Features
+** feature-componente-ley-urgencia
+El componente ley de urgencia es un alert que indica si el paciente ha sido notificado como ley de urgencia, y la fecha de notificación en caso de haber sido notificado
+
+- Para llamar al componente se debe tener en cuenta lo siguente
+
+  + Llamar en template es necesario sólo identificarlo con una referencia
+    #+begin_src html
+<LeyUrgencia
+ref="leyUrgencia"
+/>
+    #+end_src
+
+- No olvidar importar componente
+
+  #+begin_src js
+...
+import LeyUrgencia from {RUTA AL COMPONENTE}
+...
+components: {
+    ...
+    LeyUrgencia,
+    ...
+}
+  #+end_src
+
+- En parent llamar la función buscarPacienteLeyUrg para que carge al tener un paciente y darle como parámetros el pacNumFicha e ingCorrel del paciente en ficha hospitalizado
+
+  #+begin_src js
+async buscarPaciente(){
+    ...
+    await this.$refs.leyUrgencia.buscarPacienteLeyUrg(pacNumFicha, ingCorrel)
+    ...
+}
+  #+end_src
