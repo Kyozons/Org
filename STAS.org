@@ -1,0 +1,50 @@
+#+title: Stas
+
+* Requerimentos
+** TODO requerimiento ley urgencia hospitalizado [2/3]
+DEADLINE: <2023-03-20 lun> SCHEDULED: <2023-03-16 jue>
+*** DONE tabla HCU_LEY_URGENCIA [6/6]
+  - [X] PAC_NUMFICHA_URG numeric 10
+  - [X] PAC_NUMFICHA_HOSP numeric 10 null
+  - [X] ING_CORREL_URG numeric 4
+  - [X] ING_CORREL_HOSP numeric 4 null
+  - [X] PTD_RUT char 10 null
+  - [X] HLU_FEC_LEY_URG datetime null
+
+*** HOLD Eliminar cambios anteriores ley urgencia [0/3]
+- [ ] tabla ATENCION
+- [ ] spu_adm_obtener_atencion (pb)
+- [ ] spu_adm_guardar_atencion (pb)
+
+*** DONE Componente ley urgencia hospitalizado [3/3]
+- [X] guardar ingreso en hospitalizado debe verificar si paciente es ley urg
+- [X] si paciente es ley urg se debe guardar pacnumficha e ingcorrel de hosp en HCU_LEY_URGENCIA
+- [X] componente ley urgencia [2/2]
+  + [X] Buscar en HCU_LEY_URGENCIA si paciente registra
+  + [X] si registra muestra alert con fecha de registro
+
+*** Lista de modificaciones
+- API
+  + AdimisionHospitalaria
+  + Urgencia
+- WEB
+  + Urgencia
+  + Clinica
+- DB
+  + HCU_LEY_URGENCIA C
+  + spu_adm_registro_ley_urg C
+  + spu_adm_obtener_pac_ley_urg C
+  + spu_adm_guardar_atencion M
+  + spu_adm_obtener_atencion M
+
+** TODO requerimiento suspender indicación hospitalizado [0/5]
+- [ ] campo requiere kine debe ser required y tener opciones "si/no"
+- [ ] eliminar fecha hasta de vista/sp/tabla
+- [ ] al firmar debe verificar si campo kine true para agregar a lista kine
+- [ ] editar tabla HCH_PROCEDIMIENTO_MEDICO [0/2]
+  + [ ] HPM_ESTADO_PROCEDIMIENTO char 1 null (s = suspendido)
+  + [ ] HPM_FEC_ESTADO datetime null
+- [ ] agregar suspender indicación [0/3]
+  + [ ] agregar marca en objeto/db/sp/api para identificar suspendido
+  + [ ] si es suspendido debe mostrar alert 'Indicación suspendida el {fecha}'
+  + [ ] si se suspende con kine = true eliminar de lista kine

@@ -1,4 +1,8 @@
 #+title: Test Readme
+#+author: Pedro Bustos
+
+* Indice
++ [[feature-componente-ley-urgencia]]
 
 * Resumen
 ** Proyecto Hospitalizado
@@ -18,6 +22,9 @@ ref="leyUrgencia"
     #+end_src
 
   + No olvidar importar componente
+    #+begin_src html
+<input type="text">
+    #+end_src
 
    #+begin_src js
  ...
