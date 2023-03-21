@@ -1,7 +1,7 @@
 #+title: Stas
 
 * Requerimentos
-** TODO requerimiento ley urgencia hospitalizado [2/3]
+** DONE requerimiento ley urgencia hospitalizado [3/3]
 DEADLINE: <2023-03-20 lun> SCHEDULED: <2023-03-16 jue>
 *** DONE tabla HCU_LEY_URGENCIA [6/6]
   - [X] PAC_NUMFICHA_URG numeric 10
@@ -11,10 +11,10 @@ DEADLINE: <2023-03-20 lun> SCHEDULED: <2023-03-16 jue>
   - [X] PTD_RUT char 10 null
   - [X] HLU_FEC_LEY_URG datetime null
 
-*** HOLD Eliminar cambios anteriores ley urgencia [0/3]
-- [ ] tabla ATENCION
-- [ ] spu_adm_obtener_atencion (pb)
-- [ ] spu_adm_guardar_atencion (pb)
+*** DONE Eliminar cambios anteriores ley urgencia [3/3]
+- [X] tabla ATENCION
+- [X] spu_adm_obtener_atencion (pb)
+- [X] spu_adm_guardar_atencion (pb)
 
 *** DONE Componente ley urgencia hospitalizado [3/3]
 - [X] guardar ingreso en hospitalizado debe verificar si paciente es ley urg
@@ -37,16 +37,20 @@ DEADLINE: <2023-03-20 lun> SCHEDULED: <2023-03-16 jue>
   + spu_adm_guardar_atencion M
   + spu_adm_obtener_atencion M
 
-** TODO requerimiento suspender indicación hospitalizado [3/5]
+** TODO requerimiento suspender indicación hospitalizado [4/5]
 DEADLINE: <2023-03-22 miÃ©> SCHEDULED: <2023-03-21 mar>
 - [X] campo requiere kine debe ser required y tener opciones "si/no"
 - [X] eliminar fecha hasta de vista/sp/tabla
 - [X] al firmar debe verificar si campo kine true para agregar a lista kine
-- [ ] editar tabla HCH_PROCEDIMIENTO_MEDICO [0/2]
-  + [ ] HPM_ESTADO_PROCEDIMIENTO char 1 null (s = suspendido)
-  + [ ] HPM_FEC_ESTADO datetime null
+- [X] editar tabla HCH_PROCEDIMIENTO_MEDICO [2/2]
+  + [X] HPM_ESTADO_PROCEDIMIENTO char 1 null (s = suspendido)
+  + [X] HPM_FEC_ESTADO datetime null
 - [ ] agregar suspender indicación [0/3]
   + [ ] agregar marca en objeto/db/sp/api para identificar suspendido
+    - referencias:
+      - spu_fch_anular_indicacion_medicamento
+      - atencionMedicoController -> /anular/indicacion/medicamento
+      - atencionMedicoRepository -> AnularIndicacionMedicamento
   + [ ] si es suspendido debe mostrar alert 'Indicación suspendida el {fecha}'
   + [ ] si se suspende con kine = true eliminar de lista kine
 
