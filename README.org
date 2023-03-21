@@ -17,25 +17,25 @@ ref="leyUrgencia"
 />
     #+end_src
 
-- No olvidar importar componente
+    + No olvidar importar componente
 
-  #+begin_src js
-...
-import LeyUrgencia from {RUTA AL COMPONENTE}
-...
-components: {
-    ...
-    LeyUrgencia,
-    ...
-}
-  #+end_src
+     #+begin_src js
+   ...
+   import LeyUrgencia from {RUTA AL COMPONENTE}
+   ...
+   components: {
+       ...
+       LeyUrgencia,
+       ...
+   }
+     #+end_src
 
-- En parent llamar la función buscarPacienteLeyUrg para que carge al tener un paciente y darle como parámetros el pacNumFicha e ingCorrel del paciente en ficha hospitalizado
+  + En parent llamar la función buscarPacienteLeyUrg para que carge al tener un paciente y darle como parámetros el pacNumFicha e ingCorrel del paciente en ficha hospitalizado
 
-  #+begin_src js
-async buscarPaciente(){
-    ...
-    await this.$refs.leyUrgencia.buscarPacienteLeyUrg(pacNumFicha, ingCorrel)
-    ...
-}
-  #+end_src
+    #+begin_src js
+  async buscarPaciente(){
+      ...
+      await this.$refs.leyUrgencia.buscarPacienteLeyUrg(pacNumFicha, ingCorrel)
+      ...
+  }
+    #+end_src
