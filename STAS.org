@@ -55,6 +55,7 @@ DEADLINE: <2023-03-22 miÃ©> SCHEDULED: <2023-03-21 mar>
 - WEB
   + Clinica
 - DB
+  + HCH_PROCEDIMIENTO_MEDICO M
   + spu_fch_kine_obtener_pacientes_kinesioterapia M
   + spu_fch_guardar_procedimiento_medico M
   + spu_fch_obtener_procedimiento_medico M
