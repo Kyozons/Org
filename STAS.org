@@ -23,7 +23,7 @@ DEADLINE: <2023-03-20 lun> SCHEDULED: <2023-03-16 jue>
   + [X] Buscar en HCU_LEY_URGENCIA si paciente registra
   + [X] si registra muestra alert con fecha de registro
 
-*** Lista de modificaciones
+**** Lista de modificaciones
 - API
   + AdimisionHospitalaria
   + Urgencia
@@ -37,7 +37,7 @@ DEADLINE: <2023-03-20 lun> SCHEDULED: <2023-03-16 jue>
   + spu_adm_guardar_atencion M
   + spu_adm_obtener_atencion M
 
-** TODO requerimiento suspender indicación hospitalizado [4/5]
+** TODO requerimiento suspender indicación hospitalizado [5/5]
 DEADLINE: <2023-03-22 miÃ©> SCHEDULED: <2023-03-21 mar>
 - [X] campo requiere kine debe ser required y tener opciones "si/no"
 - [X] eliminar fecha hasta de vista/sp/tabla
@@ -45,14 +45,20 @@ DEADLINE: <2023-03-22 miÃ©> SCHEDULED: <2023-03-21 mar>
 - [X] editar tabla HCH_PROCEDIMIENTO_MEDICO [2/2]
   + [X] HPM_ESTADO_PROCEDIMIENTO char 1 null (s = suspendido)
   + [X] HPM_FEC_ESTADO datetime null
-- [ ] agregar suspender indicación [0/3]
-  + [ ] agregar marca en objeto/db/sp/api para identificar suspendido
-    - referencias:
-      - spu_fch_anular_indicacion_medicamento
-      - atencionMedicoController -> /anular/indicacion/medicamento
-      - atencionMedicoRepository -> AnularIndicacionMedicamento
-  + [ ] si es suspendido debe mostrar alert 'Indicación suspendida el {fecha}'
-  + [ ] si se suspende con kine = true eliminar de lista kine
+- [X] agregar suspender indicación [3/3]
+  + [X] agregar marca en objeto/db/sp/api para identificar suspendido
+  + [X] si es suspendido debe mostrar alert 'Indicación suspendida el {fecha}'
+  + [X] si se suspende con kine = true eliminar de lista kine
+**** Lista de modificaciones
+- API
+  + FichaClinicaHospitalizado
+- WEB
+  + Clinica
+- DB
+  + spu_fch_kine_obtener_pacientes_kinesioterapia M
+  + spu_fch_guardar_procedimiento_medico M
+  + spu_fch_obtener_procedimiento_medico M
+  + spu_fch_anular_indicacion_procedimiento C
 
 *** TODO requerimiento rehabilitacion [0/2]
 DEADLINE: <2023-03-23 jue> SCHEDULED: <2023-03-23 jue>
