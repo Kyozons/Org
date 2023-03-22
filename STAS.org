@@ -37,7 +37,7 @@ DEADLINE: <2023-03-20 lun> SCHEDULED: <2023-03-16 jue>
   + spu_adm_guardar_atencion M
   + spu_adm_obtener_atencion M
 
-** TODO requerimiento suspender indicación hospitalizado [5/5]
+** DONE requerimiento suspender indicación hospitalizado [5/5]
 DEADLINE: <2023-03-22 miÃ©> SCHEDULED: <2023-03-21 mar>
 - [X] campo requiere kine debe ser required y tener opciones "si/no"
 - [X] eliminar fecha hasta de vista/sp/tabla
@@ -60,7 +60,7 @@ DEADLINE: <2023-03-22 miÃ©> SCHEDULED: <2023-03-21 mar>
   + spu_fch_obtener_procedimiento_medico M
   + spu_fch_anular_indicacion_procedimiento C
 
-*** TODO requerimiento rehabilitacion [0/2]
+** TODO requerimiento rehabilitacion [0/2]
 DEADLINE: <2023-03-23 jue> SCHEDULED: <2023-03-23 jue>
 - [ ] En vista kinesiologo, menu registro rehab [0/4]
   + [ ] ocultar motivo de consulta
