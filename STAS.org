@@ -61,11 +61,25 @@ DEADLINE: <2023-03-22 miÃ©> SCHEDULED: <2023-03-21 mar>
   + spu_fch_obtener_procedimiento_medico M
   + spu_fch_anular_indicacion_procedimiento C
 
-** TODO requerimiento rehabilitacion [0/2]
+** TODO requerimiento rehabilitacion [2/2]
 DEADLINE: <2023-03-23 jue> SCHEDULED: <2023-03-23 jue>
-- [ ] En vista kinesiologo, menu registro rehab [0/4]
-  + [ ] ocultar motivo de consulta
-  + [ ] agregar valor "otro" a escalas
-  + [ ] agregar campo invisible y opcional de texto libre "resultado escalas evaluadas"
-  + [ ] al marcar alugna escala debe aparecer campo "resultado escalas evaluadas"
-- [ ] Agregar campos en vue/sp/api/db para resultado escalas evaluadas
+- [X] En vista kinesiologo, menu registro rehab [4/4]
+  + [X] ocultar motivo de consulta
+  + [X] agregar valor "otro" a escalas
+    + Modificar tabla FRE_ESCALAS insert campo "otros"
+  + [X] agregar campo invisible y required si hay escala elegida de texto libre "resultado escalas evaluadas"
+    + Modificar tabla FCH_REHABILITACION nueva columna FRE_RES_ESCALA_EVAL varchar 1000 null desc 'Resultado de la escala evaluada'
+  + [X] al marcar alugna escala debe aparecer campo "resultado escalas evaluadas"
+- [X] Agregar campos en vue/sp/api/db para resultado escalas evaluadas
+**** Lista de modificaciones
+- API
+  + FichaClinicaHospitalizado
+- WEB
+  + Clinica
+- DB
+  + FRE_ESCALAS M
+    - INSERT INTO FRE_ESCALAS (FES_CORREL, FES_ESCALA, FES_VIGENTE) VALUES (5, 'OTROS', 'S')
+  + FCH_REHABILITACION M
+    - ALTER TABLE FCH_REHABILITACION ADD FRE_RES_ESCALA_EVAL varchar(1000)
+  + spu_fch_kine_guardar_atencion M
+  + spu_fch_kine_obtener_atencion M
