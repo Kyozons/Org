@@ -83,3 +83,17 @@ DEADLINE: <2023-03-23 jue> SCHEDULED: <2023-03-23 jue>
     - ALTER TABLE FCH_REHABILITACION ADD FRE_RES_ESCALA_EVAL varchar(1000)
   + spu_fch_kine_guardar_atencion M
   + spu_fch_kine_obtener_atencion M
+
+** TODO requerimiento ficha rehabilitacion [3/8]
+SCHEDULED: <2023-03-24 vie>
+- [ ] Agregar marca si es primera sesión
+- [X] Ocultar motivo consulta
+- [X] agregar valor "otro" a escalas
+- [ ] agregar campo invisible y required si hay escala seleccionada "resultado escalas evaluadas"
+- [ ] al marcar escala mostrar campo "resultado escalas evaluadas"
+- [ ] Agregar campos en vue/sp/api/db para resultado escalas evaluadas
+  - spu_fca_kine_guardar_sesion_rehabilitacion
+  - spu_fca_kine_listar_sesian_rehabilitacion
+  - spu_fca_kine_actualizar_sesion_rehabilitacion
+- [ ] boton finalizar tratamiento cierra todas las sesiones
+- [X] en lista de pacientes "atender" revisa si es kine > atencion kine, de lo contrario atencion medico
