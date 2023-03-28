@@ -61,7 +61,7 @@ DEADLINE: <2023-03-22 miÃ©> SCHEDULED: <2023-03-21 mar>
   + spu_fch_obtener_procedimiento_medico M
   + spu_fch_anular_indicacion_procedimiento C
 
-** TODO requerimiento rehabilitacion [2/2]
+** TODO requerimiento rehabilitacion [1/1]
 DEADLINE: <2023-03-23 jue> SCHEDULED: <2023-03-23 jue>
 - [X] En vista kinesiologo, menu registro rehab [4/4]
   + [X] ocultar motivo de consulta
@@ -71,7 +71,7 @@ DEADLINE: <2023-03-23 jue> SCHEDULED: <2023-03-23 jue>
     + Modificar tabla FCH_REHABILITACION nueva columna FRE_RES_ESCALA_EVAL varchar 1000 null desc 'Resultado de la escala evaluada'
   + [X] al marcar alugna escala debe aparecer campo "resultado escalas evaluadas"
 - [X] Agregar campos en vue/sp/api/db para resultado escalas evaluadas
-**** Lista de modificaciones
+**** DONE Lista de modificaciones
 - API
   + FichaClinicaHospitalizado
 - WEB
@@ -84,16 +84,33 @@ DEADLINE: <2023-03-23 jue> SCHEDULED: <2023-03-23 jue>
   + spu_fch_kine_guardar_atencion M
   + spu_fch_kine_obtener_atencion M
 
-** TODO requerimiento ficha rehabilitacion [3/8]
+** DONE requerimiento ficha rehabilitacion ambulatoria[8/8]
 SCHEDULED: <2023-03-24 vie>
-- [ ] Agregar marca si es primera sesión
+- [X] Agregar marca si es primera sesión
 - [X] Ocultar motivo consulta
 - [X] agregar valor "otro" a escalas
-- [ ] agregar campo invisible y required si hay escala seleccionada "resultado escalas evaluadas"
-- [ ] al marcar escala mostrar campo "resultado escalas evaluadas"
-- [ ] Agregar campos en vue/sp/api/db para resultado escalas evaluadas
+- [X] agregar campo invisible y required si hay escala seleccionada "resultado escalas evaluadas"
+- [X] al marcar escala mostrar campo "resultado escalas evaluadas"
+- [X] Agregar campos en vue/sp/api/db para resultado escalas evaluadas
   - spu_fca_kine_guardar_sesion_rehabilitacion
-  - spu_fca_kine_listar_sesian_rehabilitacion
+  - spu_fca_kine_listar_sesion_rehabilitacion
   - spu_fca_kine_actualizar_sesion_rehabilitacion
-- [ ] boton finalizar tratamiento cierra todas las sesiones
+- boton finalizar tratamiento cierra todas las sesiones
+- [X] Finalizar tratamiento finaliza sesion actual
 - [X] en lista de pacientes "atender" revisa si es kine > atencion kine, de lo contrario atencion medico
+**** Lista de modificaciones
+- API
+  + FichaClinicaAmbulatoria
+- WEB
+  + Ambulatorio
+- DB
+  + spu_fca_kine_guardar_sesion_rehabilitacion M
+  + spu_fca_kine_listar_sesion_rehabilitacion M
+  + spu_fca_kine_actualizar_sesion_rehabilitacion M
+  + FSE_SESION_REHAB M
+    - ALTER TABLE FRE_SESION_REHAB ADD FSR_RES_ESCALA_EVAL varchar(1000)
+
+
+** TODO requerimento historial paciente
+- historial paciente componente
+- historial componente detalle
