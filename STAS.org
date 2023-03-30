@@ -84,7 +84,7 @@ DEADLINE: <2023-03-23 jue> SCHEDULED: <2023-03-23 jue>
   + spu_fch_kine_guardar_atencion M
   + spu_fch_kine_obtener_atencion M
 
-** DONE requerimiento ficha rehabilitacion ambulatoria[8/8]
+** DONE requerimiento ficha rehabilitacion ambulatoria[11/11]
 SCHEDULED: <2023-03-24 vie>
 - [X] Agregar marca si es primera sesión
 - [X] Ocultar motivo consulta
@@ -98,6 +98,9 @@ SCHEDULED: <2023-03-24 vie>
 - boton finalizar tratamiento cierra todas las sesiones
 - [X] Finalizar tratamiento finaliza sesion actual
 - [X] en lista de pacientes "atender" revisa si es kine > atencion kine, de lo contrario atencion medico
+- [X] primera sesion marca desde vue, valor dinamico en API
+- [X] dejar boton de si/no para primera sesion en vue
+- [X] lista de escalas separar con "," como en hospitalizado
 **** Lista de modificaciones
 - API
   + FichaClinicaAmbulatoria
@@ -109,6 +112,9 @@ SCHEDULED: <2023-03-24 vie>
   + spu_fca_kine_actualizar_sesion_rehabilitacion M
   + FSE_SESION_REHAB M
     - ALTER TABLE FRE_SESION_REHAB ADD FSR_RES_ESCALA_EVAL varchar(1000)
+
+**** DUDAS
+- Al guardar escalas no se guardan todas en lista, ayuda para revisar comportamiento
 
 
 ** TODO requerimento historial paciente
