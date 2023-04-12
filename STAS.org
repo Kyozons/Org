@@ -117,6 +117,53 @@ SCHEDULED: <2023-03-24 vie>
 - Al guardar escalas no se guardan todas en lista, ayuda para revisar comportamiento
 
 
-** TODO requerimento historial paciente
+** DONE requerimento historial paciente
 - historial paciente componente
 - historial componente detalle
+
+*** Lista detalles encontrados en fase QA [8/8]
+- [X] En ver detalle cuadro resumen sesiones terapeuticas fecha al final  "invalid date"
+- [X] campos no se bloquean al firmar atencion
+- [X] al cambiar ingreso sigue apareciendo como firmado
+  - Tenia que limpiar datos al cambiar ingreso en funcion cargarKinesiologia al usar "rowDblClickedIngreso"
+- [X] Prestador no puede guardar ni Firmar si no es quien atiende
+- [X] Required solo si es primera sesion
+- [X] Firmar sesion guarda nueva sesion
+  - Firmaba sesion con datos vacios ya que correl de sesion estaba vacio, faltaba mantener editando sesion actual para no perder correl
+- [X] Al cargar sesion debe tomar datos automaticamente para poder seguir editando
+- [X] al seleccionar una escala, guardarla y luego quitarla y guardar, no se puede volver a guardar
+  - limpiar bien los datos antes de funcion editar
+
+
+** DONE Requerimiento ENO tres proyectos [7/7]
+- [X] Enfermedad > Diagnóstico ENO
+- [X] Diagnostico alta eliminar de vista, api y sp
+- [X] Identificar servicio de proveniencia del diagnostico ENO
+- [X] en tabla ENO agregar boton para llevar a atención del paciente
+- [X] en cada proyecto modificar buscar paciente para revisar marca desde store, si la encuentra utilizar datos de store para buscar paciente [3/3]
+  - [X] Ambulatorio
+  - [X] Urgencia
+  - [X] Hospitalizado
+- [X] En tabla ENO agregar columna servicio paciente
+- [X] Agregar dato Servicio paciente en SP y API
+
+** TODO Nueva Vista Otros profesionales Urgencia [4/7]
+- [ ] Crear Menu Otros Profesionales
+- [X] Layout como en evolución Médica de hospitalizado
+- [X] Crear Tabla URGENCIA_OTROS_PROFESIONALES [7/7]
+  - [X] PAC_NUMFICHA numeric 10 not null
+  - [X] ING_CORREL numeric 4 not null
+  - [X] PTD_RUT char 10  null
+  - [X] UOP_CORREL numeric 18 not null
+  - [X] UOP_EVOLUCION varchar 1000 null
+  - [X] UOP_FECHA_REG datetime null
+  - [X] USU_LOGIN_CREA varchar 50 null
+- [X] sp para guardar atencion otros profesionales
+- [X] api para guardar atencion otros profesionales
+  - tomar de ejemplo hospitalizado como guarda evolucion medica
+- [ ] Error 500 al pedir evoluciones, pedir revisar api
+- [ ] Routes no deja entrar a vista otros profesionales, seguramente por falta permisos en DB
+
+** TODO OTROS [0/2]
+- [ ] En urgencia revisar si es enfermera o es tens al hacer doble click en mapa cama
+- [ ] si es auditor enviar a atencion medico
