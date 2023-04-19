@@ -168,6 +168,24 @@ SCHEDULED: <2023-03-24 vie>
   - Se crea funcion para firmar todas las evoluciones a nombre del prestador
 - [X] Fix vista historial paciente
   - tomar vista alergias de hospitalizado y cambiar col-3 -> col-2 y col-7 -> col-8 en vista ppal
+*** Cambios realizados
+:PROPERTIES:
+:ID:       bc204550-f762-4522-b761-956c20a90958
+:END:
+- WEB
+  + Urgencia
+- API
+  + Urgencia
+  + Common.Models
+- DB
+  + URGENCIA_OTROS_PROFESIONALES [[Vista Otros profesionales para clinica][CAMBIADO]]
+    - script guardado en sqlbkp
+  + MENU M
+    - INSERT INTO MENU (MEN_CODIGO, MEN_NOMBRE, MEN_CODIGO_MEN, MEN_HREF, MEN_EXTERNO, ASU_CODIGO, MEN_ICON) VALUES (217, 'Otros Profesionales', 120, 7, '/otros-profesionales', 0, 4, NULL)
+  + spu_adm_obtener_alergias M
+    - formatear fecha para obtener hora con HH:mm
+  + spu_fcu_guardar_evolucion_otros_profesionales [[Vista Otros profesionales para clinica][CAMBIADO]]
+  + spu_fcu_obtener_evolucion_otros_profesionales [[Vista Otros profesionales para clinica][CAMBIADO]]
 
 ** DONE OTROS [2/2]
 - [X] En urgencia revisar si es enfermera o es tens al hacer doble click en mapa cama
@@ -186,11 +204,44 @@ SCHEDULED: <2023-03-24 vie>
 - [X] Categorizacion
   - error de sp verificaba si HE_CORREL IS NULL en lugar incorrecto, se quita
 
-** TODO Firmar enfermera [0/5]
-- [ ] Firmar evoluciones a nombre enfermera, como en otros profesionales
-- [ ] En vue enviar todas las evoluciones que correspondan al usuLogin
-- [ ] en API agregar campo bool para comprobar si evolucion esta firmada
-- [ ] en SP verificar si atencion está firmada y si es asi insertar fecha en campo fecha fin evolucion
-- [ ] en DB agregar columna fecha fin evolucion en tabla que corresponda
+** TODO Firmar enfermera [5/5]
+- [X] Firmar evoluciones a nombre enfermera, como en otros profesionales
+- [X] En vue enviar todas las evoluciones que correspondan al usuLogin
+- [X] en API agregar campo bool para comprobar si evolucion esta firmada
+- [X] en SP verificar si atencion está firmada y si es asi insertar fecha en campo fecha fin evolucion
+- [X] en DB agregar columna fecha fin evolucion en tabla que corresponda
+  - ALTER TABLE REG_PROCED_ENFERMERIA ADD RPE_FECHA_FIN_EVO DATETIME
 
-** TODO Vista Otros profesionales para ambulatorio
+*** Lista de cambios
+- API
+  + Urgencia
+  + Common.Models
+- WEB
+  + Urgencia
+- DB
+  + spu_fcu_guardar_procedimiento_enfermeria
+  + spu_fcu_obtener_procedimiento_enfermeria
+  + REG_PROCED_ENFERMERIA M
+    - ALTER TABLE REG_PROCED_ENFERMERIA ADD RPE_FECHA_FIN_EVO DATETIME
+    - Trigger: val_reg_proced_enfermeria_upd
+
+** TODO Vista Otros profesionales para clinica [0/5]
+- [ ] Tomar template de vista nutri
+- [ ] modificar tabla URGENCIA_OTROS_PROFESIONALES [0/3]
+  + [ ] Nuevo nombre: HC_OTROS_PROFESIONALES
+  + [ ] Campos de UOP a HOP
+  + [ ] nueva columna SER_CODIGO char 3
+- [ ] Modificar otros profesionales urgencia [0/9]
+  + [ ] Vue: Cambiar nombres de propiedades uop -> hop
+  + [ ] Vue: Agregar a objeto serCodigo
+  + [ ] Api: Agregar a DTO SerCodigo numeric
+  + [ ] Api: Cambiar nombres de propiedades Uop -> Hop
+  + [ ] SP: Cambiar nombre tabla URGENCIA_OTROS_PROFESIONALES -> HC_OTROS_PROFESIONALES
+  + [ ] SP: Campos de UOP a HOP
+  + [ ] SP: Agregar al obtener SER_CODIGO
+  + [ ] SP: Agregar al guardar SER_CODIGO
+  + [ ] Ver opcion de dejar sp globales en lugar de solo para urgencia
+    - spu_gen_guardar_evolucion_otros_profesionales
+    - spu_gen_obtener_evolucion_otros_profesionales
+- [ ] En vue asegurar objeto tenga propiedades necesarias para api
+- [ ] En api construir DTO controller y repository con template urgencia otros profesionales
