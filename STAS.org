@@ -1,4 +1,7 @@
-#+title: Stas
+#+title: Requerimientos STAS
+#+author: Pedro Bustos <pedro.bustos@andessalud.cl>
+#+OPTIONS: ^:nil
+
 
 * Requerimentos
 ** DONE requerimiento ley urgencia hospitalizado [3/3]
@@ -16,7 +19,7 @@ DEADLINE: <2023-03-20 lun> SCHEDULED: <2023-03-16 jue>
 - [X] spu_adm_obtener_atencion (pb)
 - [X] spu_adm_guardar_atencion (pb)
 
-*** DONE Componente ley urgencia hospitalizado [3/3]
+*** DONE Componente ley urgencia hospitalizado [0/0]
 - [X] guardar ingreso en hospitalizado debe verificar si paciente es ley urg
 - [X] si paciente es ley urg se debe guardar pacnumficha e ingcorrel de hosp en HCU_LEY_URGENCIA
 - [X] componente ley urgencia [2/2]
@@ -61,7 +64,7 @@ DEADLINE: <2023-03-22 miÃ©> SCHEDULED: <2023-03-21 mar>
   + spu_fch_obtener_procedimiento_medico M
   + spu_fch_anular_indicacion_procedimiento C
 
-** TODO requerimiento rehabilitacion [1/1]
+** TODO requerimiento rehabilitacion [0/1]
 DEADLINE: <2023-03-23 jue> SCHEDULED: <2023-03-23 jue>
 - [X] En vista kinesiologo, menu registro rehab [4/4]
   + [X] ocultar motivo de consulta
@@ -71,7 +74,7 @@ DEADLINE: <2023-03-23 jue> SCHEDULED: <2023-03-23 jue>
     + Modificar tabla FCH_REHABILITACION nueva columna FRE_RES_ESCALA_EVAL varchar 1000 null desc 'Resultado de la escala evaluada'
   + [X] al marcar alugna escala debe aparecer campo "resultado escalas evaluadas"
 - [X] Agregar campos en vue/sp/api/db para resultado escalas evaluadas
-**** DONE Lista de modificaciones
+**** Lista de modificaciones
 - API
   + FichaClinicaHospitalizado
 - WEB
@@ -225,23 +228,42 @@ SCHEDULED: <2023-03-24 vie>
     - ALTER TABLE REG_PROCED_ENFERMERIA ADD RPE_FECHA_FIN_EVO DATETIME
     - Trigger: val_reg_proced_enfermeria_upd
 
-** TODO Vista Otros profesionales para clinica [0/5]
-- [ ] Tomar template de vista nutri
-- [ ] modificar tabla URGENCIA_OTROS_PROFESIONALES [0/3]
-  + [ ] Nuevo nombre: HC_OTROS_PROFESIONALES
-  + [ ] Campos de UOP a HOP
-  + [ ] nueva columna SER_CODIGO char 3
-- [ ] Modificar otros profesionales urgencia [0/9]
-  + [ ] Vue: Cambiar nombres de propiedades uop -> hop
-  + [ ] Vue: Agregar a objeto serCodigo
-  + [ ] Api: Agregar a DTO SerCodigo numeric
-  + [ ] Api: Cambiar nombres de propiedades Uop -> Hop
-  + [ ] SP: Cambiar nombre tabla URGENCIA_OTROS_PROFESIONALES -> HC_OTROS_PROFESIONALES
-  + [ ] SP: Campos de UOP a HOP
-  + [ ] SP: Agregar al obtener SER_CODIGO
-  + [ ] SP: Agregar al guardar SER_CODIGO
-  + [ ] Ver opcion de dejar sp globales en lugar de solo para urgencia
+** TODO Vista Otros profesionales para clinica [3/5]
+- [X] Tomar template de vista nutri
+- [X] modificar tabla URGENCIA_OTROS_PROFESIONALES [3/3]
+  + [X] Nuevo nombre: HC_OTROS_PROFESIONALES
+  + [X] Campos de UOP a HOP
+  + [X] nueva columna SER_CODIGO varchar 3
+- [X] Modificar otros profesionales urgencia [9/9]
+  + [X] Vue: Cambiar nombres de propiedades uop -> hop
+  + [X] Vue: Agregar a objeto serCodigo
+  + [X] Api: Agregar a DTO SerCodigo string
+  + [X] Api: Cambiar nombres de propiedades Uop -> Hop
+  + [X] SP: Cambiar nombre tabla URGENCIA_OTROS_PROFESIONALES -> HC_OTROS_PROFESIONALES
+  + [X] SP: Campos de UOP a HOP
+  + [X] SP: Agregar al obtener SER_CODIGO
+  + [X] SP: Agregar al guardar SER_CODIGO
+  + [X] Ver opcion de dejar sp globales en lugar de solo para urgencia
     - spu_gen_guardar_evolucion_otros_profesionales
     - spu_gen_obtener_evolucion_otros_profesionales
 - [ ] En vue asegurar objeto tenga propiedades necesarias para api
 - [ ] En api construir DTO controller y repository con template urgencia otros profesionales
+
+*** Lista de cambios
+- WEB
+  + Urgencia M
+    - atencion-otros-profesionales M
+  + Clinica M
+    - atencion-otres-profesionales C
+- API
+  + Urgencia M
+    - EvolucionOtrosProfesionalesDTO M
+    - OtrosProfesionalesRepository M
+  + FichaClinicaHospitalizado M
+    - OtrosProfesionalesCotroller C
+    - OtrosProfesionalesRepository C
+    - EvolucionOtrosProfesionalesDTO C
+- DB
+  + HC_OTROS_PROFESIONALES C/M cambiado de URGENCIA_OTROS_PROFESIONALES y se añade columna SER_CODIGO
+  + spu_gen_guardar_evolucion_otros_profesionales M/C cambiado nombre fcu y ajustado a nuevo req
+  + spu_gen_obtener_evolucion_otros_profesionales M/C cambiado nombre fcu y ajustado a nuevo req
