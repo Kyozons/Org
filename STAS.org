@@ -37,8 +37,8 @@ DEADLINE: <2023-03-20 lun> SCHEDULED: <2023-03-16 jue>
   + HCU_LEY_URGENCIA C
   + spu_adm_registro_ley_urg C
   + spu_adm_obtener_pac_ley_urg C .
-  + spu_adm_guardar_atencion M
-  + spu_adm_obtener_atencion M
+  + spu_fcu_guardar_atencion M
+  + spu_fcu_obtener_atencion M
 
 ** DONE requerimiento suspender indicación hospitalizado [5/5]
 DEADLINE: <2023-03-22 miÃ©> SCHEDULED: <2023-03-21 mar>
@@ -201,11 +201,14 @@ SCHEDULED: <2023-03-24 vie>
 ** HOLD Notificacion GES [0/1]
 - [ ] Revisar problema de insert y retomar flujo
 
-** TODO Bugs encontrados [2/2]
+** TODO Bugs encontrados [4/5]
 - [X] Historial Esi error dato
   - Tenia error al intentar enviar lista vacia, se agrega verificacion de length
 - [X] Categorizacion
   - error de sp verificaba si HE_CORREL IS NULL en lugar incorrecto, se quita
+- [X] En urgencia atencion al ingresar anamnesis e hip diagnostica y guardar sin marcar ley urg da error al intentar insertar datos vacios
+- [X] En urgencia atencion se guarda duplicado la anamnesis e hip diagnostica
+- [ ] En Clinica no deja ingresar texto complementario en epicrisis
 
 ** TODO Firmar enfermera [5/5]
 - [X] Firmar evoluciones a nombre enfermera, como en otros profesionales
@@ -228,7 +231,7 @@ SCHEDULED: <2023-03-24 vie>
     - ALTER TABLE REG_PROCED_ENFERMERIA ADD RPE_FECHA_FIN_EVO DATETIME
     - Trigger: val_reg_proced_enfermeria_upd
 
-** TODO Vista Otros profesionales para clinica [3/5]
+** DONE Vista Otros profesionales para clinica [5/5]
 - [X] Tomar template de vista nutri
 - [X] modificar tabla URGENCIA_OTROS_PROFESIONALES [3/3]
   + [X] Nuevo nombre: HC_OTROS_PROFESIONALES
@@ -246,8 +249,8 @@ SCHEDULED: <2023-03-24 vie>
   + [X] Ver opcion de dejar sp globales en lugar de solo para urgencia
     - spu_gen_guardar_evolucion_otros_profesionales
     - spu_gen_obtener_evolucion_otros_profesionales
-- [ ] En vue asegurar objeto tenga propiedades necesarias para api
-- [ ] En api construir DTO controller y repository con template urgencia otros profesionales
+- [X] En vue asegurar objeto tenga propiedades necesarias para api
+- [X] En api construir DTO controller y repository con template urgencia otros profesionales
 
 *** Lista de cambios
 - WEB
@@ -267,3 +270,33 @@ SCHEDULED: <2023-03-24 vie>
   + HC_OTROS_PROFESIONALES C/M cambiado de URGENCIA_OTROS_PROFESIONALES y se añade columna SER_CODIGO
   + spu_gen_guardar_evolucion_otros_profesionales M/C cambiado nombre fcu y ajustado a nuevo req
   + spu_gen_obtener_evolucion_otros_profesionales M/C cambiado nombre fcu y ajustado a nuevo req
+
+    duda: insert en MENU otros profresionales para URG debe ir en carpeta urgencia?
+    en guardar_categorizacion se encuentra tabla Signos_vitales_esi. Tabla tiene pocos datos, no recuerdo de donde sale
+    si se usa porque ahi guarda la relacion respecto a qué ESI corresponde el signo vital guardado
+
+** DONE Agregar visor clinico a urgencia y hospitalizado [5/5]
+- [X] Copiar desde ambulatorio
+- [X] cambios en store
+- [X] Agregar endpoint en global
+- [X] En urgencia sólo en vistas médico [2/2]
+  - [X] Atencion
+  - [X] Atencion Especialista
+- [X] En clinica sólo en evolución médica
+- Pasos para agregar visor clinico
+  1. Agregar getEsVisorClinico a store
+  2. Agregar endpoint VisorClinico a service/global.js
+  3. agregar botón Visor Clínico
+  4. agregar imports
+     a. import VisorClinico from global
+     b. import VueCryptoJs from vue-cryptojs
+     c. vue.use(vuecryptojs)
+  5. agregar llamada a endpoint en created()
+  6. agregar método openVisorClinico
+
+** Pruebas Proceso Urgencia
+- En atencion se guarda al estar vacío. Correcto?
+- En medicamento no deja elegir cada X Días, sólo deja elegir cada X veces
+- En atencion especialista Médico puede guardar.
+- En atencion especialista historial paciente duplicado
+- En atencion enfermeria médico puede guardar y agregar procedimientos enf
