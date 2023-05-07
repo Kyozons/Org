@@ -31,3 +31,33 @@ Soy Zobark, un semi orco quien se crió en un campamento en la montaña, mi pequ
     7 oro 4 cobre
 
     nos pusieron una trampa, ghoul reanimado, no muerto.
+
+
+    se ve estructura a la derecha, gytha identifica templo hundido, se ve techo
+
+    Al bajar me caigo mal, casi muerto, manos me atrapan y me libero, sobrevivo pelea, jorgen me trae pocion de cura y me siento mejor
+    jorgen esta mirando nueva habitación, llama a Jane para identificar lenguaje
+
+
+
+    Encontramos una puerta, gytha detecta mecanismos y encuentra marcas de manos, las mete y se las atravieza, la puerta se abre
+    Nos encontramos con Egol archidruida del bosque, atrapado con raices
+
+    Estamos en el bosque de Denot
+
+    intento golpear el cuchico de caza para golpear la raiz y se rompe, la raiz no se inmuta.
+
+    comienza jefe final despues de jorgen matar al viejo
+    9 hp inicial
+    -3 dmg
+    -4 dmg
+    2 hp restante
+    -5 a piso
+
+    antes de morir hasta 14
+    - 3
+    - 1
+    - 1
+    - 3
+      Riniya mata a Egol y salva la partida
+      + 600 G
