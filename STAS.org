@@ -300,3 +300,27 @@ SCHEDULED: <2023-03-24 vie>
 - En atencion especialista Médico puede guardar.
 - En atencion especialista historial paciente duplicado
 - En atencion enfermeria médico puede guardar y agregar procedimientos enf
+
+** Pruebas Proceso Hospitalizado
+- Error al imprimir epicrisis, falla en reporte
+- Al seleccionar todo, no borra evoluciones, si los selecciono uno a uno se borran
+- En mapa cama revisar los perfiles "otros profesionales" para redireccionar a vista otros-profesionales
+
+** TODO Requerimiento traspasar cargos urgencia a hospitalizado [2/2]
+- [X] En VUE [3/3]
+  - [X] Agregar parametro orgien a ficha
+  - [X] Utilizar parametro local origen para verificar orgien paciente es URG
+  - [X] Limpiar datos debe limpiar parametro origen
+- [X] En API [2/2]
+  - [X] Debe usar sp traspaso cargo si origen es URG
+  - [X] Debe enviar como parametro bool TraspasarCargos
+
+*** Lista de modificaciones
+- VUE
+  - Cliinca
+    - Admision M
+- API
+  - AdmisionHospitalaria
+    - AdmisionRepository M
+- DB
+  - N/A
