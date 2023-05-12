@@ -306,7 +306,7 @@ SCHEDULED: <2023-03-24 vie>
 - Al seleccionar todo, no borra evoluciones, si los selecciono uno a uno se borran
 - En mapa cama revisar los perfiles "otros profesionales" para redireccionar a vista otros-profesionales
 
-** TODO Requerimiento traspasar cargos urgencia a hospitalizado [2/2]
+** DONE Requerimiento traspasar cargos urgencia a hospitalizado [2/2]
 - [X] En VUE [3/3]
   - [X] Agregar parametro orgien a ficha
   - [X] Utilizar parametro local origen para verificar orgien paciente es URG
@@ -324,3 +324,32 @@ SCHEDULED: <2023-03-24 vie>
     - AdmisionRepository M
 - DB
   - N/A
+
+** DONE Requerimiento Informes Medico Auditor Ambulatorio [2/2]
+- [X] Crear rama a partir de Master
+- [X] Dejar que boton informes medicos pueda usarlo Auditor
+  - se quita disabled
+*** Lista de cambios
+- VUE
+  - ambulatorio
+    - registro-atencion M
+- API
+  - N/A
+- DB
+  - N/A
+- GIT
+  - feature-auditor-informes-medicos C
+
+** DONE Requerimento informes medico Kine Ambulatorio [2/2]
+- [X] Utilizar rama feature-cambios-ficha-rehabilitacion ( Cambios de esa rama [[requerimiento ficha rehabilitacion ambulatoria][aqui]] )
+- [X] Agregar botón informes medicos en vista Kine
+  - NOTA: Historial paciente no presente en feature-ficha-rehabilitacion, estan en feature-historial-paciente-kine. Conusltar si hacer merge a ambas
+*** Lista de cambios
+- VUE
+  - kinesiologosM
+- API
+  - N/A
+- DB
+  - N/A
+- GIT
+  - feature-cambios-ficha-rehabilitacion M
