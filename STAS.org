@@ -354,26 +354,27 @@ SCHEDULED: <2023-03-24 vie>
 - GIT
   - feature-cambios-ficha-rehabilitacion M
 
-** TODO Requerimiento gestion GES [0/7]
+** TODO Requerimiento gestion GES [3/4]
 SCHEDULED: <2023-05-22 lun>
-- [ ] Agregar en todas los proyectos una vista para gestionar notificaciones GES
-- [ ] La vista debe ser una tabla con la lista de pacientes de GES del último mes
-- [ ] se debe poder buscar por rut y fecha (tomar ejemplo vista ENO) [0/2]
-  - [ ] Rut
-  - [ ] Fecha
-- [ ] Listado (Vuetable) [0/9]
-  - [ ] Rut
-  - [ ] Paciente
-  - [ ] Ficha
-  - [ ] Ingreso
-  - [ ] Fecha Notificacion
-  - [ ] Diagnostico
-  - [ ] Patologia
-  - [ ] Medico
-  - [ ] Imprimir
-- [ ] Ambulatorio feature desde rama master
-- [ ] urgencia feature desde QA
-- [ ] clinica feature desde QA
+- [ ] Agregar en todas los proyectos una vista para gestionar notificaciones GES [0/3]
+  - [ ] ambulatorio feature desde rama master
+  - [ ] urgencia feature desde qa
+  - [ ] clinica feature desde qa
+- [X] La vista debe ser una tabla con la lista de pacientes de GES del último mes
+- [X] se debe poder buscar por rut y fecha (tomar ejemplo vista ENO) [2/2]
+  - [X] Rut
+  - [X] Fecha
+- [X] Listado (Vuetable) [9/9]
+  - [X] Rut
+  - [X] Paciente
+  - [X] Ficha
+  - [X] Ingreso
+  - [X] Fecha Notificacion
+  - [X] Diagnostico
+  - [X] Patologia
+  - [X] Medico
+  - [X] Imprimir
+
 
 | Buscar | Por Rut paciente         |       |         |                    |             |           |        |                  |
 |        | Por Fecha                |       |         |                    |             |           |        |                  |
