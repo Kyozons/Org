@@ -64,7 +64,7 @@ DEADLINE: <2023-03-22 miÃ©> SCHEDULED: <2023-03-21 mar>
   + spu_fch_obtener_procedimiento_medico M
   + spu_fch_anular_indicacion_procedimiento C
 
-** TODO requerimiento rehabilitacion [0/1]
+** DONE requerimiento rehabilitacion [2/2]
 DEADLINE: <2023-03-23 jue> SCHEDULED: <2023-03-23 jue>
 - [X] En vista kinesiologo, menu registro rehab [4/4]
   + [X] ocultar motivo de consulta
@@ -198,19 +198,29 @@ SCHEDULED: <2023-03-24 vie>
 - [X] verificar que componente sea con filtro kine
 - [X] arreglar visual componente
 
-** HOLD Notificacion GES [0/1]
-- [ ] Revisar problema de insert y retomar flujo
+** DONE Notificacion GES [2/2]
+- [X] Revisar problema de insert y retomar flujo
+- [X] Hacer que notificacion GES utilizce tabla NOTIFICACION_PATOLOGIA_GES
+*** Lista de cambios
+- DB
+  - CREATE TABLE NOTIFICACION_PATOLOGIA_GES C
+  - INSERT NOTIFICACION_PATOLOGIA_GES SELECT FROM NOTIFICACION_GES C
+  - spu_fcu_eliminar_notificacion_ges M
+  - spu_fcu_guardar_notificacion_ges M
+  - spu_fcu_inf_constancia_ges M
+  - spu_fcu_listar_notificaciones M
+  - spu_fcu_obtener_notificacion_ges M
 
-** TODO Bugs encontrados [4/5]
+** DONE Bugs encontrados [5/5]
 - [X] Historial Esi error dato
   - Tenia error al intentar enviar lista vacia, se agrega verificacion de length
 - [X] Categorizacion
   - error de sp verificaba si HE_CORREL IS NULL en lugar incorrecto, se quita
 - [X] En urgencia atencion al ingresar anamnesis e hip diagnostica y guardar sin marcar ley urg da error al intentar insertar datos vacios
 - [X] En urgencia atencion se guarda duplicado la anamnesis e hip diagnostica
-- [ ] En Clinica no deja ingresar texto complementario en epicrisis
+- [X] En Clinica no deja ingresar texto complementario en epicrisis
 
-** TODO Firmar enfermera [5/5]
+** DONE Firmar enfermera [5/5]
 - [X] Firmar evoluciones a nombre enfermera, como en otros profesionales
 - [X] En vue enviar todas las evoluciones que correspondan al usuLogin
 - [X] en API agregar campo bool para comprobar si evolucion esta firmada
@@ -354,12 +364,12 @@ SCHEDULED: <2023-03-24 vie>
 - GIT
   - feature-cambios-ficha-rehabilitacion M
 
-** TODO Requerimiento gestion GES [3/4]
+** DONE Requerimiento gestion GES [4/4]
 SCHEDULED: <2023-05-22 lun>
-- [ ] Agregar en todas los proyectos una vista para gestionar notificaciones GES [0/3]
-  - [ ] ambulatorio feature desde rama master
-  - [ ] urgencia feature desde qa
-  - [ ] clinica feature desde qa
+- [X] Agregar en todas los proyectos una vista para gestionar notificaciones GES [3/3]
+  - [X] ambulatorio feature desde rama master
+  - [X] urgencia feature desde qa
+  - [X] clinica feature desde qa
 - [X] La vista debe ser una tabla con la lista de pacientes de GES del último mes
 - [X] se debe poder buscar por rut y fecha (tomar ejemplo vista ENO) [2/2]
   - [X] Rut
@@ -374,12 +384,43 @@ SCHEDULED: <2023-05-22 lun>
   - [X] Patologia
   - [X] Medico
   - [X] Imprimir
+*** Lista de cambios
+- WEB
+  - Clinica
+    - gestion-ges C
+    - helper/global M
+    - routes M
+  - Urgencia
+    - gestion-ges C
+    - helper/global M
+    - routes M
+  - Ambulatorio
+    - gestion-ges C
+    - helper/global M
+    - routes M
 
+- API
+  - Global M
+    - notificacionController M
+    - notificacionRepository M
+    - Common.Models M
+- DB
+  - INSERT INTO MENU para los tres proyectos M
+  - spu_fce_ges_listar_notificaciones C
+- GIT
+  - Clinica
+    - feature-gestion-ges C (desde QA)
+  - Urgencia
+    - feature-gestion-ges C (desde QA)
+  - Ambulatorio
+    - feature-gestion-ges C (desde master)
 
-| Buscar | Por Rut paciente         |       |         |                    |             |           |        |                  |
-|        | Por Fecha                |       |         |                    |             |           |        |                  |
-|        | Por Rut paciente y Fecha |       |         |                    |             |           |        |                  |
-|        |                          |       |         |                    |             |           |        |                  |
-| Rut    | Paciente                 | Ficha | Ingreso | Fecha Notificacion | Diagnostico | Patologia | Medico | Imprimir (Boton) |
-|        |                          |       |         |                    |             |           |        |                  |
-|        |                          |       |         |                    |             |           |        |                  |
+| Buscar  | Por Rut paciente         |       |         |                    |             |           |        |                  |
+|         | Por Fecha                |       |         |                    |             |           |        |                  |
+|         | Por Rut paciente y Fecha |       |         |                    |             |           |        |                  |
+|         |                          |       |         |                    |             |           |        |                  |
+| Flitrar | Por Rut Prestador        |       |         |                    |             |           |        |                  |
+|         |                          |       |         |                    |             |           |        |                  |
+| Rut     | Paciente                 | Ficha | Ingreso | Fecha Notificacion | Diagnostico | Patologia | Medico | Imprimir (Boton) |
+|         |                          |       |         |                    |             |           |        |                  |
+|         |                          |       |         |                    |             |           |        |                  |
