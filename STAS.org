@@ -424,3 +424,55 @@ SCHEDULED: <2023-05-22 lun>
 | Rut     | Paciente                 | Ficha | Ingreso | Fecha Notificacion | Diagnostico | Patologia | Medico | Imprimir (Boton) |
 |         |                          |       |         |                    |             |           |        |                  |
 |         |                          |       |         |                    |             |           |        |                  |
+
+** TODO Requerimiento Epicrisis Enfermeria [5/6]
+<2023-05-25 jue>
+- [X] Crear vista en Clinica para epicrisis enfermeria
+- [X] Utilizar de template documento epicrisis CASC para realizar vista
+- [X] Definir modelo de datos
+- [-] Realizar API y SP [2/3]
+  - [-] En API FichaClinicaHospitalizado crear endponint [3/4]
+    - [-] Crear nuevo controller EpicrisisEnfermeriaController [2/3]
+      - [X] Crear Endpoint para obtener datos del paciente
+      - [X] Crear Endpoint para guardar datos del paciente
+      - [ ] Debe haber Endpoint para imprimir
+    - [X] Crear nuevo repository EpicrisisEnfermeriaRepository [2/2]
+      - [X] Crear método para obtener datos
+      - [X] Crear método para guardar datos
+    - [X] Crear nuevo DTO EpicrisisEnfermeriaDTO
+    - [X] Registrar repository en startup
+  - [X] Crear SP para obtener datos
+  - [X] Crear SP para guardar datos
+
+- [X] Conectar Vista con API [3/3]
+  - [X] Crear objeto epicrisisEnfermeria con los datos necesarios, llenar las variables con los datos existentes obtenidos desde otros endpoint
+  - [X] Agregar nombre representante / si es mismo paciente
+  - [X] En created buscar paciente si esta en store
+- [X] Crear Tabla para Epicrisis Enfermeria
+  AGREGAR USU LOGIN!!!!
+  - HEE_CORRELL  NUMERIC(10)
+  - PAC_CORREL NUMERIC(10) FK PACIENTE
+  - MAL_CODIGO NUMERIC(3) FK MOTIVO_ALTA
+  - PAC_NUMFICHA NUMERIC(10) FK INGRESO
+  - ING_CORREL NUMERIC(4) FK INGRESO
+  - USU_LOGIN VARCHAR(30) FK AM_USUARIO
+  - HEE_COMENTARIO_ENF VARCHAR(3000) NULL
+  - HEE_EX_RESULTADO_PENDIENTE VARCHAR(3000) NULL
+  - HEE_INDICACIONES_MEDICAS VARCHAR(3000) NULL
+  - HEE_EDUCACION_ALTA VARCHAR (3000) NULL
+  - HEE_REGIMEN_NUTRI CHAR(1)
+  - HEE_EEG CHAR(1)
+  - HEE_ECG CHAR(1)
+  - HEE_CULTIVOS CHAR(1)
+  - HEE_BIOPSIA CHAR(1)
+  - HEE_RADIOGRAFIAS CHAR(1)
+  - HEE_TAC CHAR(1)
+  - HEE_EX_LABORATORIO CHAR(1)
+  - HEE_EPICRISIS_MEDICA CHAR(1)
+  - HEE_RECETA CHAR(1)
+  - HEE_TERMOMETRO CHAR(1)
+  - HEE_PROTESIS_ORTESIS_LENTES CHAR(1)
+  - HEE_ECOGRAFIA CHAR(1)
+  - HEE_OTROS VARCHAR(3000) NULL
+  - HEE_REPRESENTANTE CHAR(1)
+  - HEE_NOMBRE_REPRESENTANTE VARCHAR(500) NULL

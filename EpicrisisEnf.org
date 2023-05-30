@@ -1,0 +1,41 @@
+#+title: Epicrisis Enf
+#+OPTIONS: ^:nil
+
+* Introducción
+A continuación se detalla la relación de la información del informe correspondiente en la base de datos en el siguente formato:
+ - CAMPO_BD = Campos informe
+
+* Datos Paciente
+- PAC_NUMFICHA, ING_CORREL = Diag. Ingreso, Diag. Egreso, Fecha Ingreso, Fecha Egreso, Médico Tratante, Alergias, Habitación
+
+- PAC_CORREL = Nombre, Rut
+
+- MAL_CODIGO = Destino
+
+* Campos con texto libre
+- HEE_COMENTARIO_ENF = Comentario de enfermería
+- HEE_EX_RESULTADO_PENDIENTE = Exámenes con resultado pendiente
+- HEE_INDICACIONES_MEDICAS = Indicaciones médicas
+- HEE_EDUCACION_ALTA = Educación al Alta
+
+* Entrega de documentación
+En la BD están indentificadas como char 's' y 'n' ya que éstos campos son "checks"
+
+- HEE_REGIMEN_NUTRI = Régimen Nutricionista
+- HEE_EEG = EEG
+- HEE_ECG = ECG
+- HEE_CULTIVOS = Cultivos
+- HEE_BIOPSIA = Biopsia
+- HEE_RADIOGRAFIAS = Radiografías
+- HEE_TAC = TAC
+- HEE_EX_LABORATORIO = Ex Laboratorio
+- HEE_EPICRISIS_MEDICA = Epircisis Médica
+- HEE_RECETA = Receta
+- HEE_TERMOMETRO = Termómetro
+- HEE_PROTESIS_ORTESIS_LENTES = Prótesis, Ortesis, Lentes
+- HEE_ECOGRAFIA = Ecografía
+- HEE_OTROS = Otros
+
+* Responsable
+- USU_LOGIN = Enfermera / matrona
+- HEE_NOMBRE_REPRESENTANTE = Paciente o Representante
