@@ -449,14 +449,13 @@ SCHEDULED: <2023-05-22 lun>
   - [X] Agregar nombre representante / si es mismo paciente
   - [X] En created buscar paciente si esta en store
 - [X] Crear Tabla para Epicrisis Enfermeria
-  AGREGAR USU LOGIN!!!!
   - HEE_CORRELL  NUMERIC(10)
   - PAC_CORREL NUMERIC(10) FK PACIENTE
   - MAL_CODIGO NUMERIC(3) FK MOTIVO_ALTA
   - PAC_NUMFICHA NUMERIC(10) FK INGRESO
   - ING_CORREL NUMERIC(4) FK INGRESO
   - USU_LOGIN VARCHAR(30) FK AM_USUARIO
-  - HEE_COMENTARIO_ENF VARCHAR(3000) NULL
+  - HEE_EVOLUCION_ENF VARCHAR(3000) NULL
   - HEE_EX_RESULTADO_PENDIENTE VARCHAR(3000) NULL
   - HEE_INDICACIONES_MEDICAS VARCHAR(3000) NULL
   - HEE_EDUCACION_ALTA VARCHAR (3000) NULL
@@ -476,3 +475,7 @@ SCHEDULED: <2023-05-22 lun>
   - HEE_OTROS VARCHAR(3000) NULL
   - HEE_REPRESENTANTE CHAR(1)
   - HEE_NOMBRE_REPRESENTANTE VARCHAR(500) NULL
+
+** TODO Requerimiento modificaciones GES [0/2]
+- [ ] Nuevo filtro con notificados GES y NO notificados GES
+- [ ] cambios en medico si/no es seguimiento GES
