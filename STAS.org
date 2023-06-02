@@ -425,17 +425,19 @@ SCHEDULED: <2023-05-22 lun>
 |         |                          |       |         |                    |             |           |        |                  |
 |         |                          |       |         |                    |             |           |        |                  |
 
-** TODO Requerimiento Epicrisis Enfermeria [5/6]
+** TODO Requerimiento Epicrisis Enfermeria [6/6]
 <2023-05-25 jue>
 - [X] Crear vista en Clinica para epicrisis enfermeria
 - [X] Utilizar de template documento epicrisis CASC para realizar vista
 - [X] Definir modelo de datos
-- [-] Realizar API y SP [2/3]
-  - [-] En API FichaClinicaHospitalizado crear endponint [3/4]
-    - [-] Crear nuevo controller EpicrisisEnfermeriaController [2/3]
+- [X] Realizar API y SP [3/3]
+  - [X] En API FichaClinicaHospitalizado crear endponint [4/4]
+    - [X] Crear nuevo controller EpicrisisEnfermeriaController [3/3]
       - [X] Crear Endpoint para obtener datos del paciente
       - [X] Crear Endpoint para guardar datos del paciente
-      - [ ] Debe haber Endpoint para imprimir
+      - [X] Debe haber Endpoint para imprimir [2/2]
+        - [X] Igresar parametros necesarios en endpoint
+        - [X] Ingresar la ruta correcta en app settings
     - [X] Crear nuevo repository EpicrisisEnfermeriaRepository [2/2]
       - [X] Crear método para obtener datos
       - [X] Crear método para guardar datos
@@ -444,10 +446,12 @@ SCHEDULED: <2023-05-22 lun>
   - [X] Crear SP para obtener datos
   - [X] Crear SP para guardar datos
 
-- [X] Conectar Vista con API [3/3]
+- [X] Conectar Vista con API [5/5]
   - [X] Crear objeto epicrisisEnfermeria con los datos necesarios, llenar las variables con los datos existentes obtenidos desde otros endpoint
   - [X] Agregar nombre representante / si es mismo paciente
   - [X] En created buscar paciente si esta en store
+  - [X] Datos de diagnostico ingreso / egreso faltan en vista, revisar como obtener datos egreso y revisar si epicrisis medica esta lista
+  - [X] Boton Imprimir no puede usarse si no hay epicrisis médica y no se puede ver si no se firma epicrisis ENF
 - [X] Crear Tabla para Epicrisis Enfermeria
   - HEE_CORRELL  NUMERIC(10)
   - PAC_CORREL NUMERIC(10) FK PACIENTE
@@ -476,6 +480,14 @@ SCHEDULED: <2023-05-22 lun>
   - HEE_REPRESENTANTE CHAR(1)
   - HEE_NOMBRE_REPRESENTANTE VARCHAR(500) NULL
 
-** TODO Requerimiento modificaciones GES [0/2]
-- [ ] Nuevo filtro con notificados GES y NO notificados GES
+** TODO Requerimiento modificaciones GES [0/3]
+SCHEDULED: <2023-06-13 mar>
+- [ ] Nuevo filtro con notificados GES y NO notificados GES [0/2]
+  - [ ] Para los no notificados sacar de
+  - [ ] si no tiene patologia (no ha sido notificado) no se debe imprimir
 - [ ] cambios en medico si/no es seguimiento GES
+- [ ] Casos prueba [0/3]
+  - [ ] Paciente con diagnostico que no es GES, no debe listarse
+  - [ ] Paciente diagnosticado GES, pero no notificado, debe aparecer en filtro no notificado, no se debe imprimir
+  - [ ] Paciente diagnosticado GES y notificado, aparecer en lista por defecto y se debe poder imprimir
+- [ ] contador de filas
