@@ -116,9 +116,6 @@ SCHEDULED: <2023-03-24 vie>
   + FSE_SESION_REHAB M
     - ALTER TABLE FRE_SESION_REHAB ADD FSR_RES_ESCALA_EVAL varchar(1000)
 
-**** DUDAS
-- Al guardar escalas no se guardan todas en lista, ayuda para revisar comportamiento
-
 
 ** DONE requerimento historial paciente
 - historial paciente componente
@@ -425,7 +422,7 @@ SCHEDULED: <2023-05-22 lun>
 |         |                          |       |         |                    |             |           |        |                  |
 |         |                          |       |         |                    |             |           |        |                  |
 
-** TODO Requerimiento Epicrisis Enfermeria [6/6]
+** DONE Requerimiento Epicrisis Enfermeria [6/6]
 <2023-05-25 jue>
 - [X] Crear vista en Clinica para epicrisis enfermeria
 - [X] Utilizar de template documento epicrisis CASC para realizar vista
@@ -480,14 +477,161 @@ SCHEDULED: <2023-05-22 lun>
   - HEE_REPRESENTANTE CHAR(1)
   - HEE_NOMBRE_REPRESENTANTE VARCHAR(500) NULL
 
-** TODO Requerimiento modificaciones GES [0/3]
+** DONE Requerimiento modificaciones GES [3/3]
 SCHEDULED: <2023-06-13 mar>
-- [ ] Nuevo filtro con notificados GES y NO notificados GES [0/2]
-  - [ ] Para los no notificados sacar de
-  - [ ] si no tiene patologia (no ha sido notificado) no se debe imprimir
-- [ ] cambios en medico si/no es seguimiento GES
-- [ ] Casos prueba [0/3]
-  - [ ] Paciente con diagnostico que no es GES, no debe listarse
-  - [ ] Paciente diagnosticado GES, pero no notificado, debe aparecer en filtro no notificado, no se debe imprimir
-  - [ ] Paciente diagnosticado GES y notificado, aparecer en lista por defecto y se debe poder imprimir
-- [ ] contador de filas
+- [X] Nuevo filtro con notificados GES y NO notificados GES [4/4]
+  - [X] si no tiene patologia (no ha sido notificado) no se debe imprimir
+  - [X] Filtrar por notificados y no notificados en SP
+  - [X] Añadir nuevo parametro flitro a API
+  - [X] Agregar en VUE nuevo filtro al llamar a endpoint
+- [X] Casos prueba [3/3]
+  - casos hechos con ficha 235209
+  - [X] Paciente con diagnostico que no es GES, no debe listarse
+  - [X] Paciente diagnosticado GES, pero no notificado, debe aparecer en filtro no notificado, no se debe imprimir
+  - [X] Paciente diagnosticado GES y notificado, aparecer en lista por defecto y se debe poder imprimir
+- [X] contador de filas
+*** Cambios realizados
+- WEB
+  - Ambulatorio
+    - gestion-ges.vue C
+    - routes.js M
+- API
+  - Global
+    - NotificacionGesController M
+    - NotificacionGesRepository M
+    - NotificacionGesDTO M
+- DB
+  - spu_fce_ges_listar_notificaciones
+  - INSERT INTO MENU Gestion GES
+
+
+** DONE Requerimiento vista examenes para rehabilitacion [3/3]
+- [X] Implementar tab examenes laboratorio
+- [X] Implementar tab examenes Imagenologia
+- [X] Merge con rama historial para centralizar cambios
+*** Cambios realizados
+- WEB
+  - Ambulatorio
+    - kinesiologo.vue M
+
+** DONE Requerimiento gestion ley urgencia [1/1]
+<2023-06-07 Wed>
+- [X] Crear SP para obtener datos de pacientes notificados con Ley Urgencia y poder filtrar por fecha y paciente / prestador
+- [X] Crear endpoint en API para rescatar la info entregada por sp [3/3]
+  - [X] Crear DTO
+    - GestionLeyUrgDTO
+  - [X] Crear Controller
+    - GestionLeyUrgController
+  - [X] Crear Repository
+    - GestionLeyUrgRepository
+
+- [-] Crear Vista en Vue [2/4]
+  - [X] Tabla de gestion (como en gestion ges) con datos pacientes ley urgencia
+  - [ ] al hacer click o doble click debe llevar a ficha urgencia
+  - [X] Agregar boton para ir a ficha del paciente
+  - [ ] Si fecha es nulo debe indicar que se eliminó la notificacion de ley urgencia
+    - Consultar si la fecha puede o no ser nula, para diferenciar de los notificados vs los que se ha eliminado la notificación de Ley de Urgencia
+*** DONE Cambios realizados
+- WEB
+  - Urgencia
+    - gestion-ley-urgencia.vue C
+- API
+  - GestionLeyUrgController C
+  - GestionLeyUrgRepository C
+  - GestionLeyUrgDTO C
+- DB
+  - spu_fcu_gestion_ley_urg_listar
+  - INSTERT INTO MENU Gestion Ley Urgencia
+
+** DONE Requerimiento seguiminto GES Ambulatorio [4/4]
+<2023-06-12 Mon>
+- [X] En ficha atencion ambulatorio [2/2]
+  - [X] agregar pregunta "¿Control patología GES?" (s/n)
+  - [X] Que aparezca cuando la patologia es GES
+- [X] En API agregar parametro FdiControlPatologiaGes
+- [X] En DB agregar marca seguimiento GES [1/1]
+  - [X] en FCE_DIAGNOSTICO agregar columna FDI_CONTROL_PATOLOGIA_GES CHAR (1) "s/n"
+- [X] En SP agregar cambios respecto a marca seguimiento ges [2/2]
+  - [X] en gestion ges cambiar query para descartar los diagnosticos marcados como seguimiento ges
+    - Obtener sólo los diagnósticos marcados como "N"
+  - [X] En guardar diagnostico agregar variable control ges y columna control ges
+*** Cambios Realizados
+- WEB
+  - Ambulatorio
+    - registro-atencion M
+- API
+  - FichaClinicaAmbulatoria
+    - AtencionAmbulatoriaRepository M
+  - Common.Models M
+    - DiagnosticoDTO M
+- DB
+  - FCE_DIAGNOSTICO M
+    - ADD COLUMN FDI_CONTROL_PATOLOGIA_GES
+  - spu_fce_ges_listar_notificaciones M
+  - spu_gen_guardar_diagnostico M
+  - spu_fca_atencion_pendiente M
+- GIT
+  - feature-gestion-ges M
+
+** DONE Requerimiento protocolo operatiorio [0/1]
+- [X] agregar fecha termino (manual) [3/3]
+  - [X] En vista date picker al lado de fecha inicio / hora inicio
+  # - [ ] En API nueva propiedad a DTO FechaTermino
+  # - [ ] En DB columna FechaTermino y modificar SP correspondiente para guardar fecha termino
+  - [X] En API usar fecha desde vue como fechaHasta
+  - [X] +En DB ver si usar UPA_FECHASTA o PRO_INTERVENCION_HASTA+
+- [X] Agregar marca de "participa" si/no en la cirugia al lado del nombre de profesional con radio button (si/no) [3/3]
+  - [X] Propiedad en vue inicia como NO
+  - [X] El campo del profesional debe ser required si se indica que participa
+  - [X] Si se indica que el profesional no participa el campo es disabled, el dato null y no required
+- [X] +al final en el recuento, agregar marca si/no (cuando no lo selecciona marca "no")+
+*** Modificaciones [1/1]
+<2023-06-20 Tue>
+- [X] Pediatra y matrona por defecto como NO
+*** Cambios Realizados
+- WEB
+  - Hospitalizado
+    - Protocolo M
+    - Routes M
+- API
+  - Hospitalizado
+    - ProtocoloController M
+- DB
+  N/A
+- GIT
+  feature-protocolo-operatorio C
+
+
+** DONE Pruebas PTO MONTT usando QA [3/3]
+<2023-06-20 Tue>
+- [X] Usar KINE_CASC
+- [X] Dejar sólo servicio Centro Médico disponible para KINE_CASC
+- [X] Cargar pacientes para el día Viernes (anotarlos)
+
+** TODO Habilitar Talca [0/2] (empezar por auth)
+- [-] COMPILAR API[4/7]
+  - [X] AdmisionAmbulatoria
+  - [X] Auth
+  - [X] FichaClinicaAmbulatoria
+  - [X] Global
+  - [ ] Solicitudes *Falta permisos GIT*
+  - [ ] Usuarios *Consultar por .env.production , tiene solo un grupo de variables, Falta Permisos GIT*
+  - [ ] Valorizacion *Falta permisos GIT*
+- [-] Compilar WEB [2/6]
+  - [X] Ambulatorio
+  - [ ] ComponenteDistribuido GES *.env.production tiene un solo grupo de variables*
+  - [X] Login
+  - [ ] Solicitudes *Falta permisos GIT*
+  - [ ] Usuarios *Falta permisos GIT*
+  - [ ] Valorizacion *No tengo acceso a vista GIT no lo encuenta*
+- Config APIS talca
+  - AppSettings.ProductionCAST.json
+  - AppSettings.StagingCAST.json
+    - Usar ejemplo de production CUPM con instancia \\CAST
+  - Agregar entorno en launchSettings.json con ejemplo CUPM
+  - en PROYECTO.Api.csproj agregar en base a PTO MONT fijarse en todo el archivo
+  - Confirmar despues de compilar que WebConfig apunte a ProductionCAST
+  - Confirmar despues de compilar que archivo AppSettings.ProductionCAST apunte al servidor con la instancia
+- Config en VUE
+  - Usar variables de PTO MONT usar puerto :8095
+  - http://andesmed.andessalud.cl
