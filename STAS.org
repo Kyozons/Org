@@ -585,9 +585,15 @@ SCHEDULED: <2023-06-13 mar>
   - [X] El campo del profesional debe ser required si se indica que participa
   - [X] Si se indica que el profesional no participa el campo es disabled, el dato null y no required
 - [X] +al final en el recuento, agregar marca si/no (cuando no lo selecciona marca "no")+
-*** Modificaciones [1/1]
+*** Modificaciones [3/3]
 <2023-06-20 Tue>
 - [X] Pediatra y matrona por defecto como NO
+<2023-06-27 Tue>
+- [X] Campos de texto libre parte final como obligatorios
+- [X] Revisar comportamiento verificacion ingreso hospitalario en lista protocolo
+  - Al parecer hay datos sucios, al buscar directo en el sp por fechas no se encuentran pacientes con 'N' en campo TIENE_INGRESO
+  - Con las fechas 28-12-2020 hasta 30-12-2020 hay datos con la marca correcta para mostrar de ejemplo
+    si eran datos sucios
 *** Cambios Realizados
 - WEB
   - Hospitalizado
@@ -608,22 +614,23 @@ SCHEDULED: <2023-06-13 mar>
 - [X] Dejar sólo servicio Centro Médico disponible para KINE_CASC
 - [X] Cargar pacientes para el día Viernes (anotarlos)
 
-** TODO Habilitar Talca [0/2] (empezar por auth)
-- [-] COMPILAR API[4/7]
+** TODO Habilitar Talca [1/2]
+- [-] COMPILAR API[7/8]
   - [X] AdmisionAmbulatoria
   - [X] Auth
   - [X] FichaClinicaAmbulatoria
   - [X] Global
-  - [ ] Solicitudes *Falta permisos GIT*
-  - [ ] Usuarios *Consultar por .env.production , tiene solo un grupo de variables, Falta Permisos GIT*
-  - [ ] Valorizacion *Falta permisos GIT*
-- [-] Compilar WEB [2/6]
+  - [X] Solicitudes
+  - [X] Usuarios
+  - [X] Valorizacion
+  - [ ] Urgencia
+- [X] Compilar WEB [6/6]
   - [X] Ambulatorio
-  - [ ] ComponenteDistribuido GES *.env.production tiene un solo grupo de variables*
+  - [X] ComponenteDistribuido GES
   - [X] Login
-  - [ ] Solicitudes *Falta permisos GIT*
-  - [ ] Usuarios *Falta permisos GIT*
-  - [ ] Valorizacion *No tengo acceso a vista GIT no lo encuenta*
+  - [X] Solicitudes
+  - [X] Usuarios
+  - [X] Valorizacion
 - Config APIS talca
   - AppSettings.ProductionCAST.json
   - AppSettings.StagingCAST.json
@@ -635,3 +642,7 @@ SCHEDULED: <2023-06-13 mar>
 - Config en VUE
   - Usar variables de PTO MONT usar puerto :8095
   - http://andesmed.andessalud.cl
+*** DONE Modificaciones [2/2]
+<2023-06-29 Thu>
+- [X] componente distribuido web agregar puerto :8095 VUE_APP_COMPONENTES_SERVER
+- [X] dejar rama release de proyectos al nivel de master
