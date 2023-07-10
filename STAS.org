@@ -585,7 +585,7 @@ SCHEDULED: <2023-06-13 mar>
   - [X] El campo del profesional debe ser required si se indica que participa
   - [X] Si se indica que el profesional no participa el campo es disabled, el dato null y no required
 - [X] +al final en el recuento, agregar marca si/no (cuando no lo selecciona marca "no")+
-*** Modificaciones [3/3]
+*** Modificaciones [0/2]
 <2023-06-20 Tue>
 - [X] Pediatra y matrona por defecto como NO
 <2023-06-27 Tue>
@@ -594,6 +594,11 @@ SCHEDULED: <2023-06-13 mar>
   - Al parecer hay datos sucios, al buscar directo en el sp por fechas no se encuentran pacientes con 'N' en campo TIENE_INGRESO
   - Con las fechas 28-12-2020 hasta 30-12-2020 hay datos con la marca correcta para mostrar de ejemplo
     si eran datos sucios
+<2023-07-07 Fri>
+- [ ] Agregar lateralidad a protocolo
+  - Traer TIT_CODIGO desde pre protocolo y carga protocolo para poder guardar
+- [ ] Quitar "_test" de obtener protocolo y obtener_pre_protocolo
+  - LAT_CODIGO lo envia como 0, revisar en vue y en api por que, DB está en orden por ahora
 *** Cambios Realizados
 - WEB
   - Hospitalizado
