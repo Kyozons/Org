@@ -113,8 +113,10 @@ SCHEDULED: <2023-03-24 vie>
   + spu_fca_kine_guardar_sesion_rehabilitacion M
   + spu_fca_kine_listar_sesion_rehabilitacion M
   + spu_fca_kine_actualizar_sesion_rehabilitacion M
-  + FSE_SESION_REHAB M
+  + FRE_SESION_REHAB M
     - ALTER TABLE FRE_SESION_REHAB ADD FSR_RES_ESCALA_EVAL varchar(1000)
+- GIT
+  - feature-cambios-ficha-rehabilitacion
 
 
 ** DONE requerimento historial paciente
@@ -597,8 +599,15 @@ SCHEDULED: <2023-06-13 mar>
 <2023-07-07 Fri>
 - [ ] Agregar lateralidad a protocolo
   - Traer TIT_CODIGO desde pre protocolo y carga protocolo para poder guardar
-- [ ] Quitar "_test" de obtener protocolo y obtener_pre_protocolo
-  - LAT_CODIGO lo envia como 0, revisar en vue y en api por que, DB está en orden por ahora
+- [ ] Quitar "_test" de obtener_pre_protocolo
+  - RCI_CORREL lo envia como 0, revisar en vue y en api por que, DB está en orden por ahora
+    - Era porque el sp obtener protocolo no traia RCI_CORREL
+  - Al editar protocolo no trae equipo medico, revisar
+    - El problema nace al traer RCI_CORREL desde sp_obtener_protocolo_v2, tratar de determinar por que se elimino ese dato de la query y ver cámo volver a incorporarlo
+    - Para solucionarlo debo asignar los parametros cirugia.correlativo y equipoMedico.codigoCirugia a RCI_CORREL
+- [ ] Lateralidad REQUIRED!!
+  - Usar AuxRciCorrel en DTO Cirugia para guardar RCI correl y poder guardar lateralidad
+    - Todos los cambios pertinentes a lateralidad deben actualizarce y utilizar auxiliar en lugar de rciCorrel
 *** Cambios Realizados
 - WEB
   - Hospitalizado
