@@ -578,15 +578,11 @@ SCHEDULED: <2023-06-13 mar>
 ** DONE Requerimiento protocolo operatiorio [0/1]
 - [X] agregar fecha termino (manual) [3/3]
   - [X] En vista date picker al lado de fecha inicio / hora inicio
-  # - [ ] En API nueva propiedad a DTO FechaTermino
-  # - [ ] En DB columna FechaTermino y modificar SP correspondiente para guardar fecha termino
-  - [X] En API usar fecha desde vue como fechaHasta
-  - [X] +En DB ver si usar UPA_FECHASTA o PRO_INTERVENCION_HASTA+
+    - [X] En API usar fecha desde vue como fechaHasta
 - [X] Agregar marca de "participa" si/no en la cirugia al lado del nombre de profesional con radio button (si/no) [3/3]
   - [X] Propiedad en vue inicia como NO
   - [X] El campo del profesional debe ser required si se indica que participa
   - [X] Si se indica que el profesional no participa el campo es disabled, el dato null y no required
-- [X] +al final en el recuento, agregar marca si/no (cuando no lo selecciona marca "no")+
 *** Modificaciones [0/2]
 <2023-06-20 Tue>
 - [X] Pediatra y matrona por defecto como NO
@@ -596,18 +592,21 @@ SCHEDULED: <2023-06-13 mar>
   - Al parecer hay datos sucios, al buscar directo en el sp por fechas no se encuentran pacientes con 'N' en campo TIENE_INGRESO
   - Con las fechas 28-12-2020 hasta 30-12-2020 hay datos con la marca correcta para mostrar de ejemplo
     si eran datos sucios
-<2023-07-07 Fri>
-- [ ] Agregar lateralidad a protocolo
+<2023-07-07 Fri> Inicio
+- [X] Agregar lateralidad a protocolo
   - Traer TIT_CODIGO desde pre protocolo y carga protocolo para poder guardar
-- [ ] Quitar "_test" de obtener_pre_protocolo
+- [X] Quitar "_test" de obtener_pre_protocolo
   - RCI_CORREL lo envia como 0, revisar en vue y en api por que, DB está en orden por ahora
     - Era porque el sp obtener protocolo no traia RCI_CORREL
   - Al editar protocolo no trae equipo medico, revisar
     - El problema nace al traer RCI_CORREL desde sp_obtener_protocolo_v2, tratar de determinar por que se elimino ese dato de la query y ver cámo volver a incorporarlo
     - Para solucionarlo debo asignar los parametros cirugia.correlativo y equipoMedico.codigoCirugia a RCI_CORREL
-- [ ] Lateralidad REQUIRED!!
+- [X] Lateralidad REQUIRED!!
   - Usar AuxRciCorrel en DTO Cirugia para guardar RCI correl y poder guardar lateralidad
     - Todos los cambios pertinentes a lateralidad deben actualizarce y utilizar auxiliar en lugar de rciCorrel
+    - Al traer cirugias y agruparlas por correlativo, me trae un AuxRciCorrel que no corresponde
+- [X] Cambiar en vista, si dato viene vacio, seleccionar automaticamente si/no en created
+<2023-07-13 Thu> Terimno
 *** Cambios Realizados
 - WEB
   - Hospitalizado
@@ -616,10 +615,19 @@ SCHEDULED: <2023-06-13 mar>
 - API
   - Hospitalizado
     - ProtocoloController M
+    - ProtocoloRepository M
+    - CirugiaDTO M
 - DB
-  N/A
+  - spu_pab_guardar_protocolo_v2 M
+  - spu_pab_guardar_reserva_cirugia M
+  - spu_pab_obtener_pre_protocolo_v2 M
+  - spu_pab_obtener_protocolo_v2 M
 - GIT
+  - WEB
   feature-protocolo-operatorio C
+  - API
+  feature-protocolo-operatorio C
+
 
 
 ** DONE Pruebas PTO MONTT usando QA [3/3]
@@ -628,7 +636,8 @@ SCHEDULED: <2023-06-13 mar>
 - [X] Dejar sólo servicio Centro Médico disponible para KINE_CASC
 - [X] Cargar pacientes para el día Viernes (anotarlos)
 
-** TODO Habilitar Talca [1/2]
+** DONE Habilitar Talca [1/2]
+   CLOSED: [2023-07-13 Thu 18:48]
 - [-] COMPILAR API[7/8]
   - [X] AdmisionAmbulatoria
   - [X] Auth
@@ -637,7 +646,7 @@ SCHEDULED: <2023-06-13 mar>
   - [X] Solicitudes
   - [X] Usuarios
   - [X] Valorizacion
-  - [ ] Urgencia
+  - [X] Urgencia
 - [X] Compilar WEB [6/6]
   - [X] Ambulatorio
   - [X] ComponenteDistribuido GES
@@ -660,3 +669,25 @@ SCHEDULED: <2023-06-13 mar>
 <2023-06-29 Thu>
 - [X] componente distribuido web agregar puerto :8095 VUE_APP_COMPONENTES_SERVER
 - [X] dejar rama release de proyectos al nivel de master
+
+
+** TODO Recien Nacido Clinica [0/5]
+<2023-07-13 Thu> Inicio
+- [ ] Rama feature-recien-nacido desde QA
+- [ ] Punto 2 Antecentes maternos Nueva DTO 
+- [ ] Punto 3 Antecedentes del parto Nueva DTO
+- [ ] Diagnostico Texto Libre
+- [ ] Indicaciones Texto Libre
+- AtencionMedico grabar/recien/nacido
+- cambios a 
+- En tabla RECIEN_NACIDO solo esta Diagnostico e Indicaciones
+- En tabla (por crear) ANTECEDENTES_MATERNOS y ANTECEDENTES_PARTO estan los datos que corresponden a cada parte del formulario respectivamente
+
+- Consulta debido a typos en nombres de tabla / objetos
+  - HAP_PUTULENTO -> HAP_PURULENTO
+  - HAP_MECONIO_ESPERO -> HAP_MECONIO_ESPESO
+  - HAP_PERIODO_ALIM -> HAP_PERIODO_DIL ???
+
+- Al parecer falta dato "cordón umbilical"
+
+
