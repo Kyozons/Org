@@ -2,8 +2,21 @@
 #+author: Pedro Bustos <pedro.bustos@andessalud.cl>
 #+OPTIONS: ^:nil
 
+* Notas
+** VPN
+   4X8sG88873
+** VUE
+   En watch para vigilar un valor dentro de un objeto usar comillas para encerralo
+   #+BEGIN_SRC javascript
+   watch: {
+    'parentObject.property': function(value){
+      // WORK HERE
+    },
+   },
+   #+END_SRC
 
 * Requerimentos
+
 ** DONE requerimiento ley urgencia hospitalizado [3/3]
 DEADLINE: <2023-03-20 lun> SCHEDULED: <2023-03-16 jue>
 *** DONE tabla HCU_LEY_URGENCIA [6/6]
@@ -673,21 +686,23 @@ SCHEDULED: <2023-06-13 mar>
 
 ** TODO Recien Nacido Clinica [0/5]
 <2023-07-13 Thu> Inicio
-- [ ] Rama feature-recien-nacido desde QA
-- [ ] Punto 2 Antecentes maternos Nueva DTO 
-- [ ] Punto 3 Antecedentes del parto Nueva DTO
-- [ ] Diagnostico Texto Libre
-- [ ] Indicaciones Texto Libre
+- [X] Rama feature-recien-nacido desde QA
+- [X] Punto 2 Antecentes maternos Nueva DTO 
+- [X] Punto 3 Antecedentes del parto Nueva DTO
+- [X] Diagnostico Texto Libre
+- [X] Indicaciones Texto Libre
 - AtencionMedico grabar/recien/nacido
-- cambios a 
 - En tabla RECIEN_NACIDO solo esta Diagnostico e Indicaciones
-- En tabla (por crear) ANTECEDENTES_MATERNOS y ANTECEDENTES_PARTO estan los datos que corresponden a cada parte del formulario respectivamente
+- En tabla ANTECEDENTES_MATERNOS y ANTECEDENTES_PARTO estan los datos que corresponden a cada parte del formulario respectivamente
 
-- Consulta debido a typos en nombres de tabla / objetos
+- Cambios en nombre columnas / nueva columnas
   - HAP_PUTULENTO -> HAP_PURULENTO
   - HAP_MECONIO_ESPERO -> HAP_MECONIO_ESPESO
-  - HAP_PERIODO_ALIM -> HAP_PERIODO_DIL ???
+  - HAP_PERIODO_ALIM -> HAP_PERIODO_DILATACION
+  - HAP_OTROS_DESCRIP
+- En el sp de guardar ver qué lógica usar para el save, me rigo por si existe los HAP y HAM correl? o por el count que ya saca en el sp
+- Desde la vista los datos de antecedentes se guardan como objetos dentro de RecienNacido para enviarlos a la API
+- En la API se deberian asignar los parametros dependiendo de lo que se estipule en los SP
 
-- Al parecer falta dato "cordón umbilical"
 
 
