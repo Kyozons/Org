@@ -362,6 +362,7 @@ SCHEDULED: <2023-03-24 vie>
 - GIT
   - feature-auditor-informes-medicos C
 
+
 ** DONE Requerimento informes medico Kine Ambulatorio [2/2]
 - [X] Utilizar rama feature-cambios-ficha-rehabilitacion ( Cambios de esa rama [[requerimiento ficha rehabilitacion ambulatoria][aqui]] )
 - [X] Agregar botón informes medicos en vista Kine
@@ -703,6 +704,10 @@ SCHEDULED: <2023-06-13 mar>
 - En el sp de guardar ver qué lógica usar para el save, me rigo por si existe los HAP y HAM correl? o por el count que ya saca en el sp
 - Desde la vista los datos de antecedentes se guardan como objetos dentro de RecienNacido para enviarlos a la API
 - En la API se deberian asignar los parametros dependiendo de lo que se estipule en los SP
+- Una duda, pasa que tengo los datos de ambos antecedentes como datos aparte, y al final se los agrego al objeto recienNacido para enviar un solo objeto.
+  Sale mejor tener un sólo objeto con todo entonces? porque asi no tengo que crear más endpoint para aceptar esos objetos e ir combinandolos
+- Agregar contador de caracteres en los campo de texto libre
+- Definir los campos que deben ser required
 
 
 
