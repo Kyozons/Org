@@ -316,14 +316,14 @@ SCHEDULED: <2023-03-24 vie>
   5. agregar llamada a endpoint en created()
   6. agregar método openVisorClinico
 
-** Pruebas Proceso Urgencia
+*** Pruebas Proceso Urgencia
 - En atencion se guarda al estar vacío. Correcto?
 - En medicamento no deja elegir cada X Días, sólo deja elegir cada X veces
 - En atencion especialista Médico puede guardar.
 - En atencion especialista historial paciente duplicado
 - En atencion enfermeria médico puede guardar y agregar procedimientos enf
 
-** Pruebas Proceso Hospitalizado
+*** Pruebas Proceso Hospitalizado
 - Error al imprimir epicrisis, falla en reporte
 - Al seleccionar todo, no borra evoluciones, si los selecciono uno a uno se borran
 - En mapa cama revisar los perfiles "otros profesionales" para redireccionar a vista otros-profesionales
@@ -650,9 +650,9 @@ SCHEDULED: <2023-06-13 mar>
 - [X] Dejar sólo servicio Centro Médico disponible para KINE_CASC
 - [X] Cargar pacientes para el día Viernes (anotarlos)
 
-** DONE Habilitar Talca [1/2]
+** DONE Habilitar Talca [2/2]
    CLOSED: [2023-07-13 Thu 18:48]
-- [-] COMPILAR API[7/8]
+- [X] COMPILAR API[8/8]
   - [X] AdmisionAmbulatoria
   - [X] Auth
   - [X] FichaClinicaAmbulatoria
@@ -685,10 +685,10 @@ SCHEDULED: <2023-06-13 mar>
 - [X] dejar rama release de proyectos al nivel de master
 
 
-** TODO Recien Nacido Clinica [0/5]
+** DONE Recien Nacido Clinica [5/5]
 <2023-07-13 Thu> Inicio
 - [X] Rama feature-recien-nacido desde QA
-- [X] Punto 2 Antecentes maternos Nueva DTO 
+- [X] Punto 2 Antecentes maternos Nueva DTO
 - [X] Punto 3 Antecedentes del parto Nueva DTO
 - [X] Diagnostico Texto Libre
 - [X] Indicaciones Texto Libre
@@ -708,6 +708,14 @@ SCHEDULED: <2023-06-13 mar>
   Sale mejor tener un sólo objeto con todo entonces? porque asi no tengo que crear más endpoint para aceptar esos objetos e ir combinandolos
 - Agregar contador de caracteres en los campo de texto libre
 - Definir los campos que deben ser required
+ <2023-07-20 Thu>  Termino
 
+** DONE Compilar prod Amublatorio TALCA [2/2]
+<2023-07-20 Thu> Inicio
+- [X] API [2/2]
+  - [X] FichaClinicaAmbulatoria
+  - [X] AdmisionAmbulatoria
 
-
+- [X] WEB [1/1]
+  - [X] ambulatorio
+   <2023-07-20 Thu> Termino
