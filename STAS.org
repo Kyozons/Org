@@ -589,15 +589,15 @@ SCHEDULED: <2023-06-13 mar>
 - GIT
   - feature-gestion-ges M
 
-** DONE Requerimiento protocolo operatiorio [0/1]
-- [X] agregar fecha termino (manual) [3/3]
+** DONE Requerimiento protocolo operatiorio [2/2]
+- [X] agregar fecha termino (manual) [1/1]
   - [X] En vista date picker al lado de fecha inicio / hora inicio
     - [X] En API usar fecha desde vue como fechaHasta
 - [X] Agregar marca de "participa" si/no en la cirugia al lado del nombre de profesional con radio button (si/no) [3/3]
   - [X] Propiedad en vue inicia como NO
   - [X] El campo del profesional debe ser required si se indica que participa
   - [X] Si se indica que el profesional no participa el campo es disabled, el dato null y no required
-*** Modificaciones [0/2]
+*** Modificaciones [7/7]
 <2023-06-20 Tue>
 - [X] Pediatra y matrona por defecto como NO
 <2023-06-27 Tue>
@@ -620,6 +620,7 @@ SCHEDULED: <2023-06-13 mar>
     - Todos los cambios pertinentes a lateralidad deben actualizarce y utilizar auxiliar en lugar de rciCorrel
     - Al traer cirugias y agruparlas por correlativo, me trae un AuxRciCorrel que no corresponde
 - [X] Cambiar en vista, si dato viene vacio, seleccionar automaticamente si/no en created
+- Pasar informe protocolo operatorio a PROD
 <2023-07-13 Thu> Terimno
 *** Cambios Realizados
 - WEB
@@ -636,11 +637,14 @@ SCHEDULED: <2023-06-13 mar>
   - spu_pab_guardar_reserva_cirugia M
   - spu_pab_obtener_pre_protocolo_v2 M
   - spu_pab_obtener_protocolo_v2 M
+  - spu_pab_listar_cirugias_sin_protocolo_v3 (modificado por colega anteriormente, se debe agregar a paso PROD)
 - GIT
   - WEB
   feature-protocolo-operatorio C
   - API
   feature-protocolo-operatorio C
+- INFORMES
+  - Informe protocolo operatorio M
 
 
 
@@ -719,3 +723,19 @@ SCHEDULED: <2023-06-13 mar>
 - [X] WEB [1/1]
   - [X] ambulatorio
    <2023-07-20 Thu> Termino
+
+** DONE compilar Prod Puerto Montt [2/2]
+<2023-07-24 Mon> Inicio / Termino
+- [X] WEB [1/1]
+  - [X] ambulatorio
+
+- [X] API [1/1]
+  - [X] FichaClinicaAmbulatoria
+
+** DONE Compilar Prod Chillan [2/2]
+<2023-07-24 Mon> Inicio / Terimno
+- [X] WEB [1/1]
+  - [X] Ambulatorio
+
+- [X] API [1/1]
+  - [X] FiclaClinicaAmbulatoria
