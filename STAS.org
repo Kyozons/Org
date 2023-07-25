@@ -739,3 +739,13 @@ SCHEDULED: <2023-06-13 mar>
 
 - [X] API [1/1]
   - [X] FiclaClinicaAmbulatoria
+
+** TODO Compilar Prod Calama [2/2]
+<2023-07-25 Tue> Inicio
+- [X] WEB [1/1]
+  - [X] Ambulatorio
+
+- [X] API [1/1]
+  - [X] FiclaClinicaAmbulatoria
+
+    - Experimentar con entorno linux, vs code nativo (pendiente) vs nvim
