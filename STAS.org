@@ -750,14 +750,14 @@ SCHEDULED: <2023-06-13 mar>
     - Experimentar con entorno linux, vs code nativo (pendiente) vs nvim
 
 
-** TODO agregar vista IAAS ambulatorio [3/5]
+** DONE agregar vista IAAS ambulatorio [5/5]
 <2023-07-26 Wed> Inicio
 - [X] rama desde master
-- [-] WEB [3/5]
+- [X] WEB [5/5]
   - [X] Vista en vue tomar ejemplo comite oncologico de ambulatorio y otros-profesionales de hospitalizado
   - [X] Mapear datos correctamente para seguimiento iaas
-  - [ ] Verificar validations
-  - [ ] Verificar permisos/disabled de botones
+  - [X] Verificar validations
+  - [X] Verificar permisos/disabled de botones
   - [X] Crear metodo en componente alergias para buscar recibiendo rut como parametro desde ref
 - [X] API [4/4]
   - [X] Crear SeguimientoIaasController [2/2]
@@ -771,7 +771,31 @@ SCHEDULED: <2023-06-13 mar>
 - [X] DB [2/2]
   - [X] Crear sp para obtener seguimiento
   - [X] Crear sp para guardar seguimiento
-- [ ] Crear Menu [0/3]
-  - [ ] Crear datos en tabla MENU
-  - [ ] Asignar MEN_CODIGO a usuarios
-  - [ ] Habilitar verificacion de permisos en router.js
+- [X] Crear Menu [3/3]
+  - [X] Crear datos en tabla MENU
+  - [X] Asignar MEN_CODIGO a usuarios
+  - [X] Habilitar verificacion de permisos en router.js
+   <2023-07-28 Fri> Finalizado
+
+*** Cambios Realizados
+- WEB
+  - ambulatorio
+    - alergias.vue M
+    - datos-paciente.vue M
+    - routes.js M
+    - iaas.vue C
+    - seguimientoIaas.js C
+- API
+  - FichaClinicaAmbulatoria
+    - SeguimientoIaasController.cs C
+    - SeguimientoIaasDTO.cs C
+    - SeguimientoIaasRepository.cs C
+- DB
+  - spu_fce_obtener_seguimiento_iaas C
+  - spu_fce_guardar_seguimiento_iaas C
+  - Insert_Into_Menu_Seguimiento_IAAS_CEM C
+- GIT
+  - WEB
+    - feature-seguimiento-iaas (master) C
+  - API
+    - feature-seguimiento-iaas (master) C
