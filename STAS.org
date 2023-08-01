@@ -804,5 +804,5 @@ SCHEDULED: <2023-06-13 mar>
 - WEB
   - Ambulatorio
 - API
-  - Global
+  - GlobalPeroConConflicto
   - AlgoqueHagaConflicto
