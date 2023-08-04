@@ -814,22 +814,64 @@ SCHEDULED: <2023-06-13 mar>
   - API
     - feature-seguimiento-iaas (master) C
 
-** TODO Compilar ENO [2/3]
-- [-] WEB [0/1]
-  - [-] Ambulatorio [1/3]
-    - [ ] Gestion GES [0/1]
-      - [ ] Merge master a gestion GES
+** TODO Compilar ENO [3/3]
+- [X] WEB [1/1]
+  - [X] Ambulatorio [3/3]
+    - [X] Gestion GES [1/1]
+      - [X] Merge master a gestion GES
     - [X] Gestion ENO [1/1]
       - [X] Merge master a gestion ENO
-    - [ ] Crear rama feature desde master y fusionar eno y ges
--[ ] API [2/3]
+    - [X] Crear rama feature desde master y fusionar eno y ges
+      - feature-gestion-ges-notificacion-eno
+-[ ] API [3/3]
   - [X] Global [3/3]
     - [X] Merge master con feature-notificacion-eno
     - [X] Merge master con gestion-ges
     - [X] Crear rama base master fusionando eno y ges
+      - feature-control-ges-notificacion-eno
   - [X] FichaCliniaAmbulatoria [3/3]
     - [X] Merge master con feature-notificacion-eno
     - [X] Merge master con gestion-ges
     - [X] Crear rama base master fusionando eno y ges
 
-1613 revisar metodo getPaciente() dejar como master
+** TODO Implementar informe compilacion en todos los proyectos vue [3/10]
+- [X] Ambulatorio [3/3]
+  - [X] Crear informeCompilacion.ps1
+  - [X] Modificar empaquetar.bat para llamar informeCompilacion
+  - [X] Push release y master
+- [X] Urgencia [3/3]
+  - [X] Crear informeCompilacion.ps1
+  - [X] Modificar empaquetar.bat para llamar informeCompilacion
+  - [X] Push release y master
+- [X] Clinica [3/3]
+  - [X] Crear informeCompilacion.ps1
+  - [X] Modificar empaquetar.bat para llamar informeCompilacion
+  - [X] Push release y master
+- [ ] Hospitalizado [0/3]
+  - [ ] Crear informeCompilacion.ps1
+  - [ ] Modificar empaquetar.bat para llamar informeCompilacion
+  - [ ] Push release y master
+- [ ] componentesDistribuidos [0/3]
+  - [ ] Crear informeCompilacion.ps1
+  - [ ] Modificar empaquetar.bat para llamar informeCompilacion
+  - [ ] Push release y master
+- [ ] facturacion [0/3]
+  - [ ] Crear informeCompilacion.ps1
+  - [ ] Modificar empaquetar.bat para llamar informeCompilacion
+  - [ ] Push release y master
+- [ ] Login [0/3]
+  - [ ] Crear informeCompilacion.ps1
+  - [ ] Modificar empaquetar.bat para llamar informeCompilacion
+  - [ ] Push release y master
+- [ ] solicitudes [0/3]
+  - [ ] Crear informeCompilacion.ps1
+  - [ ] Modificar empaquetar.bat para llamar informeCompilacion
+  - [ ] Push release y master
+- [ ] usuarios [0/3]
+  - [ ] Crear informeCompilacion.ps1
+  - [ ] Modificar empaquetar.bat para llamar informeCompilacion
+  - [ ] Push release y master
+- [ ] valorizacion [0/3]
+  - [ ] Crear informeCompilacion.ps1
+  - [ ] Modificar empaquetar.bat para llamar informeCompilacion
+  - [ ] Push release y master
