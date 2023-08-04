@@ -814,7 +814,7 @@ SCHEDULED: <2023-06-13 mar>
   - API
     - feature-seguimiento-iaas (master) C
 
-** TODO Compilar ENO [3/3]
+** TODO Compilar ENO [3/4]
 - [X] WEB [1/1]
   - [X] Ambulatorio [3/3]
     - [X] Gestion GES [1/1]
@@ -823,7 +823,7 @@ SCHEDULED: <2023-06-13 mar>
       - [X] Merge master a gestion ENO
     - [X] Crear rama feature desde master y fusionar eno y ges
       - feature-gestion-ges-notificacion-eno
--[ ] API [3/3]
+-[ ] API [3/4]
   - [X] Global [3/3]
     - [X] Merge master con feature-notificacion-eno
     - [X] Merge master con gestion-ges
@@ -833,6 +833,13 @@ SCHEDULED: <2023-06-13 mar>
     - [X] Merge master con feature-notificacion-eno
     - [X] Merge master con gestion-ges
     - [X] Crear rama base master fusionando eno y ges
+*** Modificaciones / Correcciones [0/2]
+- [ ] Verificar fecha en vuetable ENO, problema formateo
+- [-] Cambiar window.open por router.push cuando la ficha sea del mismo proyecto [1/3]
+  - [X] Ambulatorio
+    - [ ] DEVOLVER ROUTES.JS A LA NORMALIDAD
+  - [ ] Urgencia
+  - [ ] Clinica
 
 ** TODO Implementar informe compilacion en todos los proyectos vue [3/10]
 - [X] Ambulatorio [3/3]
