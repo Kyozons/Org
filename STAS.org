@@ -709,23 +709,38 @@ SCHEDULED: <2023-06-13 mar>
 - [X] Punto 3 Antecedentes del parto Nueva DTO
 - [X] Diagnostico Texto Libre
 - [X] Indicaciones Texto Libre
+*** Cambios realizados
+- WEB
+  - Clinica
+    - recien-nacido.vue M
+- API
+  - FichaClinicaHospitalizado M
+    - RecienNacidoDTO M
+    - AntecendentesMaternoDTO C
+    - AntecedentesPartoDTO C
+    - AtencionMedicoController M
+    - AtencionMedicoRepository M
+- DB
+  - spu_fch_guardar_antecedentes_materno C
+  - spu_fch_guardar_antecedentes_parto C
+  - spu_fch_guardar_recien_nacido M
+  - spu_fch_obtener_recien_nacido M
+- GIT
+  - WEB
+    - Clinica
+      - feature-recien-nacido (QA) C
+  - API
+    - FichaClinicaHospitalizado
+      - feature-recien-nacido (QA) C
+  <2023-07-20 Thu>  Termino
 - AtencionMedico grabar/recien/nacido
 - En tabla RECIEN_NACIDO solo esta Diagnostico e Indicaciones
 - En tabla ANTECEDENTES_MATERNOS y ANTECEDENTES_PARTO estan los datos que corresponden a cada parte del formulario respectivamente
-
 - Cambios en nombre columnas / nueva columnas
   - HAP_PUTULENTO -> HAP_PURULENTO
   - HAP_MECONIO_ESPERO -> HAP_MECONIO_ESPESO
   - HAP_PERIODO_ALIM -> HAP_PERIODO_DILATACION
   - HAP_OTROS_DESCRIP
-- En el sp de guardar ver qué lógica usar para el save, me rigo por si existe los HAP y HAM correl? o por el count que ya saca en el sp
-- Desde la vista los datos de antecedentes se guardan como objetos dentro de RecienNacido para enviarlos a la API
-- En la API se deberian asignar los parametros dependiendo de lo que se estipule en los SP
-- Una duda, pasa que tengo los datos de ambos antecedentes como datos aparte, y al final se los agrego al objeto recienNacido para enviar un solo objeto.
-  Sale mejor tener un sólo objeto con todo entonces? porque asi no tengo que crear más endpoint para aceptar esos objetos e ir combinandolos
-- Agregar contador de caracteres en los campo de texto libre
-- Definir los campos que deben ser required
- <2023-07-20 Thu>  Termino
 
 ** DONE Compilar prod Amublatorio TALCA [2/2]
 <2023-07-20 Thu> Inicio
@@ -828,20 +843,21 @@ SCHEDULED: <2023-06-13 mar>
     - [X] Merge master con feature-notificacion-eno
     - [X] Merge master con gestion-ges
     - [X] Crear rama base master fusionando eno y ges
-      - feature-control-ges-notificacion-eno
+      - feature-gestion-ges-notificacion-eno
   - [X] FichaCliniaAmbulatoria [3/3]
     - [X] Merge master con feature-notificacion-eno
     - [X] Merge master con gestion-ges
     - [X] Crear rama base master fusionando eno y ges
-*** Modificaciones / Correcciones [0/2]
-- [ ] Verificar fecha en vuetable ENO, problema formateo
+*** Modificaciones / Correcciones [1/2]
+- [X] Verificar fecha en vuetable ENO, problema formateo
+  - Faltaba formatear fecha como DD-MM-YYYY en metodo Get (Listar)
 - [-] Cambiar window.open por router.push cuando la ficha sea del mismo proyecto [1/3]
   - [X] Ambulatorio
-    - [ ] DEVOLVER ROUTES.JS A LA NORMALIDAD
+    - [X] DEVOLVER ROUTES.JS A LA NORMALIDAD
   - [ ] Urgencia
   - [ ] Clinica
 
-** TODO Implementar informe compilacion en todos los proyectos vue [3/10]
+** TODO Implementar informe compilacion en todos los proyectos vue [9/10]
 - [X] Ambulatorio [3/3]
   - [X] Crear informeCompilacion.ps1
   - [X] Modificar empaquetar.bat para llamar informeCompilacion
@@ -854,31 +870,39 @@ SCHEDULED: <2023-06-13 mar>
   - [X] Crear informeCompilacion.ps1
   - [X] Modificar empaquetar.bat para llamar informeCompilacion
   - [X] Push release y master
-- [ ] Hospitalizado [0/3]
+- [X] Hospitalizado [4/4]
+  - [X] Crear informeCompilacion.ps1
+  - [X] Modificar empaquetar.bat para llamar informeCompilacion
+  - [X] Push release y master
+  - [X] Variables de entorno VUE_APP_AMBIENTE
+- [ ] componentesDistribuidos [0/5] *** PENDIENTE DEBIDO A QUE LAS RUTAS DE EMPAQUETAR.BAT NO SON DEL NOMBRE DEL PROYECTO ***
   - [ ] Crear informeCompilacion.ps1
   - [ ] Modificar empaquetar.bat para llamar informeCompilacion
   - [ ] Push release y master
-- [ ] componentesDistribuidos [0/3]
-  - [ ] Crear informeCompilacion.ps1
-  - [ ] Modificar empaquetar.bat para llamar informeCompilacion
-  - [ ] Push release y master
-- [ ] facturacion [0/3]
-  - [ ] Crear informeCompilacion.ps1
-  - [ ] Modificar empaquetar.bat para llamar informeCompilacion
-  - [ ] Push release y master
-- [ ] Login [0/3]
-  - [ ] Crear informeCompilacion.ps1
-  - [ ] Modificar empaquetar.bat para llamar informeCompilacion
-  - [ ] Push release y master
-- [ ] solicitudes [0/3]
-  - [ ] Crear informeCompilacion.ps1
-  - [ ] Modificar empaquetar.bat para llamar informeCompilacion
-  - [ ] Push release y master
-- [ ] usuarios [0/3]
-  - [ ] Crear informeCompilacion.ps1
-  - [ ] Modificar empaquetar.bat para llamar informeCompilacion
-  - [ ] Push release y master
-- [ ] valorizacion [0/3]
-  - [ ] Crear informeCompilacion.ps1
-  - [ ] Modificar empaquetar.bat para llamar informeCompilacion
-  - [ ] Push release y master
+  - [ ] Variables de entorno VUE_APP_AMBIENTE
+  - [ ] RESOLVER DUDA CON COMMIT SIN PUSH EN RELEASE LOCAL
+- [X] facturacion [4/4]
+  - [X] Crear informeCompilacion.ps1
+  - [X] Modificar empaquetar.bat para llamar informeCompilacion
+  - [X] Push release y master
+  - [X] Variables de entorno VUE_APP_AMBIENTE
+- [X] Login [4/4]
+  - [X] Crear informeCompilacion.ps1
+  - [X] Modificar empaquetar.bat para llamar informeCompilacion
+  - [X] Push release y master
+  - [X] Variables de entorno VUE_APP_AMBIENTE
+- [X] solicitudes [4/4]
+  - [X] Crear informeCompilacion.ps1
+  - [X] Modificar empaquetar.bat para llamar informeCompilacion
+  - [X] Push release y master
+  - [X] Variables de entorno VUE_APP_AMBIENTE
+- [X] usuarios [4/4]
+  - [X] Crear informeCompilacion.ps1
+  - [X] Modificar empaquetar.bat para llamar informeCompilacion
+  - [X] Push release y master
+  - [X] Variables de entorno VUE_APP_AMBIENTE
+- [X] valorizacion [4/4]
+  - [X] Crear informeCompilacion.ps1
+  - [X] Modificar empaquetar.bat para llamar informeCompilacion
+  - [X] Push release y master
+  - [X] Variables de entorno VUE_APP_AMBIENTE
