@@ -875,12 +875,11 @@ SCHEDULED: <2023-06-13 mar>
   - [X] Modificar empaquetar.bat para llamar informeCompilacion
   - [X] Push release y master
   - [X] Variables de entorno VUE_APP_AMBIENTE
-- [ ] componentesDistribuidos [0/5] *** PENDIENTE DEBIDO A QUE LAS RUTAS DE EMPAQUETAR.BAT NO SON DEL NOMBRE DEL PROYECTO ***
-  - [ ] Crear informeCompilacion.ps1
-  - [ ] Modificar empaquetar.bat para llamar informeCompilacion
+- [-] componentesDistribuidos [3/4]
+  - [X] Cambiar modo build para usar .env.prod
+  - [X] Modificar informeCompilacion.ps1 para que obtenga datos desde archivo componente ges o caja
+  - [X] Variables de entorno VUE_APP_AMBIENTE
   - [ ] Push release y master
-  - [ ] Variables de entorno VUE_APP_AMBIENTE
-  - [ ] RESOLVER DUDA CON COMMIT SIN PUSH EN RELEASE LOCAL
 - [X] facturacion [4/4]
   - [X] Crear informeCompilacion.ps1
   - [X] Modificar empaquetar.bat para llamar informeCompilacion
