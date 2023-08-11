@@ -829,7 +829,7 @@ SCHEDULED: <2023-06-13 mar>
   - API
     - feature-seguimiento-iaas (master) C
 
-** TODO Compilar ENO [3/4]
+** TODO Compilar ENO [2/2]
 - [X] WEB [1/1]
   - [X] Ambulatorio [3/3]
     - [X] Gestion GES [1/1]
@@ -838,7 +838,7 @@ SCHEDULED: <2023-06-13 mar>
       - [X] Merge master a gestion ENO
     - [X] Crear rama feature desde master y fusionar eno y ges
       - feature-gestion-ges-notificacion-eno
--[ ] API [3/4]
+- [X] API [2/2]
   - [X] Global [3/3]
     - [X] Merge master con feature-notificacion-eno
     - [X] Merge master con gestion-ges
@@ -857,7 +857,7 @@ SCHEDULED: <2023-06-13 mar>
   - [ ] Urgencia
   - [ ] Clinica
 
-** TODO Implementar informe compilacion en todos los proyectos vue [9/10]
+** DONE Implementar informe compilacion en todos los proyectos vue [10/10]
 - [X] Ambulatorio [3/3]
   - [X] Crear informeCompilacion.ps1
   - [X] Modificar empaquetar.bat para llamar informeCompilacion
@@ -875,11 +875,11 @@ SCHEDULED: <2023-06-13 mar>
   - [X] Modificar empaquetar.bat para llamar informeCompilacion
   - [X] Push release y master
   - [X] Variables de entorno VUE_APP_AMBIENTE
-- [-] componentesDistribuidos [3/4]
+- [X] componentesDistribuidos [4/4]
   - [X] Cambiar modo build para usar .env.prod
   - [X] Modificar informeCompilacion.ps1 para que obtenga datos desde archivo componente ges o caja
   - [X] Variables de entorno VUE_APP_AMBIENTE
-  - [ ] Push release y master
+  - [X] Push release y master
 - [X] facturacion [4/4]
   - [X] Crear informeCompilacion.ps1
   - [X] Modificar empaquetar.bat para llamar informeCompilacion
@@ -905,3 +905,16 @@ SCHEDULED: <2023-06-13 mar>
   - [X] Modificar empaquetar.bat para llamar informeCompilacion
   - [X] Push release y master
   - [X] Variables de entorno VUE_APP_AMBIENTE
+
+** DONE Correo informando proceso informes compilación [2/2]
+- [X] Redactar correo
+- [X] Consultar si correo debe contener todo el proceso en cuerpo mensaje o adjuntar archivo con instrucciones
+  - Con la info en cuerpo correo esta ok
+
+** TODO Correcciones Clinica para prod CASEL [5/5]
+- [X] Agregar contador de caracteres en texto evolucion medica [1/1]
+  - [X] Crear contador de texto en todos los list item
+- [X] Agregar scroll pestaña evolucion medica , indicacion generales
+- [X] Mapa cama: al cambiar de piso seccion queda seleccionado el paciente de la seccion anterior
+- [X] Registro Enfermeria : pestaña evolucion se debe bloquear lo que ingresa otro usuario
+- [X] Registro Enfermeria : pestaña partograma no se debe editar el registro de otro profesional. Debe aparecer bloqueado
