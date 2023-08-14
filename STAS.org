@@ -911,10 +911,51 @@ SCHEDULED: <2023-06-13 mar>
 - [X] Consultar si correo debe contener todo el proceso en cuerpo mensaje o adjuntar archivo con instrucciones
   - Con la info en cuerpo correo esta ok
 
-** TODO Correcciones Clinica para prod CASEL [5/5]
+** TODO Correcciones Clinica para prod CASEL [10/10]
+<2023-08-11 Fri> INICIO
 - [X] Agregar contador de caracteres en texto evolucion medica [1/1]
   - [X] Crear contador de texto en todos los list item
 - [X] Agregar scroll pestaña evolucion medica , indicacion generales
 - [X] Mapa cama: al cambiar de piso seccion queda seleccionado el paciente de la seccion anterior
 - [X] Registro Enfermeria : pestaña evolucion se debe bloquear lo que ingresa otro usuario
 - [X] Registro Enfermeria : pestaña partograma no se debe editar el registro de otro profesional. Debe aparecer bloqueado
+ <2023-08-11 Fri> TERMINO De las anteriores
+- [X] En Clinica, vista evolucion-medica pestaña Epicrisis las recetas debe bloquearse anterior para no editar, y debe haber un boton imprimir por cada receta, seguir comportamiento de ambulatorio ficha/atencion
+- [X] Revisar por que no carga evolucion-medica
+  - Problema con sp resuelto por cristian
+- [X] Estado evolucion medica indicar firmado o activo, como en indicaciones generales *** usuLoginEjecuta no se si corresponde ahi, consultar ***
+- [X] Revisar anular Indicación para que sólo médico que evoluciona pueda anular [4/4]
+  - En DB no se guarda usu_login, consultar para hacer cambios desde DB hasta vista agregando usu_login
+  - [X] Agregar USU_LOGIN en tabla
+  - [X] Agregar USU_LOGIN en SP correspondientes
+    - spu_fch_guardar_procedimiento_medico
+    - spu_fch_obtener_procedimiento_medico
+  - [X] Agregar UsuLogin en DTO correspondientes
+    - IndicacionProcedimientoDTO
+  - [X] Agregar usuLogin en vista
+- [X] Balance hidrico en control enfermeria actualizar datos en la vista para evitar tener que re-cargar para actualizar datos
+ <2023-08-14 Mon> TERMINO de las anteriores
+
+*** Cambios Realizados
+- WEB
+  - Ambulatorio
+    - evolucion-medica.vue M
+    - epicrisis.vue (src/components/medico/epicrisis.vue) M
+    - mapa-cama.vue M
+    - registro-enfermeria.vue M
+- API
+  - FichaClinicaHospitalizado
+    - IndicacionProcedimientoDTO M
+    - AtencionMedicoRepository M
+- DB
+  - ALTER TABLE HCH_PROCEDIMIENTO_MEDICO
+    ADD USU_LOGIN VARCHAR (30)
+  - spu_fch_guardar_procedimiento_medico M
+  - spu_fch_obtener_procedimiento_medico M
+- GIT
+  - WEB
+    - Clinica
+      - feature-correcciones-prod-casel (QA) C
+  - API
+    - FichaClinicaHospitalizado
+      - feature-correcciones-prod-casel (QA) C
