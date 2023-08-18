@@ -912,7 +912,7 @@ SCHEDULED: <2023-06-13 mar>
 - [X] Consultar si correo debe contener todo el proceso en cuerpo mensaje o adjuntar archivo con instrucciones
   - Con la info en cuerpo correo esta ok
 
-** DONE Correcciones Clinica para prod CASEL [13/13]
+** DONE Correcciones Clinica para prod CASEL [15/15]
 <2023-08-11 Fri> INICIO
 - [X] Agregar contador de caracteres en texto evolucion medica [1/1]
   - [X] Crear contador de texto en todos los list item
@@ -941,6 +941,8 @@ SCHEDULED: <2023-06-13 mar>
 - [X] Indicacion general en registro enfermeria debe indicar badge estado suspendido
 - [X] Control Enfermeria Cliclo vital, balon contrapulsacion (ulimo valor) no aparece icono al guardar, sólo al recargar
  <2023-08-16 Wed> TERMINO de las anteriores
+- [X] Estado firmado para evolucion medica <2023-08-18 Fri>
+- [X] Scroll para evolucion medica <2023-08-18 Fri>
 
 *** Cambios Realizados
 - WEB
@@ -965,19 +967,26 @@ SCHEDULED: <2023-06-13 mar>
   - API
     - FichaClinicaHospitalizado
       - feature-correcciones-prod-casel (QA) C
-** TODO Correcciones Urgencia Produccion CASEL [7/8]
+** TODO Correcciones Urgencia Produccion CASEL [9/10]
 <2023-08-16 Wed> INICIO
 - [X] Fecha en signos vitales no se ve al grabar desde clasificacion esi
   - La fecha que se estaba formateando al buscarPaciente era la de los datos de vue local, lo que resultaba en invalid date (db y sp todo ok)
     - se modifica spu_fcu_guardar_procedimiento_enfermeria, atencionRepository y procedimientoEnfermeriaDTO
-- [ ] En Atencion Enfermeria datos no se actualizan, revisar si en db esta guardando o no *** Puede ser por mala logica de filtro y logica de repository ***
+- [X] En Atencion Enfermeria datos no se actualizan, revisar si en db esta guardando o no *** Puede ser por mala logica de filtro y logica de repository ***
   - Se estan duplicando ahora...lol
+    - Estaba dado vuelta la operacion ternaria... dumb
 - [X] Se pierde la categorizacion al guardar en atiencion enf
-- [X] Atención Enf no se muestra tooltip en plan enfermeria (Comparar con clinica)
+- [ ] Atención Enf no se muestra tooltip en plan enfermeria (Comparar con clinica)
   - nombrePrestador y rutPrestador vienen null, revisar api y sp
   - Deberia funcionar, ahora guarda prestador en cuidado.planEnf.prestador
   - Funca, pero al guardar despues hay que cargar datos denuevo pa que aparezcan datos en tooltip (o ver otra opcion pa que se habilite el tooltip)
-- [X] En urgencia atencion se debe quitar requiere Kine
+- [X] En urgencia atencion se debe quitar requiere Kine [1/1]
+  - [X] Eliminar validation requiere kine
 - [X] Api urgencia entregar usu_login para indicaciones generales
 - [X] Urgencia atencion agregar bagde suspendido
 - [X] Ciclo vital balon contrapulsacion no se ve icono
+- [X] Agregar campo termino de atencion, fuera de los tabs, como en clinica
+- [X] Revisar loaders en atencion enfermeria
+
+** DONE crear script para borrar cache de chrome
+<2023-08-18 Fri>
