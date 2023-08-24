@@ -967,7 +967,7 @@ SCHEDULED: <2023-06-13 mar>
   - API
     - FichaClinicaHospitalizado
       - feature-correcciones-prod-casel (QA) C
-** TODO Correcciones Urgencia Produccion CASEL [9/10]
+** TODO Correcciones Urgencia Produccion CASEL [17/17]
 <2023-08-16 Wed> INICIO
 - [X] Fecha en signos vitales no se ve al grabar desde clasificacion esi
   - La fecha que se estaba formateando al buscarPaciente era la de los datos de vue local, lo que resultaba en invalid date (db y sp todo ok)
@@ -976,10 +976,11 @@ SCHEDULED: <2023-06-13 mar>
   - Se estan duplicando ahora...lol
     - Estaba dado vuelta la operacion ternaria... dumb
 - [X] Se pierde la categorizacion al guardar en atiencion enf
-- [ ] Atención Enf no se muestra tooltip en plan enfermeria (Comparar con clinica)
+- [X] Atención Enf no se muestra tooltip en plan enfermeria (Comparar con clinica)
   - nombrePrestador y rutPrestador vienen null, revisar api y sp
   - Deberia funcionar, ahora guarda prestador en cuidado.planEnf.prestador
   - Funca, pero al guardar despues hay que cargar datos denuevo pa que aparezcan datos en tooltip (o ver otra opcion pa que se habilite el tooltip)
+  - Eran varias cosas: En la api no asignaba valor a variable fecha, despues de guardar no llamaba a buscar plan de enfermeria para cargarlo, y en vista no se enviaba los nuevos datos de plan enf a componente, ya quedo listo corrigiendo eso
 - [X] En urgencia atencion se debe quitar requiere Kine [1/1]
   - [X] Eliminar validation requiere kine
 - [X] Api urgencia entregar usu_login para indicaciones generales
@@ -987,6 +988,32 @@ SCHEDULED: <2023-06-13 mar>
 - [X] Ciclo vital balon contrapulsacion no se ve icono
 - [X] Agregar campo termino de atencion, fuera de los tabs, como en clinica
 - [X] Revisar loaders en atencion enfermeria
-
+<2023-08-21 Mon> Termino Anterior
+<2023-08-22 Tue> Inicio
+- [X] Ocultar boton guardar/firmar en atencion-enfermeria [9/9]
+  - [X] Pestaña atención medica ocultar botones guardar datos y firmar evolución
+  - [X] Pestaña administración medicamento de la enfermera ocultar botón firmar evolución
+  - [X] Pestaña indicación médica  ocultar botones guardar datos y firmar evolución
+  - [X] Pestaña Historial paciente  ocultar botones guardar datos y firmar evolución
+  - [X] Pestaña ex. Laboratorio y ex. imagenología  ocultar botones guardar datos y formar evolución
+  - [X] Pestaña plan enfermería ocultar botón firmar evolución
+  - [X] Pestaña ciclo vital ocultar botones guardar datos y firmar evolución
+  - [X] Pestaña ciclo escalas ocultar botones guardar datos y firmar evolución
+  - [X] Pestaña control enfermería  ocultar botones guardar datos y formar evolución
+- [X] Firmar atencion Enfermeria loader queda encima
+  - Faltaba await en Vue.Swal que pregunta si esta seguro de firmar
+- [X] Decimal en signos vitales que sea con . y con ,
+  - Consultar por cual otro campo, se hace una funcion que formatea el decimal en el input
+  - solo campos rsvTax, rsvTrec y rsvPeso, en vista atencion, atencion-especialista y categorizacion
+- [X] Eliminar objeto requiere Kine de atencion
+  - Revisar si eliminar todo desde DB o solo enviar valor NULL
+  - Enviar null solamente desde sp, aceptar nulos en DTO
+- [X] Revisar modal GES no abre
+  - problemas en componente, consultar para revisar
+  - Con un reinicio del server levanto
+- [X] Alta paciente revisar Fecha de alta
+- [X] Atencion medico revisar fecha alta con ficha 2226323
+  - se modifica sp spu_fcu_guardar_atencion para que guarde fecha en ATE_HTA
+   <2023-08-22 Tue> Termino Anterior
 ** DONE crear script para borrar cache de chrome
 <2023-08-18 Fri>
