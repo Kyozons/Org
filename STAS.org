@@ -1017,3 +1017,38 @@ SCHEDULED: <2023-06-13 mar>
    <2023-08-22 Tue> Termino Anterior
 ** DONE crear script para borrar cache de chrome
 <2023-08-18 Fri>
+
+** TODO Clear-Site-Data [/]
+- Es un HTTP Header de tipo response, por lo cual se debe agregar desde el servidor al cliente
+- Se debe encontrar una manera de hacer que el cliente identifique que está atrasado en la version
+- Si cliente esta atras en version se debe llamar al servidor para que envíe un response añadiendo al header clear-site-data
+- Una opcion es crear un endpoint dedicado a agregar el header clear-site-data al response el cual se llame cuando la aplicacion identifique estar fuera de version
+  - Cómo identificar?
+    - Puede ser setear un metodo que verifique una version estatica la cual se actualice manualmente en cada actualizacion
+- Al parecer en chrome no se puede usar el header y en firefox se elimino el cache de las opciones disponibles
+  - [[https://github.com/w3c/webappsec-clear-site-data/issues/68][Firefox elimina "cache" de las opciones del header]]
+  - [[https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Clear-Site-Data#browser_compatibility][Segun compatibilidad Chrome tiene disponible el feature, pero no deja usar header]]
+- La alternativa que queda es mantener las versiones de los proyectos en la DB, llamar a endpoint en Main.vue de cada proyecto para confirmar que la version actual del proyecto sea la misma que en DB
+  - Para esto lo mejor es hacer endpoint en global, sp que recupere las versiones desde una tabla nueva VERSIONES_VUE (?)
+  - en Main.vue hacer la llamada al endpoint para comparar y si está atrasado enviar un window.location.relead(true) el valor "true" indica recargar limpiando la cache (como Ctrl+F5)
+    - NOTA: Hay un bug que puede pasar que si la comparación no coincide incluso despues de hacer el fetch puede caer en un bucle infinito de reload, es algo a tener en cuenta
+- La otra opcion es [[https://support.google.com/chrome/a/answer/10686330?hl=en#zippy=][configurar Chrome]] para borrar cache cada vez que cierre o cuando pase un tiempo definido
+
+** DONE Test PROD CALAMA Urgencia [3/3]
+- [X] Botón guardar y firmar en interconsulta estan habilitados para enfermera
+  - Se agrea !$store.getters.GetEsMedico para que solo medicos puedan grabar / terminar atencion
+  - Consultar por metodo de confirmacion en interconsulta esMedicoAtencion, quiza se deba consultar por usu_nombre
+  - Se verifica al guardar / terminar el permiso del perfil por lo tanto no deja guardar
+- [X] Al firmar atencion del médico asignar cama queda disponible, se mantiene o disabled?
+  - Se queda asi mientras, no es un problema
+- [X] En vistas atencion-enfermeria, atencion-especialista, categorizacion, alta-paciente el campo ateFecLeyUrg está presente, reemplazar por hluFecLeyUrg
+
+** TODO Test PROD CALAMA Clinica [1/5]
+- [ ] En lista de trabajo al hacer doble click te lleva a la atención, pero no completa los datos del paciente
+- [X] No aparecen evoluciones médicas después de guardar, ni al volver a buscar paciente
+  - Un tema de sp con la fecha, solucionado por cristian
+- [ ] No se paso el feature de los bagde para indicacion med
+- [ ] En Registro Rehabilitacion campo Tiempo desde ultima alimentacion da error al ingresar letras
+  - El objeto esta como string en DTO, pero en DB debe ser NUMERIC, por lo tanto se debe restringir a campo numeric en vista
+  - además indicar unidad de medida en titulo para ayudar a legibilidad
+- [ ] En registro Nutri no se borran todas las evoluciones al seleccionar todo, solo al seleccionar de a una
