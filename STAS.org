@@ -1132,3 +1132,59 @@ SCHEDULED: <2023-06-13 mar>
   - Tabla CONFIGURACION columna CON_CODIGO = RN obtener CON_VALOR
   - spu_gen_obtener_parametros_configuracion 'RN'
     1855 vue ambulatorio
+
+** DONE Fecha Filtro Solicitud Medicamentso Clinica [4/4]
+<2023-09-20 Wed> Inicio
+- [X] Agregar variable fecha filtro en Vista solicitud-medicamentos.vue
+- [X] Agregar fechas en métodos de cada tab
+- [X] Agregar showLoader y hideLoader en metodo listaSolicitudMedicamentos
+- [X] Agregar fechaFiltro en service/solicitud.js clase SolicitudMedicamento
+*** Cambios Realizados
+- WEB
+  - Clinica
+    - solicitud-medicamentos.vue
+    - solicitud.js
+** DONE Label Codigo - Nombre para ex. Lab e Imagen Urgencia y Clinica [0/0]
+- Urgencia [1/1]
+  - [X] Cambiar label de vue select "psrDescrip" a "codigoNombre"
+- Clinica [1/1]
+  - [X] Cambiar label de vue select "psrDescrip" a "codigoNombre"
+- Common.Models [1/1]
+  - [X] Cambiar GrupoExamenDTO para crear campo combinado "codigoNombre"
+*** Cambios Realizados
+- WEB
+  - Urgencia
+    - examenes-laboratorio.vue M
+    - examenes-imagenologia.vue M
+  - Clinica
+    - examenes-laboratorio.vue M
+    - examenes-imagenologia.vue M
+- API
+  - Common.Models
+    - GrupoExamenDTO M
+- GIT
+  - Urgencia
+    - feature-select-examenes
+  - Clinica
+    - feature-select-examenes
+  - Common.Models
+    - feature-select-examenes
+
+
+** TODO Hospitalizado cambios Preparacion Pre Operatioria [4/6]
+- Trabajar rama hojas
+- [X] Tab Preparacion Operatoria se debe mostrar, todo el resto debe ocultar
+  - [X] Verificar que ninguna funcion de los tabs ocultos se esté llamando
+- [X] Cambiar nombre a Preparacion Pre Operatoria
+- Hacer funcionar bien la vista en hospitalizado antes de mover a otro proyecto
+  - Los checkbox estaban inicializados en null, por lo cual daba error [object, object] al enviarlo a la api, se cambian a iniciar en false y se guarda dato
+- [X] Agregar sobre información horaria info última modificación
+  - Consulta: Los campos se bloquan al guardar, cómo proceder ahi? desbloquear todos, algunos o ninguno?
+    - Eliminar todos los disabled
+  - [X] Usuario
+    - Consulta: Se debe traer el USU_LOGIN además del nombre completo para realizar comparaciones de username para operaciones como modificar registros y demás?
+  - [X] Servicio
+  - [X] Fecha Registro
+- [ ] Doc llevar desde protocolo hasta evolucion medica clinica
+- [X] En pabellon agregar componente alegrias paciente y eliminar duplicados de alergia y medicamentos contraindicados
+- [ ] vista pabellon.vue se debe pasar a proyecto Clinica
