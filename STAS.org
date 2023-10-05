@@ -864,7 +864,7 @@ SCHEDULED: <2023-06-13 mar>
   - [X] Ambulatorio
     - [X] DEVOLVER ROUTES.JS A LA NORMALIDAD
   - [ ] Urgencia
-  - [ ] Clinica
+  - [ ] Clinica <2023-09-28 Thu>
 
 ** DONE Implementar informe compilacion en todos los proyectos vue [10/10]
 - [X] Ambulatorio [3/3]
@@ -1171,7 +1171,7 @@ SCHEDULED: <2023-06-13 mar>
     - feature-select-examenes
 
 
-** TODO Hospitalizado cambios Preparacion Pre Operatioria [4/6]
+** DONE Hospitalizado cambios Preparacion Pre Operatioria [6/6]
 - Trabajar rama hojas
 - [X] Tab Preparacion Operatoria se debe mostrar, todo el resto debe ocultar
   - [X] Verificar que ninguna funcion de los tabs ocultos se esté llamando
@@ -1185,6 +1185,116 @@ SCHEDULED: <2023-06-13 mar>
     - Consulta: Se debe traer el USU_LOGIN además del nombre completo para realizar comparaciones de username para operaciones como modificar registros y demás?
   - [X] Servicio
   - [X] Fecha Registro
-- [ ] Doc llevar desde protocolo hasta evolucion medica clinica
+- [X] Doc llevar desde protocolo hasta evolucion medica clinica
 - [X] En pabellon agregar componente alegrias paciente y eliminar duplicados de alergia y medicamentos contraindicados
-- [ ] vista pabellon.vue se debe pasar a proyecto Clinica
+- [X] vista pabellon.vue se debe pasar a proyecto Clinica
+*** Cambios Realizados
+- WEB
+  - hospitalizado
+    - routes.js M
+    - listaProtocolo.vue M
+    - preparacionOperatoria.vue M
+    - pabellon.vue M
+  - clinica
+    - routes M
+    - preparacionOperatoria.vue C
+    - ficha-pabellon.vue C
+    - fichaClinica.js C
+- API
+  - hospitalizado
+    - ProtocoloDTO M
+    - ProtocoloRepository M
+- DB
+  - spu_pab_listar_cirugias_sin_protocolo_v3 M
+- GIT
+  - WEB
+    - hospitalizado
+      - hojas M
+    - clinica
+      - feature-ficha-pabellon C
+  - API
+    - hospitalizado
+      - hojas M
+** DONE Fix eliminar cirugia editarProtocolo [1/1]
+- [X] Eliminar cirugía da error al intentar borrar una cirugía sin guardar en base de datos, revisar para eliminarla del arreglo local
+  - se agrega en metodo borrar verificar si cirugia esta en db, de no ser asi se elimina sólo del arreglo local<2023-09-28 Thu>
+*** Cambios realizados
+- WEB
+  - hospitalizado
+    - reservaPabellon.vue
+** DONE Filtro paciente para Solicitudes y Despacho Uni Clinica [5/5] <2023-10-03 Tue>
+- Tomar de referencia Urgencia
+- [X] Tab Solicitudes [3/3]
+  - [X] Aplicar filtro paciente en Tab solicitudes
+  - [X] Agregar columna Cantidad Entregada
+  - [X] Modificar columna Cantidad a Cantidad Solicitada
+- [X] Tab Despacho Uni [2/2]
+  - [X] Agregar check medicamentos entregados
+  - [X] Aplicar filtro paciente en Tab solicitudes
+- [X] Aplicar recarga de datos en método entregar medicamento
+- [X] Aplicar onRowClass a vuetable y crear método
+- [X] Corregir evolucion medica para obtener paciente sin rut (recien nacido) [2/2]
+  - [X] Buscar paciente en created sin rut
+  - [X] Guardar paciente validators sin rut
+*** Cambios Realizados
+- WEB
+  - clinica
+    - solicitud-medicamentos.vue M
+    - evolucion-medica.vue M
+- GIT
+  - clinica
+    - feature-filtro-paciente-solicitud-med
+     <2023-10-05 Thu> TERMINO
+
+** DONE Imprimir indicacion medicamento Clinica [2/2]
+<2023-10-04 Wed>
+- [X] Clinica VUE [3/3]
+  - [X] Crear botón imprimir tarjetero en vista registro-enfermeria tab admin medicamentos y soluciones
+  - [X] Servicio, ficha, ingreso se envia desde vue
+  - [X] Crear llamada a endpoint informe
+- [X] FichaClinicaHospitalizado API [3/3]
+  - [X] Crear endpoint para recibir solicitud imprimir informe
+  - [X] registrar nueva ruta de informe en appSettings.json y en reporte DTO
+  - [X] configurar metodo para obtener informe
+*** Cambios Realizados
+- WEB
+  - clinica
+    - registro-enfermeria.vue M
+    - evolucionEnfermeria.js M
+- API
+  - FichaClinicaHospitalizado
+    - reporte.cs DTO M
+    - appSettings.json de cada clinica
+    - AtencionEnfermeriaController M
+    - ReportesFichaClinica M
+- GIT
+  - web
+    - clinica
+      - feature-imprimir-admin-med-sol
+  - api
+    - FichaClinicaHospitalizado
+      - feature-imprimir-admin-med-sol
+
+** TODO Buscar por ficha proyecto clinica [2/2]
+<2023-10-05 Thu>
+- [X] Implementar busqueda por ficha paciente [4/4]
+  - [X] Medico
+  - [X] Enfermera
+  - [X] Kine
+  - [X] Nutri
+- [X] Implementar de manera correcta el limpiarDatos en vistas [4/4]
+  - [X] Medico
+  - [X] Enfermera
+  - [X] Kine
+  - [X] Nutri
+*** Cambios Realizados
+- WEB
+  - clinica
+    - epicrisis.vue M
+    - evolucion-medica.vue M
+    - registro-enfermeria.vue M
+    - registro-nutricionista.vue M
+    - kinesiologo.vue M
+- GIT
+  - clinica
+    - feature-buscar-por-ficha
