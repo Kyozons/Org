@@ -24,7 +24,7 @@ getenv_docker("URL_BASE","http://Localhost");
 Usar php dentro de html
 <?php CODIGO ?>
 Al final sirve poner "/" en el href de un hmtl ... XD
-* TODO VALIDAR RUT!!!
+* NO VALIDAR RUT!!!
 googlealo
 * DONE sent cambiarlo a soporteti.mundopacifico.cl
 
@@ -64,7 +64,7 @@ googlealo
 * MP dramas tarjeta red
 MP01794
 
-* TODO MP cambio Hora contact [3/4]
+* NO MP cambio Hora contact [3/4]
 - [X] MP01224
 - [X] MP01924
 - [X] MP00607

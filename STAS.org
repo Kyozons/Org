@@ -860,11 +860,13 @@ SCHEDULED: <2023-06-13 mar>
 *** Modificaciones / Correcciones [1/2]
 - [X] Verificar fecha en vuetable ENO, problema formateo
   - Faltaba formatear fecha como DD-MM-YYYY en metodo Get (Listar)
-- [-] Cambiar window.open por router.push cuando la ficha sea del mismo proyecto [1/3]
+    - <2023-10-16 Mon> se produjo error nuevamente, solucion: en map de listar crear la fecha con moment(data.fecNotif, "DD-MM-YYYY")
+        para que tome el formato correcto, de lo contrario toma el día como mes y en días mayores a 12 da invalid date, en días menores da vuelta día - mes
+- [-] Cambiar window.open por router.push cuando la ficha sea del mismo proyecto [2/3]
   - [X] Ambulatorio
     - [X] DEVOLVER ROUTES.JS A LA NORMALIDAD
   - [ ] Urgencia
-  - [ ] Clinica <2023-09-28 Thu>
+  - [X] Clinica <2023-09-28 Thu>
 
 ** DONE Implementar informe compilacion en todos los proyectos vue [10/10]
 - [X] Ambulatorio [3/3]
@@ -1171,7 +1173,7 @@ SCHEDULED: <2023-06-13 mar>
     - feature-select-examenes
 
 
-** DONE Hospitalizado cambios Preparacion Pre Operatioria [6/6]
+** DONE Hospitalizado cambios Preparacion Pre Operatioria [1/1]
 - Trabajar rama hojas
 - [X] Tab Preparacion Operatoria se debe mostrar, todo el resto debe ocultar
   - [X] Verificar que ninguna funcion de los tabs ocultos se esté llamando
@@ -1215,6 +1217,9 @@ SCHEDULED: <2023-06-13 mar>
   - API
     - hospitalizado
       - hojas M
+*** DONE Errores encontrados [1/1]
+- [X] ficha pabellon no guarda fechas en clinica
+
 ** DONE Fix eliminar cirugia editarProtocolo [1/1]
 - [X] Eliminar cirugía da error al intentar borrar una cirugía sin guardar en base de datos, revisar para eliminarla del arreglo local
   - se agrega en metodo borrar verificar si cirugia esta en db, de no ser asi se elimina sólo del arreglo local<2023-09-28 Thu>
@@ -1275,18 +1280,32 @@ SCHEDULED: <2023-06-13 mar>
     - FichaClinicaHospitalizado
       - feature-imprimir-admin-med-sol
 
-** TODO Buscar por ficha proyecto clinica [2/2]
+** DONE Buscar por ficha proyecto clinica [1/1]
 <2023-10-05 Thu>
-- [X] Implementar busqueda por ficha paciente [4/4]
+- [X] Implementar busqueda por ficha paciente [10/10]
   - [X] Medico
   - [X] Enfermera
+  - [X] Control Enfermeria
+  - [X] Otros Profesionales
   - [X] Kine
   - [X] Nutri
-- [X] Implementar de manera correcta el limpiarDatos en vistas [4/4]
+  - [X] Ingreso enfemería
+  - +Notificaciones GES+ NO
+  - [X] Epicrisis Enfermera
+  - [X] Ficha Pabellón
+  - [X] Recien Nacido
+- [X] Implementar de manera correcta el limpiarDatos en vistas [10/10]
   - [X] Medico
   - [X] Enfermera
+  - [X] Control Enfermeria
+  - [X] Otros Profesionales
   - [X] Kine
   - [X] Nutri
+  - [X] Ingreso enfemería
+  - +Notificaciones GES+ NO
+  - [X] Epicrisis Enfermera
+  - [X] Ficha Pabellón
+  - [X] Recien Nacido
 *** Cambios Realizados
 - WEB
   - clinica
@@ -1295,6 +1314,224 @@ SCHEDULED: <2023-06-13 mar>
     - registro-enfermeria.vue M
     - registro-nutricionista.vue M
     - kinesiologo.vue M
+    - otros-profesionales M
+    - control-enfermeria M
+    - ingreso-enfermeria M
+    - epicrisis-enfermeria M
+    - ficha-pabellon M
+    - preparacion-operatoria M
+    - recien-nacido.vue
 - GIT
   - clinica
     - feature-buscar-por-ficha
+*** DONE Errores encontrados [1/1]
+<2023-10-16 Mon>
+- [X] Con paciente desde store la ficha no se muestra en campo de busqueda
+  - Se implementa un respaldo de las opciones seleccionadas al momento de buscar paciente
+      ya que se sobreescribian al traer paciente.data, después de buscar paciente se
+      se recuperan datos de ficha.paciente.optionRut/Pasaporte/PacNumFicha de los respaldos hechos
+
+** DONE Validar fecha cama paciente clinica [1/1]
+<2023-10-11 Wed>
+- [X] En admisión al intentar poner fecha hasta, validación no deja ingresar misma fecha que fecha desde
+- [X] Ocultar campos Admision [2/2]
+  - [X] Medicamentos Contraindicados
+  - [X] RAM (reacciones alergicas a medicamentos)
+*** DONE Errores Encontrados [1/1]
+- [X] FechaHasta se guarda con valor fechaDesde y causa error trigger en db
+  - En api AdmisionHospitalaria hay error con asignar fechaHasta con valor fechaDesde, se corrige
+*** Cambios Realizados
+- WEB
+  - clinica
+    - admision.vue M
+- API
+  - AdmisionHospitalaria
+    - AdmisionRepository.cs M
+- GIT
+  - WEB
+    - feature-correcciones-prod-casel
+  - API
+    - feature-correccion-fecha-cama-habitacion
+
+** DONE Ocultar Campos Urgencia [1/1]
+<2023-10-11 Wed>
+- [X] Ocultar campos Admision [2/2]
+  - [X] Medicamentos Contraindicados
+  - [X] RAM (reacciones alergicas a medicamentos)
+*** Cambios Realizados
+- WEB
+  - urgencia
+    - admision.vue M
+- GIT
+  - feature-correcciones-prod-casel
+
+** DONE Mover motivo ingreso a tabla arriba Urgencia [1/1]
+<2023-10-11 Wed>
+- [X] agregar columna motivo ingreso en tabla pacientes en box
+*** Cambios Realizados
+- WEB
+  - urgencia
+    - mapa-cama.vue M
+- API
+  - Urgencia
+    - mapaCamasRepository M
+    - camaDTO M
+- DB
+  - spu_fcu_mc_listar_camas_x_box
+- GIT
+  - WEB
+    - feature-correcciones-prod-casel
+  - API
+    - feature-correcion-prod-casel
+
+** DONE Correcciones Urgencia [3/3]
+<2023-10-12 Thu>
+- [X] Max lenght de evolucion enfermera a 3000
+- [X] optimizar espacio horizontal de tabla evolucion enf
+- [X] dejar en color danger y bold la letra de vel infusion y obs en donde sea soluciones vista medico
+*** Cambios Realizados
+- WEB
+  - Urgencia
+    - atencion-enfermeria.vue M
+    - atencion.vue M
+- GIT
+  - feature-correcciones-prod-casel
+** DONE Guardar paciente en store al buscarPaciente Clinica [1/1]
+- [X] Agregar dispatch en la store para guardar paciente en método buscarPaciente [9/9]
+  - [X] evolucion-medica
+  - [X] control-enfermeria
+  - [X] registro-enfermeria
+  - [X] registro-nutricion
+  - [X] otros-profesionales
+  - [X] registro-rehabilitacion
+  - [X] ingreso-enfermeria
+  - [X] ficha-pabellon
+  - [X] recien-nacido
+*** Cambios Realizados
+- WEB
+  - clinica
+    - evolucion-medica.vue M
+    - control-enfermeria.vue M
+    - registro-enfermeria.vue M
+    - registro-nutricion.vue M
+    - otros-profesionales.vue M
+    - kinesiologo.vue M
+    - ingreso-enfermeria.vue M
+    - ficha-pabellon.vue M
+    - recien-nacido.vue M
+- GIT
+    feature-guardar-pac-store
+** DONE Corregir formateo fecha gestion ENO [1/1]
+- [X] agregar formateo correcto de fecha en cargarTablaEntidades() [2/2]
+  - [X] Ambulatorio
+  - [X] Clinica
+*** Cambios realizados
+- WEB
+  - clinica
+    - gestion-eno.vue M
+  - ambulatorio
+    - gestion-eno.vue M
+- GIT
+  - WEB
+    - clinica/ambulatorio
+      - feature-notificacion-eno M
+** DONE maxLength 4000 para evo kine clinica [1/1]
+- [X] aumentar a 4000 maxLength [3/3]
+  - [X] freEvolucion
+  - [X] freObjTerap
+  - [X] freResEscalaEval
+*** Cambios realizados
+- WEB
+  - clinica
+    - kinesiologo.vue M
+- GIT
+  feature-correcciones-prod-casel
+** TODO Categorizacion ESI Urgencia clasifica mal [1/1]
+- [X] ESI se guarda sin numero de clasificacion, revisar
+  basicamente el problema era que al cancelar la clasificacion los datos quedaban igual y se guardaba mal, se corrige ese comportamiento solo vue
+  urgencia
+  feature-categorizacion-esi
+  2226321
+** TODO Implementar evolucion médica en Urgencia [3/3]
+- [X] tab evolución médica
+- [X] botones guardar y firmar evolucion cuando tab evo activa
+- [X] usar endpoint de clinica como ejemplo, mismo sp y db [4/4]
+  - [X] llamada endpoint en vue
+  - [X] controller
+  - [X] dto
+  - [X] repository
+*** Cambios Realizados
+- WEB
+  - urgencia
+    - atencion.vue M
+    - fichaClinica.js
+- API
+  - urgencia
+    - AtencionController.cs M
+    - EvolucionMedicoDTO.cs C
+    - AtencionRepository.cs M
+- GIT
+  - WEB
+    - urgencia
+      - feature-evolucion-medica
+  - API
+    - urgencia
+      - feature-evolucion-medica
+** TODO Imprimir informes en clinica [2/2]
+- [X] nueva vista imprimir informes [3/3]
+  - [X] crear menu
+    #+begin_src sql
+    -- Menu en Clinica
+    INSERT INTO MENU
+    (MEN_CODIGO, MEN_NOMBRE, MEN_CODIGO_MEN, MEN_ORDEN, MEN_HREF, MEN_EXTERNO, ASU_CODIGO, MEN_ICON)
+    VALUES ((SELECT MAX(MEN_CODIGO) + 1 FROM MENU), 'Imprimir Ficha', 174, (select max(MEN_ORDEN) +1 from MENU where MEN_CODIGO_MEN = 174), '/imprimir-ficha', 0, 7, NULL)
+
+    -- Asignar menu a perfil ENFERMERAS a modo de prueba
+    insert into PERFIL_SERVICIO (SER_CODIGO, PER_CODIGO, MEN_CODIGO, PES_ABRE, PES_GRABA, PES_ELIMINA, PES_AUTORIZA)
+    values ('MED', 'ENFERMERAS', 230, 1, 1, 1, 1)
+    #+end_src
+  - [X] buscar paciente por ficha, rut y pasaporte
+  - [X] mostrar datos paciente basicos y debajo el formato de imprimir
+- [X] Crear endpoint informe para loop todos ingresos y para un solo informe [2/2]
+  - [X] Crear endpoint para imprimir un sólo ingreso
+  - [X] Crear endpoint para imprimir todos los ingresos
+*** Cambios Realizados
+- WEB
+  - clinica
+    - fichaClinica.js M
+    - routes.js M
+    - src/router/views/informes/ C
+    - imprimir-ficha.vue C
+- API
+  - FichaClinicaHospitalizado
+    - informeFichaClinicaController.cs C
+    - ReportesFichaClinica.cs M
+    - Reporte.cs DTO M
+    - AppSettings.json de cada clinica STAGING y PROD M
+      - se agrega ruta "ImprimirFichaClinica": "/InformesRS/FCH_MED_Ficha_Clinica"
+- DB
+  - MENU M
+  - PERFIL_SERVICIO M
+- GIT
+  - WEB
+    - clinica
+      - feature-imprimir-ficha-paciente
+  - API
+    - FichaClinicaHospitalizado
+      - feature-imprimir-ficha
+** TODO Admision RN con anexo madre Clinica [1/1]
+<2023-11-07 Tue>
+- [X] En admision que no sea required el rut/pasaporte si tipo paciente es RN
+  - Se revisa validations y se utiliza metodo function (model){} en lugar de funcion flecha (model)=>{} para poder acceder a los valores de data() y asi poder verificar con mejor precision los datos
+  - En buscar registro se ve la opcion de dejar como rut si no tiene rut ni pasaporte. Se deja opción seteada
+
+** TODO Evolución Interconsultor en evolucion-medica clinica [8/8]
+<2023-11-08 Wed>
+- [X] en tabla HCH_EVOLUCION_MEDICA agregar columna HEM_INTERCONSULTOR CHAR 1 S/N para indicar si evolucion es de interconsulta o no
+- [X] en tabla HCH_EVOLUCION_MEDICA setear como N nueva columna HEM_INTERCONSULTOR para datos anteriormente existentes
+- [X] modificar SP para que agregue marca S/N si es interconsultor o no
+- [X] en API agregar al DTO nuevo parámetro para HemInterconsultor como bool
+- [X] en API nuevo Controller para evolucion interconsultor InterconsultorController
+- [X] en API nuevo Repository para evolución interconsultor InterconsultorRepository
+- [X] en vista evolucion-medica agregar nuevo tab Evolución Interconsultor, tomar de referencia apariencia y funciones de evolucion-medica
+- [X] Implementar anular evolucion interconsulta

@@ -1,18 +1,18 @@
 #+title: Tickets_soc
 
-* TODO Hablar con el jorgi para ver el ticket Fallo en activacion de licencias [1/1]
+* NO Hablar con el jorgi para ver el ticket Fallo en activacion de licencias [1/1]
 - [X] Hay que ver si se cambian a linux o se compran licencias windows
   Jefe jorgi va a ver con Felipe Ojeda el tema de compra de licencias
 
-* TODO Ticket alerta malware [1/1]
+* NO Ticket alerta malware [1/1]
 - [X] Indicar que se debe coordinar junto a una visita de sucursal para justificar el viaje
   Proxima semana se coordina trabajo para yungai y se puede aprovechar huepil
 
-* TODO Ticket nombre por default [0/1]
+* NO Ticket nombre por default [0/1]
 - [ ] responder a correo por llegar
 
-* TODO Ticket rootcheck [0/1]
+* NO Ticket rootcheck [0/1]
 - [ ] revisar lista y aplicar cambios
 
-* TODO Ticket petición de actualización [0/1]
+* NO Ticket petición de actualización [0/1]
 - [ ] Actualizar paquetes
