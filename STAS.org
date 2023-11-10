@@ -852,7 +852,7 @@ SCHEDULED: <2023-06-13 mar>
     - [X] Merge master con gestion-ges
     - [X] Crear rama base master fusionando eno y ges
       - feature-gestion-ges-notificacion-eno
-  - [X] FichaCliniaAmbulatoria [3/3]
+  - [X] FichaClinicaAmbulatoria [3/3]
     - [X] Merge master con feature-notificacion-eno
     - [X] Merge master con gestion-ges
     - [X] Crear rama base master fusionando eno y ges
@@ -1524,8 +1524,15 @@ SCHEDULED: <2023-06-13 mar>
 - [X] En admision que no sea required el rut/pasaporte si tipo paciente es RN
   - Se revisa validations y se utiliza metodo function (model){} en lugar de funcion flecha (model)=>{} para poder acceder a los valores de data() y asi poder verificar con mejor precision los datos
   - En buscar registro se ve la opcion de dejar como rut si no tiene rut ni pasaporte. Se deja opción seteada
+*** Cambios realizados
+- WEB
+  - clinica
+    - admision.vue M
+- GIT
+  - clinica
+    - feature-admision-rn-anexo-madre
 
-** TODO Evolución Interconsultor en evolucion-medica clinica [8/8]
+** TODO Evolución Interconsultor en evolucion-medica clinica [10/10]
 <2023-11-08 Wed>
 - [X] en tabla HCH_EVOLUCION_MEDICA agregar columna HEM_INTERCONSULTOR CHAR 1 S/N para indicar si evolucion es de interconsulta o no
 - [X] en tabla HCH_EVOLUCION_MEDICA setear como N nueva columna HEM_INTERCONSULTOR para datos anteriormente existentes
@@ -1533,5 +1540,145 @@ SCHEDULED: <2023-06-13 mar>
 - [X] en API agregar al DTO nuevo parámetro para HemInterconsultor como bool
 - [X] en API nuevo Controller para evolucion interconsultor InterconsultorController
 - [X] en API nuevo Repository para evolución interconsultor InterconsultorRepository
+- [X] en API nuevo DTO EvolucionInterconsultorDTO [2/2]
+  - [X] tomar de base EvolucionMedicoDTO
+  - [X] Agregar parametros PacNumFicha e IngCorrel
 - [X] en vista evolucion-medica agregar nuevo tab Evolución Interconsultor, tomar de referencia apariencia y funciones de evolucion-medica
-- [X] Implementar anular evolucion interconsulta
+- [X] Implementar anular evolucion interconsulta [4/4]
+  - [X] Agregar valor INTERCONSULTOR: 'IC' a constantes.js
+  - [X] Agregar valores de interconsultor a modal-anulacion-evolucion.js
+  - [X] Implementar segundo modal anulacion en evolucion-medica con props para interconsultor
+  - [X] Agregar métodos en evolucion-medica para llamar a modal anular evolución
+- [X] Nuevo helper en vue/services para llamar a endpoints Interconsultor
+*** Cambios realizados
+- WEB
+  - clinica
+    - evolucionInterconsultor.js C
+    - evolucion-medica.vue M
+    - modal-anulacion-evolucion.vue M
+    - constantes.js M
+- API
+  - FichaClinicaHospitalizado
+    - AtencionMedicoController M
+    - AtencionMedicoRepository M
+    - InterconsultorController C
+    - InterconsultorRepository C
+    - Startup M
+    - EvolucionMedicoDTO M
+    - EvolucionInterconsultorDTO C
+- DB
+  - ALTER TABLE HCH_EVOLUCION_MEDICA
+    #+begin_src sql
+    /* Agregar columna para indicar si evolucion
+       corresponde a interconsultor ('S'/'N') */
+    ALTER TABLE HCH_EVOLUCION_MEDICA
+    ADD HEM_INTERCONSULTOR CHAR (1)
+    #+end_src
+
+  - UPDATE HCH_EVOLUCION_MEDICA
+    #+begin_src sql
+    /* Modificar registros para indicar que
+       no son de interconsultor */
+    UPDATE HCH_EVOLUCION_MEDICA
+    SET HEM_INTERCONSULTOR = 'N'
+    #+end_src
+
+  - spu_fch_guardar_evolucion_medica M
+  - spu_fch_obtener_evolucion_medica M
+- GIT
+  - WEB
+    - clinica
+      - feature-evolucion-interconsultor
+  - API
+    - FichaClinicaHospitalizado
+      - feature-evolucion-interconsultor
+** TODO Control Enfermeria clinica guardar sólo item [1/2]
+ref modalTempIncubadora Children
+ref control-neonatal Parent
+ref modalColorPiel Select
+ref modalAleteoNatal checkbox si/no
+- [X] Ctr Puerperio [10/10]
+  - [X] al momento del click abrir modal agregar objeto e indice [5/5]
+    - [X] modalMamas
+    - [X] modalPresenciaCalostro
+    - [X] modalRetraccionUterina
+    - [X] modalLoquios
+    - [X] modalEpisorrafia
+  - [X] en llamada a componente agregar emit hideModalCtrlNeo [5/5]
+    - [X] modalMamas
+    - [X] modalPresenciaCalostro
+    - [X] modalRetraccionUterina
+    - [X] modalLoquios
+    - [X] modalEpisorrafia
+  - [X] Al metodo openModalControl, agregar objeto en cuestion e indice como param
+  - [X] En la ref del compontente agregar objeto e indice [5/5]
+    - [X] modalMamas
+    - [X] modalPresenciaCalostro
+    - [X] modalRetraccionUterina
+    - [X] modalLoquios
+    - [X] modalEpisorrafia
+  - [X] En parent setear if si modal = a nombremodal y resultado no nulo, asignar valores al objeto del modal correspondiente [5/5]
+    - [X] modalMamas
+    - [X] modalPresenciaCalostro
+    - [X] modalRetraccionUterina
+    - [X] modalLoquios
+    - [X] modalEpisorrafia
+  - [X] modalMamas [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalPresenCiacalostro [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalRetraccionUterina [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalLoquios [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalEpisorrafia [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+
+- [ ] Ventilador Mecánico [0/6]
+  - [ ] al momento del click abrir modal agregar objeto e indice [0/1]
+    - [ ] modal
+  - [ ] en llamada a componente agregar emit hideModalCtrlNeo [0/1]
+    - [ ] modal
+  - [ ] Al metodo openModalControl, agregar objeto en cuestion e indice como param
+  - [ ] En la ref del compontente agregar objeto e indice [0/1]
+    - [ ] modal
+  - [ ] En parent setear if si modal = a nombremodal y resultado no nulo, asignar valores al objeto del modal correspondiente [0/1]
+    - [ ] modal
+  - [ ] modal [0/7]
+    - [ ] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [ ] Agregar propiedad en data itemIndex
+    - [ ] En el metodo abrirModal agregar objeto e indice como param
+    - [ ] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [ ] Comentar emit para obtenerControlEnfermeria
+    - [ ] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [ ] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
