@@ -1446,7 +1446,7 @@ SCHEDULED: <2023-06-13 mar>
     - kinesiologo.vue M
 - GIT
   feature-correcciones-prod-casel
-** TODO Categorizacion ESI Urgencia clasifica mal [1/1]
+** DONE Categorizacion ESI Urgencia clasifica mal [1/1]
 - [X] ESI se guarda sin numero de clasificacion, revisar
   basicamente el problema era que al cancelar la clasificacion los datos quedaban igual y se guardaba mal, se corrige ese comportamiento solo vue
   urgencia
@@ -1477,7 +1477,7 @@ SCHEDULED: <2023-06-13 mar>
   - API
     - urgencia
       - feature-evolucion-medica
-** TODO Imprimir informes en clinica [2/2]
+** DONE Imprimir informes en clinica [2/2]
 - [X] nueva vista imprimir informes [3/3]
   - [X] crear menu
     #+begin_src sql
@@ -1519,7 +1519,7 @@ SCHEDULED: <2023-06-13 mar>
   - API
     - FichaClinicaHospitalizado
       - feature-imprimir-ficha
-** TODO Admision RN con anexo madre Clinica [1/1]
+** DONE Admision RN con anexo madre Clinica [1/1]
 <2023-11-07 Tue>
 - [X] En admision que no sea required el rut/pasaporte si tipo paciente es RN
   - Se revisa validations y se utiliza metodo function (model){} en lugar de funcion flecha (model)=>{} para poder acceder a los valores de data() y asi poder verificar con mejor precision los datos
@@ -1532,7 +1532,7 @@ SCHEDULED: <2023-06-13 mar>
   - clinica
     - feature-admision-rn-anexo-madre
 
-** TODO Evolución Interconsultor en evolucion-medica clinica [10/10]
+** DONE Evolución Interconsultor en evolucion-medica clinica [10/10]
 <2023-11-08 Wed>
 - [X] en tabla HCH_EVOLUCION_MEDICA agregar columna HEM_INTERCONSULTOR CHAR 1 S/N para indicar si evolucion es de interconsulta o no
 - [X] en tabla HCH_EVOLUCION_MEDICA setear como N nueva columna HEM_INTERCONSULTOR para datos anteriormente existentes
@@ -1592,7 +1592,8 @@ SCHEDULED: <2023-06-13 mar>
   - API
     - FichaClinicaHospitalizado
       - feature-evolucion-interconsultor
-** TODO Control Enfermeria clinica guardar sólo item [1/2]
+** TODO Control Enfermeria clinica mejoras usuarios balance hidrico [2/2]
+<2023-11-10 Fri> Inicio
 ref modalTempIncubadora Children
 ref control-neonatal Parent
 ref modalColorPiel Select
@@ -1631,7 +1632,7 @@ ref modalAleteoNatal checkbox si/no
     - [X] Comentar emit para obtenerControlEnfermeria
     - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
     - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
-  - [X] modalPresenCiacalostro [7/7]
+  - [X] modalPresenciaCalostro [7/7]
     - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
     - [X] Agregar propiedad en data itemIndex
     - [X] En el metodo abrirModal agregar objeto e indice como param
@@ -1663,22 +1664,324 @@ ref modalAleteoNatal checkbox si/no
     - [X] Comentar emit para obtenerControlEnfermeria
     - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
     - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+- [X] Ventilador Mecánico [24/24]
+  - [X] al momento del click abrir modal agregar objeto e indice [19/19]
+    - [X] modalDispositivo
+    - [X] modalTotNivel
+    - [X] modalPrCuff
+    - [X] modalModoVentilatorio
+    - [X] modalIpapEpap
+    - [X] modalFio2Peep
+    - [X] modalFpFrPsHz
+    - [X] modalPrInsp
+    - [X] modalSensFlujo
+    - [X] modalAmplitud
+    - [X] modalVolCorriente
+    - [X] modalPviaAerea
+    - [X] modalPplatPmedia
+    - [X] modalPresionSoporte
+    - [X] modalEtCo2
+    - [X] modalVolMinuto
+    - [X] modalRelacionIE
+    - [X] modalTempHumificador
+    - [X] modalAlarmaPresion
 
-- [ ] Ventilador Mecánico [0/6]
-  - [ ] al momento del click abrir modal agregar objeto e indice [0/1]
-    - [ ] modal
-  - [ ] en llamada a componente agregar emit hideModalCtrlNeo [0/1]
-    - [ ] modal
-  - [ ] Al metodo openModalControl, agregar objeto en cuestion e indice como param
-  - [ ] En la ref del compontente agregar objeto e indice [0/1]
-    - [ ] modal
-  - [ ] En parent setear if si modal = a nombremodal y resultado no nulo, asignar valores al objeto del modal correspondiente [0/1]
-    - [ ] modal
-  - [ ] modal [0/7]
-    - [ ] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
-    - [ ] Agregar propiedad en data itemIndex
-    - [ ] En el metodo abrirModal agregar objeto e indice como param
-    - [ ] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
-    - [ ] Comentar emit para obtenerControlEnfermeria
-    - [ ] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
-    - [ ] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] en llamada a componente agregar emit hideModalCtrlNeo [19/19]
+    - [X] modalDispositivo
+    - [X] modalTotNivel
+    - [X] modalPrCuff
+    - [X] modalModoVentilatorio
+    - [X] modalIpapEpap
+    - [X] modalFio2Peep
+    - [X] modalFpFrPsHz
+    - [X] modalPrInsp
+    - [X] modalSensFlujo
+    - [X] modalAmplitud
+    - [X] modalVolCorriente
+    - [X] modalPviaAerea
+    - [X] modalPplatPmedia
+    - [X] modalPresionSoporte
+    - [X] modalEtCo2
+    - [X] modalVolMinuto
+    - [X] modalRelacionIE
+    - [X] modalTempHumificador
+    - [X] modalAlarmaPresion
+
+  - [X] Al metodo openModalControl, agregar objeto en cuestion e indice como param
+
+  - [X] En la ref del compontente agregar objeto e indice [19/19]
+    - [X] modalDispositivo
+    - [X] modalTotNivel
+    - [X] modalPrCuff
+    - [X] modalModoVentilatorio
+    - [X] modalIpapEpap
+    - [X] modalFio2Peep
+    - [X] modalFpFrPsHz
+    - [X] modalPrInsp
+    - [X] modalSensFlujo
+    - [X] modalAmplitud
+    - [X] modalVolCorriente
+    - [X] modalPviaAerea
+    - [X] modalPplatPmedia
+    - [X] modalPresionSoporte
+    - [X] modalEtCo2
+    - [X] modalVolMinuto
+    - [X] modalRelacionIE
+    - [X] modalTempHumificador
+    - [X] modalAlarmaPresion
+
+  - [X] En parent setear if si modal = a nombremodal y resultado no nulo, asignar valores al objeto del modal correspondiente [19/19]
+    - [X] modalDispositivo
+    - [X] modalTotNivel
+    - [X] modalPrCuff
+    - [X] modalModoVentilatorio
+    - [X] modalIpapEpap
+    - [X] modalFio2Peep
+    - [X] modalFpFrPsHz
+    - [X] modalPrInsp
+    - [X] modalSensFlujo
+    - [X] modalAmplitud
+    - [X] modalVolCorriente
+    - [X] modalPviaAerea
+    - [X] modalPplatPmedia
+    - [X] modalPresionSoporte
+    - [X] modalEtCo2
+    - [X] modalVolMinuto
+    - [X] modalRelacionIE
+    - [X] modalTempHumificador
+    - [X] modalAlarmaPresion
+
+  - [X] modalDispositivo [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalTotNivel [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalPrCuff [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalModoVentilatorio [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalIpapEpap [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalFio2Peep [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalFpFrPsHz [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalPrInsp [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalSensFlujo [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalAmplitud [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalVolCorriente [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalPviaAerea [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalPplatPmedia [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalPresionSoporte [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalEtCo2 [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalVolMinuto [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalRelacionIE [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalTempHumificador [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+  - [X] modalAlarmaPresion [7/7]
+    - [X] Agregar propiedades al modal para que no cierre con click afuera sólo al cancelar o cerrar
+    - [X] Agregar propiedad en data itemIndex
+    - [X] En el metodo abrirModal agregar objeto e indice como param
+    - [X] Setear el objeto del modal usando los datos del padre que se enviaron como objeto
+    - [X] Comentar emit para obtenerControlEnfermeria
+    - [X] nuevo emit para llamar al metodo hideModal en padre debe recibir resultado e index
+    - [X] En hideModal en caso de cancelar, el mismo emit anterior pero objeto nulo
+
+<2023-11-13 Mon>  Terimno
+*** Camibos realizados
+- WEB
+  - clinica
+    - control-puerperio.vue M
+      - modalMamas.vue M
+      - modalPresenciaCalostro.vue M
+      - modalRetraccionUterina.vue M
+      - modalLoquios.vue M
+      - modalEpisorrafia.vue M
+    - ventilador-mecanico.vue M
+      - modalDispositivo.vue M
+      - modalTotNivel.vue M
+      - modalPrCuff.vue M
+      - modalModoVentilatorio.vue M
+      - modalIpapEpap.vue M
+      - modalFio2Peep.vue M
+      - modalFpFrPsHz.vue M
+      - modalPrInsp.vue M
+      - modalSensFlujo.vue M
+      - modalAmplitud.vue M
+      - modalVolCorriente.vue M
+      - modalPviaAerea.vue M
+      - modalPplatPmedia.vue M
+      - modalPresionSoporte.vue M
+      - modalEtCo2.vue M
+      - modalVolMinuto.vue M
+      - modalRelacionIE.vue M
+      - modalTempHumificador.vue M
+      - modalAlarmaPresion.vue M
+- GIT
+  - clinica
+    - feature-mejoras-usuario-bh M
+** TODO Implementar Jenkins [0/0]
+- Fase de pruebas
+  - [ ] Abrir coneccion con ngrok desde wsl conectado por ssh
+    #+begin_src bash
+    ngrok http 192.168.1.81:8080
+    #+end_src
+  - [ ] copiar tunel y setearlo en webhook de git app
+  - [ ] Conectar agent de windows
+- Pasos para habilitar
+  - Instalar jenkins
+  - crear agent, conectarlo
+  - cerar job multibranch, conectar con credenciales app id y secret
+  - deifinir jenkinfile en repo
+  - done
+
+** TODO Requerimiento modificaciones clinica [3/5]
+*** TODO Indicar medicamentos medico clinica en registro-medico [0/2]
+- [ ] Habilitar parámetro veces en indicacion medicamento monofarmaco
+  - ver que significa habilitarlo, si afecta query o sp
+  - Tabla HCH_ADMINISTRACION_MEDICAMENTO
+- [ ] Agregar campo SOS en solución, tomar de ejemplo en monoFarmaco
+  - Tabla HC_ADMINISTRACION_SOLUCION
+    - nuevo campo SOS HAS_SOS char(1)
+  - Tabla HC_ADM_SOLUCION_DET
+
+*** DONE Agregar boton IEEH en epicrisis medico [2/2]
+- [X] sacar botón de admision hospitalaria, tomar funcionalidad IEEH
+  - Boton se aplica en componente epicrisis.vue
+  - alta debe estar cerrada para proceder
+- [X] Cambiar texto motivo de alta a Destino de Alta
+*** TODO Agregar item peso y oxigeno en ciclo vital enfermera [0/2]
+- [ ] agregar peso
+  - con decimal y en kg
+- [ ] agregar oxigeno
+  - numero
+!! CONSULTAR POR OBTENER CICLO VITAL NO TRAE DATOS PERO SI SE GUARDAN
+*** DONE Ingreso Enfermeria agregar talla al lado de peso [3/3]
+- [X] Agregar valor a obj en vue
+- [X] Nueva propiedad HieAiTalla en DTO
+- [X] Nueva col HIE_AI_TALLA en HCH_INGRESO_ENFERMERIA
+*** DONE Ingreso Enfermeria Higuene ya no campo obligatorio [1/1]
+- [X] Sacar del validator
+*** Cambios Realizados
+- WEB
+- API
+- DB
+- GIT
+  - feature-cambios-enf-med
