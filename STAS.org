@@ -1452,7 +1452,7 @@ SCHEDULED: <2023-06-13 mar>
   urgencia
   feature-categorizacion-esi
   2226321
-** TODO Implementar evolucion médica en Urgencia [3/3]
+** DONE Implementar evolucion médica en Urgencia [3/3]
 - [X] tab evolución médica
 - [X] botones guardar y firmar evolucion cuando tab evo activa
 - [X] usar endpoint de clinica como ejemplo, mismo sp y db [4/4]
@@ -1592,7 +1592,7 @@ SCHEDULED: <2023-06-13 mar>
   - API
     - FichaClinicaHospitalizado
       - feature-evolucion-interconsultor
-** TODO Control Enfermeria clinica mejoras usuarios balance hidrico [2/2]
+** DONE Control Enfermeria clinica mejoras usuarios balance hidrico [2/2]
 <2023-11-10 Fri> Inicio
 ref modalTempIncubadora Children
 ref control-neonatal Parent
@@ -1952,14 +1952,18 @@ ref modalAleteoNatal checkbox si/no
   - deifinir jenkinfile en repo
   - done
 
-** TODO Requerimiento modificaciones clinica [3/5]
-*** TODO Indicar medicamentos medico clinica en registro-medico [0/2]
-- [ ] Habilitar parámetro veces en indicacion medicamento monofarmaco
+** DONE Requerimiento modificaciones clinica [8/8]
+<2023-11-29 Wed> subido a prod
+*** DONE Indicar medicamentos medico clinica en registro-medico [2/2]
+- [X] Habilitar parámetro veces en indicacion medicamento monofarmaco
   - ver que significa habilitarlo, si afecta query o sp
   - Tabla HCH_ADMINISTRACION_MEDICAMENTO
-- [ ] Agregar campo SOS en solución, tomar de ejemplo en monoFarmaco
-  - Tabla HC_ADMINISTRACION_SOLUCION
-    - nuevo campo SOS HAS_SOS char(1)
+  - Veces debe ser cantidad
+  - se modifica sp spu_fch_guardar_indicacion_medicamento y se agrega logica para "veces"
+    - tambien se agrega logica para cuando se pide SOS que solicite una cantidad de urgencia
+- [X] Agregar campo SOS en solución, tomar de ejemplo en monoFarmaco
+  - Tabla HC_ADMINISTRACION_SOLUCION [1/1]
+    - [X] nuevo campo SOS HAS_SOS char(1)
   - Tabla HC_ADM_SOLUCION_DET
 
 *** DONE Agregar boton IEEH en epicrisis medico [2/2]
@@ -1967,21 +1971,360 @@ ref modalAleteoNatal checkbox si/no
   - Boton se aplica en componente epicrisis.vue
   - alta debe estar cerrada para proceder
 - [X] Cambiar texto motivo de alta a Destino de Alta
-*** TODO Agregar item peso y oxigeno en ciclo vital enfermera [0/2]
-- [ ] agregar peso
+*** DONE Agregar item peso y oxigeno en ciclo vital enfermera [2/2]
+- [X] agregar peso [8/8]
   - con decimal y en kg
-- [ ] agregar oxigeno
-  - numero
-!! CONSULTAR POR OBTENER CICLO VITAL NO TRAE DATOS PERO SI SE GUARDAN
+  - [X] Crear td en vista con su popover para visualizar valores
+  - [X] Agregar hcvPeso a data() y en metodo crear fila ciclo vital
+  - [X] Agregar transform a float antes de guardar y asignar sus valores usuNombreCreaPeso y HceFecCreaPeso
+  - [X] En API agregar datos a DTO [5/5]
+    - [X] HcvPeso
+    - [X] UsuNombreCreaPeso
+    - [X] UsuNombreModifPeso
+    - [X] HceFecCreaPeso
+    - [X] HceFecModifPeso
+  - [X] En API agregar datos PesoPorHora en metodo LlenarHorasControles
+  - [X] En API agregar parametros para obtener y guardar CicloVital
+  - [X] en DB agregar nuevas columnas en tabla items tipo control enf [1/1]
+    - [X] Peso
+      #+begin_src sql
+        INSERT INTO HCH_TIPO_CONTROL_ENF
+        (HCCE_CORREL, HTCE_CORREL, HTCE_DESCRIPCION, HTCE_VIGENTE, HTCE_ORDEN)
+        VALUES
+        (1, (SELECT MAX(HTCE_CORREL) + 1 FROM HCH_TIPO_CONTROL_ENF), 'PESO', 'S', (SELECT MAX(HTCE_ORDEN) + 1 FROM HCH_TIPO_CONTROL_ENF))
+      #+end_src
+
+  - [X] En DB modificar spu_fch_guardar_ctrl_ciclo_vital para guardar nuevos valores
+- [X] agregar oxigeno [9/9]
+  - decimal
+  - [X] Crear td en vista con su popover para visualizar valores
+  - [X] Agregar hcvOxigeno a data() y en metodo crear fila ciclo vital
+  - [X] Agregar transform a float antes de guardar y asignar sus valores usuNombreCreaOxigeno y HceFecCreaOxigeno
+  - [X] Agregar validation debe ser mayor a 0
+  - [X] En API agregar datos a DTO [5/5]
+    - [X] HcvOxigeno
+    - [X] UsuNombreCreaOxigeno
+    - [X] UsuNombreModifOxigeno
+    - [X] HceFecCreaOxigeno
+    - [X] HceFecModifOxigeno
+  - [X] En API agregar datos PesoPorHora en metodo LlenarHorasControles
+  - [X] En API agregar parametros para obtener y guardar CicloVital
+  - [X] En DB agregar nueva columna en tabla items tipo control enf [1/1]
+    - [X] Oxigeno
+       #+begin_src sql
+        INSERT INTO HCH_TIPO_CONTROL_ENF
+        (HCCE_CORREL, HTCE_CORREL, HTCE_DESCRIPCION, HTCE_VIGENTE, HTCE_ORDEN)
+        VALUES
+        (1, (SELECT MAX(HTCE_CORREL) + 1 FROM HCH_TIPO_CONTROL_ENF), 'OXIGENO', 'S', (SELECT MAX(HTCE_ORDEN) + 1 FROM HCH_TIPO_CONTROL_ENF))
+       #+end_src
+  - [X] En DB modificar spu_fch_guardar_ctrl_ciclo_vital para guardar nuevos valores
 *** DONE Ingreso Enfermeria agregar talla al lado de peso [3/3]
 - [X] Agregar valor a obj en vue
 - [X] Nueva propiedad HieAiTalla en DTO
 - [X] Nueva col HIE_AI_TALLA en HCH_INGRESO_ENFERMERIA
-*** DONE Ingreso Enfermeria Higuene ya no campo obligatorio [1/1]
+*** DONE Ingreso Enfermeria Higiene ya no campo obligatorio [1/1]
 - [X] Sacar del validator
+*** DONE Eliminar restriccion Guardar/Firmar Epicrisis que sea mismo medico
+*** DONE Si periodo es >= 2 frecuencia es required en Indicacion Solucion
+*** DONE Si periodo es >= 2 y es "veces" frecuencia es required Indicacion Medicamentos
 *** Cambios Realizados
 - WEB
+  - Clinica
+    - ciclo-vital.vue M
+    - epicrisis.vue M
+    - modal-farmaco.vue M
+    - control-enfermeria.vue M
+    - ingreso-enfermeria.vue M
+    - evolucion-medica.vue M
+    - otros-profesionales.vue M
 - API
+  - FichaClinicaHospitalizado
+    - AtencionMedicoController M
+    - AtencionMedicoRepository M
+    - ControlEnfermeriaRepository M
+    - IngresoEnfermeriaRepository M
+    - CicloVitalDTO M
+    - IndicacionMedicamentoDTO M
+    - IngresoEnfermeriaDTO M
 - DB
+  - HCH_TIPO_CONTROL_ENF
+    #+begin_src sql
+    INSERT INTO HCH_TIPO_CONTROL_ENF
+    (HCCE_CORREL, HTCE_CORREL, HTCE_DESCRIPCION, HTCE_VIGENTE, HTCE_ORDEN)
+    VALUES
+    (1, (SELECT MAX(HTCE_CORREL) + 1 FROM HCH_TIPO_CONTROL_ENF), 'PESO', 'S', (SELECT MAX(HTCE_ORDEN) + 1 FROM HCH_TIPO_CONTROL_ENF))
+    #+end_src
+    #+begin_src sql
+    INSERT INTO HCH_TIPO_CONTROL_ENF
+    (HCCE_CORREL, HTCE_CORREL, HTCE_DESCRIPCION, HTCE_VIGENTE, HTCE_ORDEN)
+    VALUES
+    (1, (SELECT MAX(HTCE_CORREL) + 1 FROM HCH_TIPO_CONTROL_ENF), 'OXIGENO', 'S', (SELECT MAX(HTCE_ORDEN) + 1 FROM HCH_TIPO_CONTROL_ENF))
+    #+end_src
+  - spu_fch_guardar_ctrl_ciclo_vital
+  - HCH_INGRESO_ENFERMERIA
+    #+begin_src sql
+    ALTER TABLE HCH_INGRESO_ENFERMERIA ADD HIE_AI_TALLA NUMERIC(5)
+    #+end_src
+  - spu_fch_hie_guardar_ingreso
+  - spu_fch_hie_obtener_ingreso
+  - HCH_ADMINISTRACION_MEDICAMENTO
+  - spu_fch_guardar_indicacion_medicamento
+  - HCH_ADMINISTRACION_SOLUCION
+    #+begin_src sql
+    ALTER TABLE HC_ADMINISTRACION_SOLUCION ADD HAS_SOS CHAR(1)
+    #+end_src
+  - spu_fch_obtener_indicacion_solucion
+  - spu_fch_guardar_indicacion_solucion
 - GIT
-  - feature-cambios-enf-med
+  - WEB y API
+    - feature-cambios-enf-med
+
+** TODO Modificar Required Sol med Urgencia [1/1]
+- [X] Si periodo es >= 2 frecuencia es requerido
+*** Cambios Realizados
+- WEB
+  - urgencia
+    - modal-farmaco.vue M
+- GIT
+  - feature-correcciones-indicacion-med-sol
+
+** TODO En indicacion medicamento marca conciliacion medicamentosa [7/9]
+- [X] En vista agregar checkbox con marca conciliacion
+- [X] En API agregar a IndicacionMedicamentoDTO nueva propiedad esConciliacionMed
+- [X] En API agregar parametro ES_CONCILIACION al llamar spu_fch_guardar_indicacion_medicamento
+- [X] Agregar tooltip "medicamentos traidos por paciente"
+- [X] En db agregar un return despues de insert que se active al marca conciliacion = true
+  - spu_fch_guardar_indicacion_medicamento
+- [X] Cambiar en AtencionMedicoRepository nombre de sp, quitar _pb
+- [X] Agregar bagde en vista enfermera con marca TRATAMIENTO PERMANENTE
+- [ ] En medico agregar marca TRATAMIENTO PERMANENTE como en enfermera
+- [ ] En enfermera agregar tooltip en bagde TRATAMIENTO PERMANENTE como en medico
+*** Cambios Realizados
+- WEB
+  - Clinica
+    - modal-farmacos.vue M
+- API
+  - FichaClinicaHospitalizado
+    - AtencionMedicoRepository M
+- DB
+  - spu_fch_guardar_indicacion_medicamento
+- GIT
+  - API Y WEB
+    - feature-conciliacion-med
+** TODO Clinica Alergias paciente buscar por ficha [7/7]
+PARA UN PASO A PROD GRANDE JUNTAR ESTOS CAMBIOS ALERGIA CON EL PASO PARA JUSTIFICAR
+- [X] En vue nuevo prop para alergias pacNumFicha y metodo buscar cambiar rut por ficha
+- [X] En vue helper.js cambiar pacRut por pacNumFicha
+- [X] Vistas vue llamar a componente con nuevo prop [11/11]
+  - [X] control-enfermeria.vue
+  - [X] epicrisis-enfermeria.vue
+  - [X] ingreso-enfermeria.vue
+  - [X] plan-enfermeria.vue
+  - [X] recien-nacido.vue
+  - [X] registro-enfermeria.vue
+  - [X] evolucion-medica.vue
+  - [X] registro-nutricionista.vue
+  - [X] otros-profesionales.vue
+  - [X] ficha-pabellon.vue
+  - [X] kinesiologo.vue
+- [X] En API global cambiar parametro entrada para buscar alergia a int pacNumFicha
+- [X] en db modificar spu_adm_obtener_alergias para buscar por ficha
+- [X] Quitar _pb del nombre del sp
+- [X] Fix ficha-pabellon para buscar por ficha desde la store
+*** Cambios Realizados
+- WEB
+  - Clinica
+    - control-enfermeria.vue M
+    - epicrisis-enfermeria.vue M
+    - ingreso-enfermeria.vue M
+    - plan-enfermeria.vue M
+    - recien-nacido.vue M
+    - registro-enfermeria.vue M
+    - evolucion-medica.vue M
+    - registro-nutricionista.vue M
+    - otros-profesionales.vue M
+    - ficha-pabellon.vue M
+    - kinesiologo.vue M
+- API
+  - Global
+    - AlergiaController M
+    - AlergiaRepository M
+- DB
+  - spu_adm_obtener_alergias
+- GIT
+  - WEB y API
+    - feature-alergias-paciente
+** TODO Ambulatorio ALergias paciente Buscar por ficha [3/3]
+- [X] En vue nuevo prop para alergias pacNumFicha y metodo buscar cambiar rut por ficha
+- [X] En vue helper.js cambiar pacRut por pacNumFicha
+- [X] Vistas vue llamar a componente con nuevo prop [3/3]
+  - [X] kinesiologo.vue
+  - [X] registro-atencion.vue
+  - [X] datos-paciente.vue
+*** Cambios Realizados
+- WEB
+  - ambulatorio
+    - kinesiologo.vue M
+    - registro-atencion.vue M
+    - datos-paciente.vue M
+    - alergias.vue M
+    - atencion.js M
+- GIT
+  - feature-alergias-paciente
+** TODO Urgencia ALergias paciente Buscar por ficha [3/3]
+- [X] En vue nuevo prop para alergias pacNumFicha y metodo buscar cambiar rut por ficha
+- [X] En vue helper.js cambiar pacRut por pacNumFicha
+- [X] Vistas vue llamar a componente con nuevo prop [6/6]
+  - [X] alta-paciente.vue
+  - [X] atencion-enfermeria.vue
+  - [X] atencion-especialista.vue
+  - [X] atencion-otros-profesionales.vue
+  - [X] atencion.vue
+  - [X] categorizacion.vue
+*** Cambios Realizados
+- WEB
+  - urgencia
+    - alta-paciente.vue M
+    - atencion-enfermeria.vue M
+    - atencion-especialista.vue M
+    - atencion-otros-profesionales.vue M
+    - atencion.vue M
+    - categorizacion.vue M
+    - alergias.vue M
+    - atencion.js M
+- GIT
+  - feature-alergias-paciente
+** TODO Organizar en tabs solicitud de examenes Clinica [6/6]
+- [X] Orden examenes lab debe ser lista de checkbox sin vuetable
+- [X] Orden examenes img debe tener buscar por cada tab con las vuetable
+- [X] Si vuetable esta sin datos debe desaparecer
+- [X] Orden de tabs examenes lab
+  1. hematologico
+  2. Bioquimico
+  3. rto globular
+  4. coagulación
+  5. microbiologia
+  6. hormona
+  7. examen de orina
+  8. examen de deposiciones
+  9. perfil cardiaco
+  10. inmunologicos
+  11. marcadores tumorales
+  12. marcadores virales
+  13. T.O.R.C.H
+- [X] Orden de tabs examenes Img
+  1. rx simple
+  2. TAC
+  3. Resonancia
+  4. rx complejas
+  5. ultrasonografia
+- [X] Busqueda General debe estar siempre a la vista [2/2]
+  - [X] Examenes Lab [2/2]
+    - [X] Dejar siempre a la vista
+    - [X] Sincronizar checks y busqueda genereal
+  - [X] Examenes Img [1/1]
+    - [X] Dejar siempre a la vista
+    - [ ] Sincronizar checks y busqueda genereal
+      - El bug era que al hacer varias tablas con el mismo ref, vue no sabia donde aplicar los cambios
+*** Cambios Realizados
+- WEB
+  - clinica
+    - examenes-laboratorio.vue M
+    - examenes-imagenologia.vue M
+- GIT
+  - feature-examenes-tab
+** TODO Organizar en tabs solicitud de examenes Ambulatorio [6/6]
+- [X] Orden examenes lab debe ser lista de checkbox sin vuetable
+- [X] Orden examenes img debe tener buscar por cada tab con las vuetable
+- [X] Si vuetable esta sin datos debe desaparecer
+- [X] Orden de tabs examenes lab
+  1. hematologico
+  2. Bioquimico
+  3. rto globular
+  4. coagulación
+  5. microbiologia
+  6. hormona
+  7. examen de orina
+  8. examen de deposiciones
+  9. perfil cardiaco
+  10. inmunologicos
+  11. marcadores tumorales
+  12. marcadores virales
+  13. T.O.R.C.H
+- [X] Orden de tabs examenes Img
+  1. rx simple
+  2. TAC
+  3. Resonancia
+  4. rx complejas
+  5. ultrasonografia
+- [X] Busqueda General debe estar siempre a la vista [2/2]
+  - [X] Examenes Lab [2/2]
+    - [X] Dejar siempre a la vista
+    - [X] Sincronizar checks y busqueda genereal
+  - [X] Examenes Img [2/2]
+    - [X] Dejar siempre a la vista
+    - [X] Sincronizar checks y busqueda genereal
+      - El bug era que al hacer varias tablas con el mismo ref, vue no sabia donde aplicar los cambios
+        se debe indicar un ref unico para cada tabla y aplicar a cada ref las acciones de la funcion
+*** Cambios Realizados
+- WEB
+  - ambulatorio
+    - examenes-laboratorio.vue M
+    - examenes-imagenologia.vue M
+- GIT
+  - feature-examenes-tab
+** TODO Organizar en tabs solicitud de examenes Urgencia [0/6]
+- [ ] Orden examenes lab debe ser lista de checkbox sin vuetable
+- [ ] Orden examenes img debe tener buscar por cada tab con las vuetable
+- [ ] Si vuetable esta sin datos debe desaparecer
+- [ ] Orden de tabs examenes lab
+  1. hematologico
+  2. Bioquimico
+  3. rto globular
+  4. coagulación
+  5. microbiologia
+  6. hormona
+  7. examen de orina
+  8. examen de deposiciones
+  9. perfil cardiaco
+  10. inmunologicos
+  11. marcadores tumorales
+  12. marcadores virales
+  13. T.O.R.C.H
+- [ ] Orden de tabs examenes Img
+  1. rx simple
+  2. TAC
+  3. Resonancia
+  4. rx complejas
+  5. ultrasonografia
+- [ ] Busqueda General debe estar siempre a la vista [0/2]
+  - [ ] Examenes Lab [0/2]
+    - [ ] Dejar siempre a la vista
+    - [ ] Sincronizar checks y busqueda genereal
+  - [ ] Examenes Img [0/2]
+    - [ ] Dejar siempre a la vista
+    - [ ] Sincronizar checks y busqueda genereal
+      - El bug era que al hacer varias tablas con el mismo ref, vue no sabia donde aplicar los cambios
+        se debe indicar un ref unico para cada tabla y aplicar a cada ref las acciones de la funcion
+*** Cambios Realizados
+- WEB
+  - ambulatorio
+    - examenes-laboratorio.vue M
+    - examenes-imagenologia.vue M
+** TODO Favoritos Examenes Clinica [/]
+- [ ]
+** DONE FIX Evolucion Medica Clinica [2/2]
+- [X] En VUE implementar filtro al guardar y firmar [2/2]
+  - [X] Filtro por username
+  - [X] Filtro por evoluciones NO firmadas
+- [X] En API quitar filtro por rutPrestador de evolucion medica
+*** Cambios Realizados
+- WEB
+  - clinica
+    - evolucion-medica.vue M
+- API
+  - FichaClinicaHospitalizado
+    - AtencionMedicoRepository M
+- GIT
+  - Web y API
+    - fix-evolucion-medica
