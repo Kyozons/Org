@@ -1,4 +1,5 @@
 #+title: Appmuseo
+- [ ] 
 
 * Archivo Shopify
 - Fecha
@@ -6,7 +7,9 @@
 - Subtotal -> subtotal
 - Neto -> subtotal - IVA
 - IVA -> Taxes
-- Costo Despacho -> saber ID para sacarlo de shipit
+- CoCtr Purperiosto Despacho -> saber ID para sacarlo de shipit
+- 
+- Ventilador Mecánico
 - Cobro Despacho -> Shipping
 - Total - total
 - SKU - Lineitem sku

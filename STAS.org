@@ -2079,7 +2079,7 @@ ref modalAleteoNatal checkbox si/no
   - WEB y API
     - feature-cambios-enf-med
 
-** TODO Modificar Required Sol med Urgencia [1/1]
+** DONE Modificar Required Sol med Urgencia [1/1]
 - [X] Si periodo es >= 2 frecuencia es requerido
 *** Cambios Realizados
 - WEB
@@ -2088,26 +2088,37 @@ ref modalAleteoNatal checkbox si/no
 - GIT
   - feature-correcciones-indicacion-med-sol
 
-** TODO En indicacion medicamento marca conciliacion medicamentosa [7/9]
+** DONE En indicacion medicamento marca conciliacion medicamentosa [11/11]
 - [X] En vista agregar checkbox con marca conciliacion
 - [X] En API agregar a IndicacionMedicamentoDTO nueva propiedad esConciliacionMed
 - [X] En API agregar parametro ES_CONCILIACION al llamar spu_fch_guardar_indicacion_medicamento
 - [X] Agregar tooltip "medicamentos traidos por paciente"
 - [X] En db agregar un return despues de insert que se active al marca conciliacion = true
   - spu_fch_guardar_indicacion_medicamento
+- [X] En db agregar columna HAM_CONCILIACION_MEDICAMENTOSA en tabla HCH_ADMINISTRACION_MEDICAMENTO
 - [X] Cambiar en AtencionMedicoRepository nombre de sp, quitar _pb
 - [X] Agregar bagde en vista enfermera con marca TRATAMIENTO PERMANENTE
-- [ ] En medico agregar marca TRATAMIENTO PERMANENTE como en enfermera
-- [ ] En enfermera agregar tooltip en bagde TRATAMIENTO PERMANENTE como en medico
+- [X] En medico agregar marca TRATAMIENTO PERMANENTE como en enfermera
+- [X] En enfermera agregar tooltip en bagde TRATAMIENTO PERMANENTE como en medico
+- [X] CAMBIO EXTRA agregar nombre medico en firma evolucion-medica
 *** Cambios Realizados
 - WEB
   - Clinica
     - modal-farmacos.vue M
+    - registro-enfermeria.vue M
+    - evolucion-medica.vue M
 - API
   - FichaClinicaHospitalizado
     - AtencionMedicoRepository M
 - DB
   - spu_fch_guardar_indicacion_medicamento
+  - spu_fch_obtener_administracion_medicamentos
+  - spu_fch_obtener_indicacion_medicamento
+  - HCH_ADMINISTRACION_MEDICAMENTO
+    #+begin_src sql
+    ALTER TABLE HCH_ADMINISTRACION_MEDICAMENTO
+    ADD HAM_CONCILIACION_MEDICAMENTOSA CHAR(1)
+    #+end_src
 - GIT
   - API Y WEB
     - feature-conciliacion-med
@@ -2194,7 +2205,7 @@ PARA UN PASO A PROD GRANDE JUNTAR ESTOS CAMBIOS ALERGIA CON EL PASO PARA JUSTIFI
     - atencion.js M
 - GIT
   - feature-alergias-paciente
-** TODO Organizar en tabs solicitud de examenes Clinica [6/6]
+** DONE Organizar en tabs solicitud de examenes Clinica [6/6]
 - [X] Orden examenes lab debe ser lista de checkbox sin vuetable
 - [X] Orden examenes img debe tener buscar por cada tab con las vuetable
 - [X] Si vuetable esta sin datos debe desaparecer
@@ -2231,9 +2242,12 @@ PARA UN PASO A PROD GRANDE JUNTAR ESTOS CAMBIOS ALERGIA CON EL PASO PARA JUSTIFI
   - clinica
     - examenes-laboratorio.vue M
     - examenes-imagenologia.vue M
+    - evolucion-medica.vue M
+    - epicrisis.vue M
+    - admision.vue M
 - GIT
   - feature-examenes-tab
-** TODO Organizar en tabs solicitud de examenes Ambulatorio [6/6]
+** DONE Organizar en tabs solicitud de examenes Ambulatorio [6/6]
 - [X] Orden examenes lab debe ser lista de checkbox sin vuetable
 - [X] Orden examenes img debe tener buscar por cada tab con las vuetable
 - [X] Si vuetable esta sin datos debe desaparecer
@@ -2271,13 +2285,15 @@ PARA UN PASO A PROD GRANDE JUNTAR ESTOS CAMBIOS ALERGIA CON EL PASO PARA JUSTIFI
   - ambulatorio
     - examenes-laboratorio.vue M
     - examenes-imagenologia.vue M
+    - registro-atencion.vue M
 - GIT
   - feature-examenes-tab
-** TODO Organizar en tabs solicitud de examenes Urgencia [0/6]
-- [ ] Orden examenes lab debe ser lista de checkbox sin vuetable
-- [ ] Orden examenes img debe tener buscar por cada tab con las vuetable
-- [ ] Si vuetable esta sin datos debe desaparecer
-- [ ] Orden de tabs examenes lab
+
+** DONE Organizar en tabs solicitud de examenes Urgencia [6/6]
+- [X] Orden examenes lab debe ser lista de checkbox sin vuetable
+- [X] Orden examenes img debe tener buscar por cada tab con las vuetable
+- [X] Si vuetable esta sin datos debe desaparecer
+- [X] Orden de tabs examenes lab
   1. hematologico
   2. Bioquimico
   3. rto globular
@@ -2291,28 +2307,32 @@ PARA UN PASO A PROD GRANDE JUNTAR ESTOS CAMBIOS ALERGIA CON EL PASO PARA JUSTIFI
   11. marcadores tumorales
   12. marcadores virales
   13. T.O.R.C.H
-- [ ] Orden de tabs examenes Img
+- [X] Orden de tabs examenes Img
   1. rx simple
   2. TAC
   3. Resonancia
   4. rx complejas
   5. ultrasonografia
-- [ ] Busqueda General debe estar siempre a la vista [0/2]
-  - [ ] Examenes Lab [0/2]
-    - [ ] Dejar siempre a la vista
-    - [ ] Sincronizar checks y busqueda genereal
-  - [ ] Examenes Img [0/2]
-    - [ ] Dejar siempre a la vista
-    - [ ] Sincronizar checks y busqueda genereal
+- [X] Busqueda General debe estar siempre a la vista [2/2]
+  - [X] Examenes Lab [2/2]
+    - [X] Dejar siempre a la vista
+    - [X] Sincronizar checks y busqueda genereal
+  - [X] Examenes Img [2/2]
+    - [X] Dejar siempre a la vista
+    - [X] Sincronizar checks y busqueda genereal
       - El bug era que al hacer varias tablas con el mismo ref, vue no sabia donde aplicar los cambios
         se debe indicar un ref unico para cada tabla y aplicar a cada ref las acciones de la funcion
 *** Cambios Realizados
 - WEB
-  - ambulatorio
+  - urgencia
     - examenes-laboratorio.vue M
     - examenes-imagenologia.vue M
-** TODO Favoritos Examenes Clinica [/]
-- [ ]
+    - atencion.vue M
+    - atencion-otros-profesionales.vue M
+    - atencion-enfermeria.vue M
+    - atencion-especialista.vue M
+- GIT
+  - feature-examenes-tab
 ** DONE FIX Evolucion Medica Clinica [2/2]
 - [X] En VUE implementar filtro al guardar y firmar [2/2]
   - [X] Filtro por username
@@ -2328,3 +2348,436 @@ PARA UN PASO A PROD GRANDE JUNTAR ESTOS CAMBIOS ALERGIA CON EL PASO PARA JUSTIFI
 - GIT
   - Web y API
     - fix-evolucion-medica
+** DONE Buscar por ficha alta urgencia [2/2]
+- [X] Agregar buscar por ficha en vista alta urgencia
+- [X] Corregir en API urgencia, metodo repository.ObetenerPaciente en llamadas controllers, condicionar desformatear rut para solo rut, ficha y pasaporte debe pasar sin desformateo
+  - feature-buscar-por-ficha
+** DONE Pasar a PROD ambulatorio tab examenes resto de clinicas [4/4]
+- [X] CASC
+- [X] CAST
+- [X] CASPM
+- [X] CASCH
+** HOLD Rework solicitud medicamentos Enfermera Clinica [4/5]
+- [X] Col volumen y calcular se elimina
+- [X] Filtro paciente debe ser vue-select
+- [X] Filtro prestador con vue-select
+- [X] Tab despacho uni eliminar
+  - OCULTA MIENTRAS
+- [-] Aplicar diseño master-slave en tabla solicitud
+  - [X] Master [8/8]
+    - [X] Prioridad
+    - [X] Servicio
+    - [X] Cama
+    - [X] Prestador
+    - [X] Paciente
+    - [X] Sexo
+    - [X] Edad
+    - [X] Diagnostico
+  - [-] Slave [9/11]
+    - [X] Medicamento
+    - [X] Posologia
+    - [X] Cantidad Solicitada
+    - [ ] Cantidad Entregada Paciente INPUT
+    - [ ] Fecha
+    - [X] Bodega
+    - [X] Producto
+    - [X] BTN Farmacia
+      - [X] solicitudFarmacia debe ser 'S'
+    - [X] BTN Bodega Periferica
+      - [X] solicitudFarmacia debe ser 'N'
+      - [X] Cuando es bodega producto es required
+    - [X] Al pedir a bodega eliminar solicitud de la lista detalle
+      - Se elimina en parent con eventBus.$emit y de hijo con filter
+    - [X] Alerta para confirmar envío de solicitud
+*** Cambios realizados
+- feature-rediseño-solicitud-medicamentos-enfermera
+
+** DONE FIX numeros decimales en indicacion solucion Clinica [1/1]
+<2023-12-28 Thu>
+- [X] Al indicar solucion los numeros decimales se convierten a enteros [6/6]
+  - [X] En VUE cambiar datatype a decimal
+  - [X] en DB corregir al obtener los datos [1/1]
+    - El problema es que al obtener los datos se está transformando de decimal a float y de float a STR, causando que se redondee a un INT ([[https://learn.microsoft.com/en-us/sql/t-sql/functions/str-transact-sql?view=sql-server-ver16#remarks][la razon se ve aqui]])
+    - [X] Cambiar obtencion de datos en SPs correspondientes [6/6]
+      - [X] spu_fch_obtener_indicacion_solucion
+      - [X] spu_sol_solicitud_medicamentos_farmacia
+      - [X] spu_sol_solicitud_medicamentos
+      - [X] spu_fch_obtener_administracion_medicamentos
+      - [X] spu_fch_obtener_solucion_detalle
+      - [X] spu_fch_obtener_indicacion_solucion
+      STR(CAST(CAST HAS.HAS_DOSIS_SOL_BASE AS DECIMAL (10,2) AS FLOAT)) --> CAST(HAS.HAS_DOSIS_SOL_BASE AS FLOAT) -- Para select directo
+      STR(CAST(CAST HAS.HAS_DOSIS_SOL_BASE AS DECIMAL (10,2) AS FLOAT)) --> CONVERT(VARHCAR, CAST(HAS.HAS_DOSIS_SOL_BASE AS FLOAT)) -- Para select como parte de un string (ej. SOLUCION_DESCRIPCION)
+      STR(CAST(CAST HAS.HAS_DOSIS_SOL_BASE AS DECIMAL (10,2) AS FLOAT)) --> CONVERT(VARHCAR, CAST(SDET.HASD_DOSIS AS FLOAT)) -- Para select como parte de un string (ej. SOLUCION_DESCRIPCION)
+      #+begin_src sql
+        -- Lineas 48 y 133
+        CAST(HAS.HAS_DOSIS_SOL_BASE AS FLOAT)
+        -- Lineas 97 y 100, 182 y 185
+        CONVERT(VARCHAR, CAST(HAS.HAS_DOSIS_SOL_BASE AS FLOAT))
+        CONVERT(VARCHAR, CAST(SDET.HASD_DOSIS AS FLOAT))
+      #+end_src
+  - [X] Eliminar Campos Requeridos en indicacion Solucion [3/3]
+    - [X] En VUE eliminar de required y clase is-invalid
+    - [X] En API agregar nullable a los datos correspondientes
+    - [X] en DB modificar SPs para obtener datos en caso de no haber una solución base
+  - [X] Si Solucion Base es nulo, Frecuencia debe ser obligatorio
+  - [X] Via administracion siempre required
+  - [X] Limpiar SOS al cerrar modal
+*** Cambios Realizados
+- WEB
+  - clinica
+    - evolucion-medica.vue M
+    - modal-farmacos.vue M
+- API
+  - FichaClinicaHospitalizado
+    - IndiciacionMedicamentoDTO M
+- DB
+  - spu_fch_obtener_indicacion_solucion
+  - spu_fch_guardar_indicacion_solucion
+  - spu_fch_obtener_administracion_medicamentos
+  - spu_fch_obtener_administracion_soluciones
+  - spu_fch_obtener_indicacion_medicamento
+  - spu_sol_solicitud_medicamentos
+  - spu_sol_solicitud_medicamentos_farmacia
+- GIT
+  - WEB y API
+    - fix-decimal-indicacion-medicamento
+
+** DONE Cambios nutri, ficha sin asiste y modal resumen Ambulatorio [1/1]
+<2024-01-05 Fri>
+- [X] Campos tab otros profesionales Ambulatorio [2/2]
+  - [X] Antropometria
+    - [X] usar campos antropometria, no hace falta cambios en api/sp
+  - [X] Hipótesis diagnóstica texto libre
+    - [X] usar campo ficha.fdiDiagnostico
+- [X] Boton ir ficha sin asiste Ambulatorio [1/1]
+  - [X] Agregar botón para ir a ficha paciente cuando aun no ha marcado asiste/pagado  [1/1]
+    - [X] Revisar condiciones de render ( si estado === 'A' || estado === 'NA' )
+- [X] Modal resumen historial paciente Ambulatorio para nutri [4/4]
+  - [X] Motivo Consulta
+  - [X] Diganóstico
+  - [X] Anamnesis
+  - [X] Indicaciones
+- [X] Al ingresar otro profesional (!esMedico) que abra tab otros-profesionales
+- [X] Correcciones [4/4]
+  - [X] El detalle se duplica, revisar
+    - Revisado con Ivan, se corrige sp
+  - [X] El modal debe mostrar la info de cada atención, no siempre del médico
+  - [X] Ocultar circunferencia craneal para otros-profesionales
+    - Se trae dato desde el SP espCodigo para segregar la informacion en base al codigo de especialidad. Solo pediatras ven circunferencia craneal
+  - [X] En registro atencion quitar uppercase de nombre documento [2/2]
+    - [X] Medico
+    - [X] Kine
+*** Cambios Realizados
+- WEB
+  - ambulatorio
+    - registro-atencion.vue M
+    - historial-paciente.vue M
+    - historial-paciente-detalle.vue M
+    - pacientes-espera.vue M
+- API
+  - FichaClinicaAmbulatoria
+    - AtencionAmbulatoriaController M
+    - AtencionAmbulatoriaRepository M
+    - IngresoDTO M
+    - HistorialPacienteDTO M
+- SP
+  - spu_fca_obtener_historial_paciente
+- GIT
+  - ambulatorio
+    - feature-otros-profesionales-campos-nuevos
+  - FichaClinicaAmbulatoria
+    - feature-otros-profesionales-campos-nuevos
+     <2024-01-11 Thu>
+*** DONE Producción Clinicas [5/5]
+- [X] CASC <2024-01-15 Mon>
+- [X] CASCH <2024-01-16 Tue>
+- [X] CASEL <2024-01-16 Tue>
+- [X] CASPM <2024-01-16 Tue>
+- [X] CAST <2024-01-16 Tue>
+
+** DONE Modal resumen historial paciente Urgencia [1/1]
+<2024-01-16 Tue>
+- [X] En historial paciente implementar modalDetalleHistorial
+- [X] En detalle historial implementar cambios de campos necesarios
+*** Cambios realizados
+- WEB
+  - historial-paciente.vue M
+  - historial-paciente-detalle.vue M
+- GIT
+  - feature-detalle-historial
+*** DONE Producción Clinicas [1/1]
+- [X] CASEL <2024-01-16 Tue>
+
+** DONE Modal resumen historial paciente Clinica [1/1]
+<2024-01-16 Tue>
+- [X] En historial paciente implementar modalDetalleHistorial
+- [X] En detalle historial implementar cambios de campos necesarios
+*** Cambios realizados
+- WEB
+  - historial-paciente.vue M
+  - historial-paciente-detalle.vue M
+- GIT
+  - feature-detalle-historial
+*** DONE Producción Clinicas [1/1]
+- [X] CASEL <2024-01-16 Tue>
+
+** TODO Imprimir ficha Kinesiologo desde historial paciente Ambulatorio [2/2]
+<2024-01-12 Fri>
+- [X] En historial paciente funcion imprimir debe ir a medico o kine dependiendo de ate = K
+- [X] En API Global nuevo endpoint con GetImprimirFichaRehabilitacion
+*** Cambios realizados
+- WEB
+  - ambulatorio
+    - atencion.js M
+    - historial-paciente.vue M
+- API
+  - Global
+    - AtencionAmbulatoriaController M
+    - Reportes M
+    - ReporteFichaClinicaAmbulatoria
+    - appsettigs.*.json M
+- GIT
+  - WEB Y API
+    - feature-imprimir-ficha-kine
+<2024-01-12 Fri>
+** TODO Imprimir ficha Kine desd historial paciente Urgencia [/]
+** TODO Imprimir ficha Kine desd historial paciente Clinica [/]
+** DONE Comite oncologico ambulatorio [5/5]
+<2024-01-11 Thu>
+- [X] al guardar e inmediatamente firmar se crean dos, se debe recuperar datos despues de guardar
+- [X] al obtener en API se trae CisCorrel como 0, cambiar a null
+- [X] al guardar y luego obtener se debe formatear fecha a DD-MM-YYYY
+- [X] al obtener despues de guardar se debe asignar origen
+- [X] se crea lista de asistentes al guardar y al firmar, haciendo que se dupliquen
+  - Se trae FcaCorrel al guardar asistentes
+*** Cambios realizados
+- WEB
+  - ambulatorio
+    - oncologico.vue M
+- API
+  - Global
+    - ComiteOncologicoController M
+    - ComiteOncologicoRepository M
+- GIT
+  - ambulatorio y Global
+    - feature-comite-oncologico
+<2024-01-11 Thu>
+*** Producción Clinicas [5/5]
+- [X] CASC <2024-01-15 Mon>
+- [X] CASCH <2024-01-16 Tue>
+- [X] CASEL <2024-01-16 Tue>
+- [X] CASPM <2024-01-16 Tue>
+- [X] CAST <2024-01-16 Tue>
+** DONE Urgencia lista de ingresos no llama datos [1/1]<2024-01-15 Mon>
+<2024-01-12 Fri>
+- [X] al cargar fordward y backward ingreso no carga dato, desde lista de ingresos doble click tampoco
+  - Se agrega llamadas a los endpoint que corresponda y asignacion de objetos correcta dentro de metodo cargar ingreso
+*** Cambios realizados
+- WEB
+  - urgencia
+    - atencion.vue M
+- GIT
+  - feature-fix-cargar-ingreso
+<2024-01-12 Fri>
+** DONE Fix exámenes realizados UpperCase Clinica [1/1]
+<2024-01-15 Mon>
+- [X] quitar upperCase a nombreDocumento
+** TODO Cambio en frecuencia y peroiodo adm med clinica [6/6]
+<2024-01-16 Tue>
+- [X] En tabla HC_FRECUENCIA agregar columnas [2/2]
+  - [X] HCF_HORA_VIGENTE
+  - [X] HCF_MIN_VIGENTE
+- [X] En tabla HC_PERIODO_ADMINISTRACION agregar columnas [2/2]
+  - [X] HPA_DIA_VIGENTE
+  - [X] HPA_VEZ_VIGENTE
+- [X] En SP agregar nuevos campos al select [2/2]
+  - [X] spu_fch_listar_periodicidad [2/2]
+    - [X] HCF_HORA_VIGENTE
+    - [X] HCF_MIN_VIGENTE
+  - [X] spu_fch_listar_periodo_administracion [2/2]
+    - [X] HPA_DIA_VIGENTE
+    - [X] HPA_VEZ_VIGENTE
+- [X] En api Global obtener nuevos campos [4/4]
+  - [X] HCF_HORA_VIGENTE
+  - [X] HCF_MIN_VIGENTE
+  - [X] HPA_DIA_VIGENTE
+  - [X] HPA_VEZ_VIGENTE
+- [X] en Vista al ser > 24 hrs deshabilitar Dias y elegir solo veces
+- [X] en Vista filtrar las listas por vigente [4/4]
+  - [X] horas.filter HCF_HORA_VIGENTE === 'S'
+  - [X] minutos.filter HCF_MIN_VIGENTE === 'S'
+  - [X] dias.filter HPA_DIA_VIGENTE === 'S'
+  - [X] veces.filter HPA_VEZ_VIGENTE === 'S'
+*** Cambios Realizados
+- WEB
+  - clinica
+    - modal-farmacos.vue M
+- API
+  - Global
+    - MedicamentoRepository M
+- DB
+  - HC_FRECUENCIA
+  - HC_PERIODO_ADMINISTRACION
+  - spu_fch_listar_periodicidad
+  - spu_fch_listar_periodo_administracion
+- GIT
+  - feature-nuevo-periodo-frecuencia-ind-med
+** TODO Cambio frecuencia y periodo adm med Urgencia [2/2]
+- [X] en Vista filtrar las listas por vigente [4/4]
+  - [X] horas.filter HCF_HORA_VIGENTE === 'S'
+  - [X] minutos.filter HCF_MIN_VIGENTE === 'S'
+  - [X] dias.filter HPA_DIA_VIGENTE === 'S'
+  - [X] veces.filter HPA_VEZ_VIGENTE === 'S'
+*** Cambios Realizados
+- WEB
+  - urgencia
+    - modal-farmaco.vue M
+- GIT
+  - feature-nuevo-periodo-frecuencia-ind-med
+** TODO Formulario traslado paciente clinica [0/0]
+<2024-01-24 Wed>
+- DB [8/8]
+  - [X] Tabla HCH_TRASLADO_PACIENTE
+  - [X] Tabla TP_HITOS
+  - [X] Tabla TP_INVASIVOS
+  - [X] Tabla TP_TRATAMIENTO_ANTIBIOTICO_ANTIFUNGICOS
+  - [X] SP para Traslado paciente [2/2]
+    - [X] spu_fch_obtener_traslado_paciente
+    - [X] spu_fch_guardar_traslado_paciente
+  - [X] SP para hitos [2/2]
+    - [X] spu_fch_obtener_hitos
+    - [X] spu_fch_guardar_hitos
+  - [X] SP para invasivos [2/2]
+    - [X] spu_fch_obtener_invasivos
+    - [X] spu_fch_guardar_invasivos
+  - [X] SP para tratamiento antibiotico y/o antifungicos [2/2]
+    - [X] spu_fch_obtener_antibiotico_antifungicos
+    - [X] spu_fch_guardar_antibiotico_antifungicos
+- API [3/3]
+  - [X] DTO [4/4]
+    - [X] TrasladoPacienteDTO
+    - [X] HitoDTO
+    - [X] InvasivoDTO
+    - [X] TratamientoAntibioticoAntifungicosDTO
+  - [X] Repository [1/1]
+    - [X] TrasladoPacienteRepository [8/8]
+      - [X] ObtenerTrasladoPaciente
+      - [X] GuardarTrasladoPaciente
+      - [X] ObtenerHitos
+      - [X] GuardarHitos
+      - [X] ObtenerInvasivos
+      - [X] GuardarInvasivos
+      - [X] ObtenerAntibioticoAntifungicos
+      - [X] GuardarAntibioticoAntifungicos
+  - [X] Controller [1/1]
+    - [X] TrasladoPacienteController [2/2]
+      - [X] GetFormularioTrasladoPaciente
+      - [X] GuardarFormularioTrasladoPaciente
+- WEB [17/17]
+  - [X] Lugar de destino <select> 'opcion otros abre input text'
+    - campo obligatorio
+  - [X] Fecha ingreso <datetime select>
+    - Fecha y Hora
+    - campo obligatorio
+  - [X] Fecha traslado <datetime select>
+    - Fecha y Hora
+    - campo obligatorio
+  - [X] Motivo traslado <select> 'opcion otros abre input text'
+    - campo obligatorio
+    - Agudeza de la enfermedad
+    - Mejora de condicion
+    - Quirurjico
+    - Otro
+  - [X] Diag ING texto libre
+    - campo obligatorio
+  - [X] Diag EGRE texto libre
+    - campo obligatorio
+  - [X] Alergias
+    - solo componente como normalmente los datos se ven en el informe
+      -- Otra Seccion --
+  - [X] Hitos vuetable donde se pueda agregar en cola varios Hitos
+    - datos obligatorios al crear un Hito
+    - Hito texto libre
+    - Fecha <date select>
+    - Comentario texto libre
+    - maxlength 2000
+  - [X] Tratamiento Antibiotico y/o Antifungicos lo mismo que Hitos
+    - Medicamento texto libre
+    - Fecha inicio <date select>
+    - Fecha Termino <date select>
+      -- Otra Seccion --
+  - [X] Resumen traslado texto libre
+    - campo obligatorio
+    - maxlength 8000
+  - [X] Indicaciones de traslado texto libre
+    - campo obligatorio
+    - maxlength 3000
+  - [X] Invasivos igual que hitos
+    - Fecha instalación <date select>
+    - Fecha ultima curación <date select>
+    - Comentario texto libre
+  - [X] Examenes pendientes texto libre
+    - maxlength 3000
+  - [X] Ex entregados texto libre
+    - maxlength 3000
+  - [X] Med entregados texto libre
+    - maxlength 3000
+  - [X] Pertenencias personales texto libre
+    - maxlength 3000
+  - [X] Acciones [2/2]
+    - [X] Grabar
+    - [X] Firmar
+      - Al firmar formulario quede en vista "formulario realizado por"
+  <2024-01-25 Thu>
+*** Cambios Realizados
+- WEB
+  - clinica
+    - formulario-traslado-paciente.vue C
+    - lista-formularios-traslado-paciente.vue C
+    - traslado-paciente.vue C
+    - routes.js M
+    - global.js M
+- API
+  - Global
+    - TrasladoPacienteController.cs
+    - Startup.cs
+    - HitoDTO.cs
+    - InvasivoDTO.cs
+    - TrasladoPacienteDTO.cs
+    - TratamientoAntibioticoAntifungicosDTO.cs
+    - TrasladoPacienteRepository.cs
+- DB
+  - CREATE_TABLE_HCH_TRASLADO_PACIENTE
+  - CREATE_TABLE_TP_HITOS
+  - CREATE_TABLE_TP_INVASIVOS
+  - CREATE_TABLE_TP_TRATAMIENTO_ANTIBIOTICO_ANTIFUNGICOS
+  - spu_fch_listar_servicios_traslado_paciente
+  - spu_fch_guardar_antibiotico_antifungico
+  - spu_fch_guardar_hito
+  - spu_fch_guardar_invasivos
+  - spu_fch_guardar_traslado_paciente
+  - spu_fch_obtener_antibiotico_antifungicos
+  - spu_fch_obtener_formulario_traslado_paciente
+  - spu_fch_obtener_hitos
+  - spu_fch_obtener_invasivos
+- GIT
+  - feature-traslado-paciente
+** TODO Modificacion de constancia GES [0/3]
+- [ ] buscar dato nombre social en admision y mostrarlo si existe
+- [ ] Al lado de conf diag y paciente en tratamiento, sospecha y seguimiento
+
+** TODO Favoritos Examenes Tres Servicios [0/3]
+- [ ] Primer tab como examenes favoritos
+- [ ] Agregar una estrella al lado de cada examen para agregarlo a favoritos
+  - cuando no esté marcado favorito estrella vacía
+- [ ] Crear nueva tabla con favoritos, tomar ejemplo fce_diagnostico_favorito
+
+** TODO Boton Ver Ficha debe impedir editar ingreso ambulatorio [3/3]
+- [X] Mensaje al presionar botón ver ficha que indique registro es solo lectura
+- [X] Al ir a ingreso con boton ver ficha, campos deben bloquearse
+- [X] Al ir a ingreso con boton ver ficha no se debe poder guardar ni firmar
+*** Cambios Realizados
+- WEB
+  - ambulatorio
+- GIT
+  - feature-otros-profesionales-campos-nuevos
